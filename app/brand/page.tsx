@@ -23,32 +23,43 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function BrandPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'AboutPage',
-    name: 'Golden Deer — Brand Facts',
-    description: 'Complete brand facts for Golden Deer premium roasted makhana by Cosmic Power Pvt. Ltd.',
-    mainEntity: [
+    '@graph': [
       {
-        '@type': 'Organization',
-        name: 'Cosmic Power Pvt. Ltd.',
-        identifier: l.cin,
-        brand: { '@type': 'Brand', name: 'Golden Deer' },
-        address: { '@type': 'PostalAddress', streetAddress: l.address },
-        contactPoint: { '@type': 'ContactPoint', email: site.contact.email, telephone: site.contact.whatsappNumber },
+        '@type': 'AboutPage',
+        name: 'Golden Deer — Brand Facts',
+        description: 'Complete brand facts for Golden Deer premium roasted makhana by Cosmic Power Pvt. Ltd.',
+        mainEntity: [
+          {
+            '@type': 'Organization',
+            name: 'Cosmic Power Pvt. Ltd.',
+            identifier: l.cin,
+            brand: { '@type': 'Brand', name: 'Golden Deer' },
+            address: { '@type': 'PostalAddress', streetAddress: l.address },
+            contactPoint: { '@type': 'ContactPoint', email: site.contact.email, telephone: site.contact.whatsappNumber },
+          },
+          {
+            '@type': 'ItemList',
+            name: 'Golden Deer Product Range',
+            itemListElement: products.map((p, i) => ({
+              '@type': 'ListItem',
+              position: i + 1,
+              item: {
+                '@type': 'Product',
+                name: p.name,
+                description: p.description,
+                url: `${BASE_URL}/products/${p.slug}`,
+                offers: { '@type': 'Offer', price: p.mrp },
+              },
+            })),
+          },
+        ],
       },
       {
-        '@type': 'ItemList',
-        name: 'Golden Deer Product Range',
-        itemListElement: products.map((p, i) => ({
-          '@type': 'ListItem',
-          position: i + 1,
-          item: {
-            '@type': 'Product',
-            name: p.name,
-            description: p.description,
-            url: `${BASE_URL}/products/${p.slug}`,
-            offers: { '@type': 'Offer', price: p.mrp },
-          },
-        })),
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Brand Facts', item: `${BASE_URL}/brand` },
+        ],
       },
     ],
   }
@@ -61,6 +72,13 @@ export default function BrandPage() {
       />
       <main className="min-h-screen bg-cream">
         <Container className="py-20 lg:py-28 max-w-4xl">
+          <nav aria-label="Breadcrumb" className="mb-8">
+            <ol className="flex items-center gap-2 text-sm text-forest-deep/50">
+              <li><Link href="/" className="transition-colors hover:text-forest-deep/70">Home</Link></li>
+              <li aria-hidden="true" className="text-forest-deep/20">/</li>
+              <li className="text-forest-deep/70" aria-current="page">Brand Facts</li>
+            </ol>
+          </nav>
           <Tag variant="forest" className="mb-4">Brand Facts</Tag>
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-tight text-forest-deep">
             Golden Deer

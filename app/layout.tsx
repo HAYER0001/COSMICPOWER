@@ -9,7 +9,6 @@ import ScrollProgress from "@/components/shared/ScrollProgress";
 import CustomCursor from "@/components/layout/CustomCursor";
 import OrganizationSchema from "@/components/seo/OrganizationSchema";
 import WebSiteSchema from "@/components/seo/WebSiteSchema";
-import Global3DOverlay from "@/components/three/Global3DOverlay";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-display",
@@ -86,7 +85,6 @@ export default function RootLayout({
       className={`${cormorant.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-body bg-cream text-forest-deep">
-        <Global3DOverlay />
         <OrganizationSchema />
         <WebSiteSchema />
         <ScrollProgress />

@@ -4,44 +4,6 @@ import { useRef, useEffect, useState, useCallback } from 'react'
 import Image from 'next/image'
 import { ChevronDown } from 'lucide-react'
 import { Button } from '@/components/shared/primitives'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Float, MeshTransmissionMaterial } from '@react-three/drei'
-import * as THREE from 'three'
-
-function Hero3DObject() {
-  const meshRef = useRef<THREE.Mesh>(null!)
-  
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime()
-    meshRef.current.rotation.x = Math.sin(t / 4) / 4
-    meshRef.current.rotation.y = t / 2
-    meshRef.current.position.y = Math.sin(t / 1.5) / 10
-  })
-
-  return (
-    <Float floatIntensity={2} speed={2}>
-      <mesh ref={meshRef} scale={1.2}>
-        <torusKnotGeometry args={[1, 0.3, 128, 32]} />
-        <MeshTransmissionMaterial
-          backside
-          samples={4}
-          thickness={0.5}
-          chromaticAberration={0.05}
-          anisotropy={0.1}
-          distortion={0.2}
-          distortionScale={0.5}
-          temporalDistortion={0.1}
-          iridescence={1}
-          iridescenceIOR={1}
-          iridescenceThicknessRange={[0, 1400]}
-          color="#ffdbbb"
-          metalness={0.1}
-          roughness={0.1}
-        />
-      </mesh>
-    </Float>
-  )
-}
 
 interface NetworkInfo {
   saveData?: boolean
@@ -181,15 +143,6 @@ export default function Hero() {
         >
           Cosmic Power Pvt. Ltd. presents
         </p>
-
-        <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center opacity-50 mix-blend-screen">
-          <Canvas camera={{ position: [0, 0, 5], fov: 45 }} gl={{ alpha: true }}>
-            <ambientLight intensity={1} />
-            <directionalLight position={[10, 10, 10]} intensity={2} color="#ffdbbb" />
-            <directionalLight position={[-10, -10, -10]} intensity={0.5} color="#c9a25e" />
-            <Hero3DObject />
-          </Canvas>
-        </div>
 
         <h1
           data-animate

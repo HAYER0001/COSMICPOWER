@@ -3,5 +3,10 @@ export default function HiLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <script dangerouslySetInnerHTML={{ __html: `document.documentElement.lang='hi'` }} />
+      {children}
+    </>
+  );
 }
