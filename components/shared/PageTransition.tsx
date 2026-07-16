@@ -2,10 +2,33 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation'
-import type { ReactNode } from 'react'
+import { useState, useEffect, type ReactNode, useRef } from 'react'
 
 export default function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname()
+  const [useDirect, setUseDirect] = useState(false)
+  const prevPath = useRef(pathname)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const vtUsed = sessionStorage.getItem('vt-product-slug')
+    const hasVT = 'startViewTransition' in document
+    const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (vtUsed && hasVT && !rm) {
+      sessionStorage.removeItem('vt-product-slug')
+      setUseDirect(true)
+      const timer = setTimeout(() => setUseDirect(false), 100)
+      return () => clearTimeout(timer)
+    }
+
+    prevPath.current = pathname
+    setUseDirect(false)
+  }, [pathname])
+
+  if (useDirect) {
+    return <>{children}</>
+  }
 
   return (
     <AnimatePresence mode="wait">

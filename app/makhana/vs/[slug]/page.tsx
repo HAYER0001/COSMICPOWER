@@ -1,8 +1,15 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Container, Tag } from '@/components/shared/primitives'
 import { comparisons } from '@/content/comparisons'
+
+const ComparisonBars = dynamic(() => import('@/components/makhana/ComparisonBars'))
+
+function parseNum(s: string): number {
+  return parseFloat(s.replace(/[^0-9.-]/g, '')) || 0
+}
 
 const BASE_URL = 'https://www.cosmicpower.ltd'
 
@@ -121,6 +128,23 @@ export default async function ComparisonPage({
               </table>
             </div>
             <p className="text-xs text-forest-deep/40 italic mt-2">{disclaimer}</p>
+
+            <div className="mt-8">
+              <h3 className="font-display text-base text-forest-deep mb-4">Visual Comparison</h3>
+              <ComparisonBars
+                items={cmp.table
+                  .filter((r) => parseNum(r.makhana) > 0 && parseNum(r.competitor) > 0)
+                  .slice(0, 6)
+                  .map((r) => ({
+                    label: r.attribute,
+                    makhanaVal: parseNum(r.makhana),
+                    compVal: parseNum(r.competitor),
+                    compLabel: cmp.competitorName,
+                    makhanaDisplay: r.makhana,
+                    compDisplay: r.competitor,
+                  }))}
+              />
+            </div>
           </section>
 
           <section className="mt-10">

@@ -4,7 +4,10 @@ import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 export default function CustomCursor() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return window.matchMedia('(pointer: fine)').matches
+  })
   const [isHovering, setIsHovering] = useState(false)
 
   const cursorX = useMotionValue(-100)
@@ -16,9 +19,6 @@ export default function CustomCursor() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return
-    const isDesktop = window.matchMedia('(pointer: fine)').matches
-    if (!isDesktop) return
-    setIsVisible(true)
 
     const moveCursor = (e: MouseEvent) => {
       // Offset by half width/height so it's centered

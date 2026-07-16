@@ -66,9 +66,62 @@
   100% { opacity: 1; }
 }
 
+@keyframes gd-shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-6px); }
+  30% { transform: translateX(6px); }
+  45% { transform: translateX(-4px); }
+  60% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+  90% { transform: translateX(2px); }
+}
+
+.animate-gd-shake {
+  animation: gd-shake 0.45s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gd-shake {
+    animation: none;
+  }
+}
+
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 10px rgba(201, 162, 75, 0.2); }
   50% { box-shadow: 0 0 25px rgba(201, 162, 75, 0.5); }
+}
+
+::view-transition-old(product-media),
+::view-transition-new(product-media) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::view-transition-old(root) {
+  animation: 0.35s cubic-bezier(0.16, 1, 0.3, 1) both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 0.5s cubic-bezier(0.16, 1, 0.3, 1) both fade-in;
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes drift-wave {
+  0%, 100% { transform: translateX(-2px); }
+  50% { transform: translateX(2px); }
+}
+
+.animate-drift-wave {
+  animation: drift-wave 6s ease-in-out infinite;
 }
 
 html {

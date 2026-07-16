@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { Container, Tag } from '@/components/shared/primitives'
+
+const ComparisonBars = dynamic(() => import('@/components/makhana/ComparisonBars'))
+const Highlight = dynamic(() => import('@/components/shared/Highlight'))
 
 const BASE_URL = 'https://www.cosmicpower.ltd'
 
@@ -77,7 +81,7 @@ export default function NutritionPage() {
           <div className="mt-8 p-6 rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/[0.05] to-transparent speakable-summary">
             <p className="text-sm sm:text-base text-forest-deep leading-relaxed font-medium">
               Makhana (popped fox nuts) is a nutrient-dense seed snack: approximately 347 kcal,
-              9.7 g protein, 76.9 g carbohydrates, and 0.1 g fat per 100 g. It is naturally
+              9.7 g protein, 76.9 g carbohydrates, and <Highlight>0.1 g fat per 100 g</Highlight>. It is naturally
               gluten-free, very low in sodium, and a source of calcium, magnesium, phosphorus,
               and potassium. This page is the definitive nutrition reference for plain roasted
               makhana, with per-serving conversions, mineral details, and honest notes on how
@@ -139,6 +143,18 @@ export default function NutritionPage() {
             <p className="text-xs text-forest-deep/40 italic mt-2">
               {disclaimer} *% Daily Value based on a 2,000 kcal diet. Individual requirements vary.
             </p>
+
+            <div className="mt-8">
+              <h3 className="font-display text-lg text-forest-deep mb-4">Makhana vs Common Snacks</h3>
+              <ComparisonBars
+                items={[
+                  { label: 'Calories', makhanaVal: 347, compVal: 500, compLabel: 'Avg Snack', makhanaDisplay: '347 kcal', compDisplay: '500 kcal' },
+                  { label: 'Protein', makhanaVal: 9.7, compVal: 5, compLabel: 'Avg Snack', makhanaDisplay: '9.7 g', compDisplay: '5.0 g' },
+                  { label: 'Fat', makhanaVal: 0.1, compVal: 25, compLabel: 'Avg Snack', makhanaDisplay: '0.1 g', compDisplay: '25 g' },
+                  { label: 'Fibre', makhanaVal: 7.6, compVal: 3, compLabel: 'Avg Snack', makhanaDisplay: '7.6 g', compDisplay: '3.0 g' },
+                ]}
+              />
+            </div>
           </Section>
 
           {/* Per Serving */}

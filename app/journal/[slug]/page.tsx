@@ -142,38 +142,40 @@ export default async function JournalArticlePage({
           </span>
         </nav>
 
-        {/* Cover Image */}
-        <div className="relative aspect-16/9 rounded-2xl overflow-hidden border border-white/5 mb-8">
-          <Image
-            src={entry.cover}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 80rem"
-            priority
-          />
-        </div>
+        <div data-article-progress>
+          {/* Cover Image */}
+          <div className="relative aspect-16/9 rounded-2xl overflow-hidden border border-white/5 mb-8">
+            <Image
+              src={entry.cover}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 80rem"
+              priority
+            />
+          </div>
 
-        <div className="max-w-3xl mx-auto">
-          {/* Header */}
-          <header className="mb-8">
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight text-forest-deep mb-4">
-              {entry.title}
-            </h1>
-            <div className="flex items-center gap-3 text-sm text-forest-deep/50">
-              <time dateTime={entry.date}>
-                {new Date(entry.date).toLocaleDateString('en-IN', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
-              <span aria-hidden="true">·</span>
-              <span>{entry.readTime}</span>
-            </div>
-          </header>
+          <div className="max-w-3xl mx-auto">
+            {/* Header */}
+            <header className="mb-8">
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight text-forest-deep mb-4">
+                {entry.title}
+              </h1>
+              <div className="flex items-center gap-3 text-sm text-forest-deep/50">
+                <time dateTime={entry.date}>
+                  {new Date(entry.date).toLocaleDateString('en-IN', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+                <span aria-hidden="true">·</span>
+                <span>{entry.readTime}</span>
+              </div>
+            </header>
 
-          <JournalArticleClient entry={entry} />
+            <JournalArticleClient entry={entry} />
+          </div>
         </div>
       </Container>
     </>

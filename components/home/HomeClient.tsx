@@ -12,16 +12,24 @@ import { products } from '@/content/products'
 import { recipes } from '@/content/recipes'
 import { site } from '@/content/site'
 import { Container, Button, SectionHeading, Tag, AnimatedCounter } from '@/components/shared/primitives'
+import { shimmerImgProps } from '@/components/shared/shimmer'
 import MotionLoop from '@/components/shared/MotionLoop'
+import SectionDivider from '@/components/shared/SectionDivider'
+import ParallaxSection from '@/components/shared/ParallaxSection'
 
 export default function HomeClient() {
   return (
     <>
       <WhyMakhana />
+      <SectionDivider />
       <ParticleDeer />
+      <SectionDivider variant="crest" />
       <SignatureRange />
+      <SectionDivider />
       <FarmDirect />
-      <GiftingAndBulk />
+      <ParallaxSection disabled={false}>
+        <GiftingAndBulk />
+      </ParallaxSection>
       <RecipesTeaser />
       <JournalTeaser />
       <MarqueeBand />
@@ -32,6 +40,7 @@ export default function HomeClient() {
 
 function WhyMakhana() {
   const ref = useRef<HTMLDivElement>(null)
+  const ringRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (typeof window === 'undefined') return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -41,6 +50,26 @@ function WhyMakhana() {
       if (e.isIntersecting) { observer.disconnect(); } 
     }, { threshold: 0.3 })
     observer.observe(el)
+    const ring = ringRef.current
+    if (!ring) return
+    const loadGsap = async () => {
+      const gsap = (await import('gsap')).default
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger')
+      gsap.registerPlugin(ScrollTrigger)
+      gsap.to(ring, {
+        scale: 1.25,
+        y: -50,
+        opacity: 0.3,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el,
+          start: 'bottom top',
+          end: 'bottom+=250 top',
+          scrub: 1,
+        },
+      })
+    }
+    loadGsap()
     return () => observer.disconnect()
   }, [])
 
@@ -55,8 +84,12 @@ function WhyMakhana() {
             { label: 'Fibre', value: 14.5, suffix: 'g', desc: 'per 100g' },
             { label: 'Gluten', value: 0, suffix: 'g', desc: 'naturally free' },
             { label: 'Natural', value: 100, suffix: '%', desc: 'clean label' },
-          ].map((s) => (
-            <div key={s.label} className="text-center p-6 rounded-xl border border-gold/10 bg-cream/50">
+          ].map((s, i) => (
+            <div
+              key={s.label}
+              ref={i === 3 ? ringRef : undefined}
+              className="text-center p-6 rounded-xl border border-gold/10 bg-cream/50"
+            >
               <div className="text-3xl sm:text-4xl font-display font-bold text-gold-gradient">
                 <AnimatedCounter end={s.value} suffix={s.suffix} />
               </div>
@@ -81,7 +114,7 @@ function SignatureRange() {
           {retailProducts.map((p) => (
             <Link key={p.slug} href={`/products/${p.slug}`} className="group block rounded-xl border border-white/5 bg-cream-dark/40 overflow-hidden hover:border-gold/25 transition-all">
               <div className="relative aspect-[4/5] bg-cream overflow-hidden">
-                <Image src={p.poster} alt={p.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <Image src={p.poster} alt={p.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" {...shimmerImgProps} />
               </div>
               <div className="p-4">
                 <div className="flex flex-wrap gap-1.5 mb-2">
@@ -96,7 +129,7 @@ function SignatureRange() {
           {rawProduct && (
             <Link href={`/products/${rawProduct.slug}`} className="group block rounded-xl border border-gold/20 bg-gold/5 overflow-hidden hover:border-gold/40 transition-all">
               <div className="relative aspect-[4/5] bg-cream overflow-hidden">
-                <Image src={rawProduct.poster} alt={rawProduct.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <Image src={rawProduct.poster} alt={rawProduct.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" {...shimmerImgProps} />
               </div>
               <div className="p-4">
                 <Tag variant="gold">Bulk &amp; Retail</Tag>
@@ -146,12 +179,12 @@ function GiftingAndBulk() {
       <div className="absolute inset-0 bg-gradient-to-br from-cream-dark to-cream" />
       <div className="absolute inset-0 bg-grain opacity-30" />
       <Container className="relative z-10 text-center">
-        <Tag variant="gold" className="mb-4">For Business</Tag>
-        <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight text-forest-deep mb-3">Gifting &amp; Wholesale, Elevated</h2>
-        <p className="text-sm sm:text-base text-forest-deep/60 max-w-xl mx-auto mb-8 leading-relaxed">
+        <Tag variant="gold" className="mb-4" data-parallax-text>For Business</Tag>
+        <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight text-forest-deep mb-3" data-parallax-text>Gifting &amp; Wholesale, Elevated</h2>
+        <p className="text-sm sm:text-base text-forest-deep/60 max-w-xl mx-auto mb-8 leading-relaxed" data-parallax-text>
           Custom-branded corporate gift boxes, bulk supply for retailers and HoReCa, and export-grade raw makhana — whatever your business needs, we deliver at scale.
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4" data-parallax-text>
           <Button variant="gold-solid" href="/bulk">Explore Bulk &amp; Wholesale <ArrowRight className="w-4 h-4" /></Button>
           <Button variant="gold-outline" href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent('Hi, I\'d like a bulk quote for Golden Deer makhana — grade/quantity: ')}`}>
             <MessageCircle className="w-4 h-4" /> WhatsApp Inquiry
@@ -225,24 +258,62 @@ function JournalTeaser() {
 }
 
 function MarqueeBand() {
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const el = trackRef.current
+    if (!el) return
+
+    const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (rm) return
+
+    let gsapRef: typeof import('gsap')['default'] | null = null
+    let tickerFn: (() => void) | null = null
+
+    import('gsap').then((mod) => {
+      gsapRef = mod.default
+      import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+        const gsap = gsapRef!
+        gsap.registerPlugin(ScrollTrigger)
+
+        const tween = gsap.to(el, {
+          xPercent: -50,
+          duration: 30,
+          ease: 'none',
+          repeat: -1,
+        })
+
+        tickerFn = () => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const vel = Math.abs((ScrollTrigger as any).getVelocity())
+          const factor = 1 + (vel / 2000) * 2
+          tween.timeScale(Math.min(factor, 3))
+          const skew = Math.min(vel / 500, 4)
+          gsap.set(el, { skewX: skew })
+        }
+
+        gsap.ticker.add(tickerFn)
+      })
+    })
+
+    return () => {
+      if (gsapRef && tickerFn) gsapRef.ticker.remove(tickerFn)
+    }
+  }, [])
+
+  const items = ['Small-batch roasted', 'Farm direct', 'Nitrogen-flushed', 'Naturally gluten-free']
+
   return (
     <div className="py-4 border-y border-gold/10 overflow-hidden bg-cream/80">
-      <div className="animate-marquee whitespace-nowrap flex gap-12 text-xs sm:text-sm font-medium tracking-[0.15em] uppercase text-gold/40">
-        <span>Small-batch roasted</span>
-        <span className="text-gold/20">&bull;</span>
-        <span>Farm direct</span>
-        <span className="text-gold/20">&bull;</span>
-        <span>Nitrogen-flushed</span>
-        <span className="text-gold/20">&bull;</span>
-        <span>Naturally gluten-free</span>
-        <span className="text-gold/20">&bull;</span>
-        <span>Small-batch roasted</span>
-        <span className="text-gold/20">&bull;</span>
-        <span>Farm direct</span>
-        <span className="text-gold/20">&bull;</span>
-        <span>Nitrogen-flushed</span>
-        <span className="text-gold/20">&bull;</span>
-        <span>Naturally gluten-free</span>
+      <div ref={trackRef} className="flex whitespace-nowrap gap-12 text-xs sm:text-sm font-medium tracking-[0.15em] uppercase text-gold/40">
+        {items.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
+        <span className="text-gold/20" aria-hidden="true">&bull;</span>
+        {items.map((item) => (
+          <span key={`dup-${item}`}>{item}</span>
+        ))}
       </div>
     </div>
   )

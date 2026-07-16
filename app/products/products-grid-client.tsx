@@ -1,11 +1,13 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { products } from '@/content/products'
 import { site } from '@/content/site'
 import { Container, SectionHeading, Tag } from '@/components/shared/primitives'
+import { shimmerImgProps } from '@/components/shared/shimmer'
 import type { Product } from '@/content/products'
 
 type FilterKey = 'all' | 'flavoured' | 'classic' | 'raw-bulk'
@@ -77,15 +79,49 @@ export default function ProductsGridClient() {
 }
 
 function ProductCard({ product }: { product: Product }) {
+  const router = useRouter()
+  const imageRef = useRef<HTMLDivElement>(null)
+
+  const handleVTNavigate = useCallback(
+    (e: React.MouseEvent) => {
+      const target = e.target as HTMLElement
+      if (target.closest('a') || target.closest('button')) return
+
+      if (
+        typeof document !== 'undefined' &&
+        'startViewTransition' in document &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        sessionStorage.setItem('vt-product-slug', product.slug)
+        if (imageRef.current) {
+          imageRef.current.style.viewTransitionName = 'product-media'
+        }
+        document.startViewTransition(() => {
+          router.push(`/products/${product.slug}`)
+        })
+      } else {
+        router.push(`/products/${product.slug}`)
+      }
+    },
+    [product.slug, router],
+  )
+
   return (
-    <article className="group relative flex flex-col rounded-2xl border border-forest/10 bg-cream-dark/50 overflow-hidden transition-all duration-300 hover:border-gold/30 hover:shadow-gold-glow-sm">
-      <div className="relative aspect-[4/3] overflow-hidden bg-cream">
+    <article
+      className="group relative flex flex-col rounded-2xl border border-forest/10 bg-cream-dark/50 overflow-hidden transition-all duration-300 hover:border-gold/30 hover:shadow-gold-glow-sm cursor-pointer"
+      onClick={handleVTNavigate}
+    >
+      <div
+        ref={imageRef}
+        className="relative aspect-[4/3] overflow-hidden bg-cream animate-shimmer"
+      >
         <Image
           src={product.poster}
           alt={product.name}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          {...shimmerImgProps}
         />
       </div>
 
@@ -109,15 +145,14 @@ function ProductCard({ product }: { product: Product }) {
           <span className="text-lg font-semibold text-gold">
             {product.mrp}
           </span>
-          <Link
-            href={`/products/${product.slug}`}
+          <span
             className="text-sm font-medium text-gold hover:text-gold-light transition-colors"
           >
             View &rarr;
-          </Link>
+          </span>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-forest/10">
+        <div className="mt-4 pt-4 border-t border-forest/10" onClick={(e) => e.stopPropagation()}>
           {product.isBulk ? (
             <Link
               href="/bulk"

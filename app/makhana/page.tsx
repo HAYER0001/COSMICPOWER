@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { Container, Tag } from '@/components/shared/primitives'
+
+const PondToPack = dynamic(() => import('@/components/makhana/PondToPack'))
+const Highlight = dynamic(() => import('@/components/shared/Highlight'))
 
 const BASE_URL = 'https://www.cosmicpower.ltd'
 
@@ -33,7 +37,6 @@ export async function generateMetadata(): Promise<Metadata> {
 const sectionIntro: Record<string, string> = {
   'what-is': 'Makhana, also known as fox nuts or phool makhana, are the popped seeds of Euryale ferox, an aquatic plant cultivated in stagnant wetland ponds across the Gangetic plains of Bihar, India. The seeds are harvested, dried, and roasted to produce a light, crunchy puff that is naturally gluten-free, high in protein, and very low in fat.',
   cultivation: 'Makhana is grown in shallow wetland ponds — not fields — across the Mithila region of Bihar, where the Euryale ferox water lily has been cultivated for centuries under a Geographical Indication (GI) tag that protects the traditional growing methods.',
-  processing: 'Raw makhana seeds go through a four-stage process — sun-drying, dry-roasting in hot sand or a drum, controlled moisture conditioning, and impact popping — to transform from dense black seeds into the familiar white puffs sold as makhana.',
   suta: 'Suta is the traditional grading system for raw makhana seeds, measuring diameter in increments where 5–6 suta (18–24 mm) is the largest jumbo grade and 4–5 suta (14–18 mm) is the standard culinary grade — serious buyers check this before every purchase.',
   health: 'Makhana is one of the healthiest snack seeds available: approximately 9.7 g protein, 76.9 g carbohydrates, and less than 0.5 g fat per 100 g, with a low glycaemic index and significant antioxidant content from flavonoids and phenolic compounds.',
   'roast-at-home': 'The simplest way to roast makhana at home: heat a heavy pan on low flame, add 1 tsp ghee or coconut oil, toss in raw or plain roasted makhana, stir constantly for 3–5 minutes until it develops a golden tint and audible crispness, then season while hot.',
@@ -120,6 +123,7 @@ export default function MakhanaGuide() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main className="min-h-screen bg-cream">
+        <div data-article-progress>
         <Container className="py-12 lg:py-20 max-w-4xl">
           <nav aria-label="Breadcrumb" className="mb-8">
             <ol className="flex items-center gap-2 text-sm text-forest-deep/50">
@@ -139,7 +143,7 @@ export default function MakhanaGuide() {
 
           <div className="mt-8 p-6 rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/[0.05] to-transparent speakable-summary">
             <p className="text-sm sm:text-base text-forest-deep leading-relaxed">
-              <strong>Makhana</strong> — also called <strong>fox nuts</strong> or <strong>phool makhana</strong> — are the popped seeds of <em>Euryale ferox</em>, an aquatic plant cultivated in wetland ponds across the Gangetic plains of Bihar, India. They are naturally gluten-free, rich in protein (9.7 g per 100 g), very low in fat (0.1 g), and a traditional Indian fasting food. This guide covers everything: how makhana is grown, the suta grading system, nutrition facts, health benefits, how to roast and season at home, proper storage, an honest buying checklist, and its cultural significance.
+              <strong>Makhana</strong> — also called <strong>fox nuts</strong> or <strong>phool makhana</strong> — are the popped seeds of <em>Euryale ferox</em>, an aquatic plant cultivated in wetland ponds across the Gangetic plains of Bihar, India. They are naturally gluten-free, <Highlight>rich in protein (9.7 g per 100 g), very low in fat (0.1 g)</Highlight>, and a traditional Indian fasting food. This guide covers everything: how makhana is grown, the suta grading system, nutrition facts, health benefits, how to roast and season at home, proper storage, an honest buying checklist, and its cultural significance.
               <Link href="/products" className="block mt-2 text-gold underline underline-offset-2 text-sm font-medium">Browse Golden Deer makhana products &rarr;</Link>
             </p>
           </div>
@@ -200,20 +204,11 @@ export default function MakhanaGuide() {
               Golden Deer sources directly from farming cooperatives in this belt. Every lot is traceable to the grower cooperative and harvest date. See our <Link href="/brand#what-makes-it-different" className="text-gold underline underline-offset-2">brand fact sheet</Link> for sourcing details.
             </p>
           </Section>
+        </Container>
 
-          {/* Section 3: Processing */}
-          <Section id="processing" title="How Raw Seeds Become Popped Makhana">
-            <Answer>{sectionIntro.processing}</Answer>
-            <div className="mt-4 space-y-3">
-              <Step n={1} title="Drying">Sun-dried raw seeds are further dried in mechanical driers to reach the optimal moisture content (8–10 %) for popping. Under-dried seeds will not pop; over-dried seeds shatter.</Step>
-              <Step n={2} title="Roasting">The dried seeds are roasted in a large iron pan or rotating drum with hot sand or salt at 200–250 °C. Constant stirring prevents burning. The high heat causes the internal moisture to turn to steam, building pressure inside the seed.</Step>
-              <Step n={3} title="Conditioning">After the initial roast, the seeds are briefly removed and lightly moistened (sprinkled with water) to create a thermal shock — this step is critical for achieving the characteristic porous, airy texture. The moisture flashes to steam on re-contact with heat.</Step>
-              <Step n={4} title="Popping">The conditioned seeds go through a second high-heat pass. The internal steam pressure causes the dense seed to explode outward into a white, puffed makhana — increasing in volume by 3–4×. The popped makhana is then cooled, sorted by size, and graded.</Step>
-            </div>
-              <p className="mt-4 text-sm sm:text-base text-forest-deep/80 leading-relaxed">
-                Golden Deer&apos;s <Link href="/makhana/glossary/touchless-roasting" className="text-gold underline underline-offset-2">touchless roasting</Link> facility uses a dry-heat process with automated temperature control. No oil is used at any stage of popping — the only oil in our flavoured variants is a minimal post-roast coating for seasoning adhesion. The popping process (called <Link href="/makhana/glossary/lawa" className="text-gold underline underline-offset-2">lawa</Link> in the trade) is what transforms dense raw seeds into light, airy puffs. See the <Link href="/products" className="text-gold underline underline-offset-2">full product range</Link> for our clean-label roasted makhana.
-              </p>
-          </Section>
+        <PondToPack />
+
+        <Container className="py-12 lg:py-20 max-w-4xl pt-8 lg:pt-12">
 
           {/* Section 4: Suta Grades */}
           <Section id="suta-grades" title="Suta Grades Explained">
@@ -488,6 +483,7 @@ export default function MakhanaGuide() {
             </div>
           </div>
         </Container>
+        </div>
       </main>
     </>
   )

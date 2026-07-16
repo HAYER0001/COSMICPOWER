@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic'
 import MotionLoop from '@/components/shared/MotionLoop'
 import ScrollReveal from '@/components/shared/ScrollReveal'
+import ParallaxSection from '@/components/shared/ParallaxSection'
 
 const StoryPrologue = dynamic(() => import('@/components/three/StoryPrologue'), { ssr: false })
 import {
@@ -136,41 +137,45 @@ export default function OurStoryClient() {
       {chapters.map((ch, i) => (
         <ScrollReveal key={ch.number}>
           <section className="py-16 sm:py-20 lg:py-28">
-            <Container>
-              <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                <div
-                  data-reveal
-                  className={i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}
-                >
-                  <MotionLoop
-                    src={ch.video}
-                    poster={ch.poster}
-                    aspect="4/3"
-                    alt={ch.title}
-                    className="rounded-lg overflow-hidden shadow-gold-glow-sm"
-                  />
+            <ParallaxSection>
+              <Container>
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                  <div
+                    data-reveal
+                    data-parallax-media
+                    className={i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}
+                  >
+                    <MotionLoop
+                      src={ch.video}
+                      poster={ch.poster}
+                      aspect="4/3"
+                      alt={ch.title}
+                      className="rounded-lg overflow-hidden shadow-gold-glow-sm"
+                    />
+                  </div>
+                  <div
+                    data-reveal
+                    data-parallax-text
+                    className={i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}
+                  >
+                    <span className="inline-block text-6xl sm:text-7xl lg:text-8xl font-display font-bold text-gold/10 leading-none mb-2 select-none">
+                      {ch.number}
+                    </span>
+                    <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl text-forest-deep leading-tight mt-2 mb-4">
+                      {ch.title}
+                    </h2>
+                    {ch.paragraphs.map((p, pi) => (
+                      <p
+                        key={pi}
+                        className="text-sm sm:text-base text-forest-deep/60 leading-relaxed mb-4 last:mb-0"
+                      >
+                        {p}
+                      </p>
+                    ))}
+                  </div>
                 </div>
-                <div
-                  data-reveal
-                  className={i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}
-                >
-                  <span className="inline-block text-6xl sm:text-7xl lg:text-8xl font-display font-bold text-gold/10 leading-none mb-2 select-none">
-                    {ch.number}
-                  </span>
-                  <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl text-forest-deep leading-tight mt-2 mb-4">
-                    {ch.title}
-                  </h2>
-                  {ch.paragraphs.map((p, pi) => (
-                    <p
-                      key={pi}
-                      className="text-sm sm:text-base text-forest-deep/60 leading-relaxed mb-4 last:mb-0"
-                    >
-                      {p}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </Container>
+              </Container>
+            </ParallaxSection>
           </section>
         </ScrollReveal>
       ))}

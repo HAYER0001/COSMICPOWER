@@ -37,6 +37,12 @@ export function Button({
   type = 'button',
   disabled = false,
 }: ButtonProps) {
+  function handlePointerDown(e: React.PointerEvent) {
+    const el = e.currentTarget as HTMLElement
+    const rect = el.getBoundingClientRect()
+    el.style.setProperty('--ripple-x', `${((e.clientX - rect.left) / rect.width) * 100}%`)
+    el.style.setProperty('--ripple-y', `${((e.clientY - rect.top) / rect.height) * 100}%`)
+  }
   const base =
     'inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium tracking-wide transition-colors active:translate-y-px disabled:opacity-50 disabled:pointer-events-none'
 
@@ -55,13 +61,15 @@ export function Button({
     return (
       <motion.a 
         href={href} 
-        className={cls} 
+        className={`${cls} relative overflow-hidden`} 
         onClick={onClick}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+        onPointerDown={handlePointerDown}
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.96 }}
+        transition={{ type: 'spring', stiffness: 280, damping: 16 }}
       >
-        {children}
+        <span className="relative z-10 flex items-center justify-center gap-2">{children}</span>
+        <Ripple />
       </motion.a>
     )
   }
@@ -69,14 +77,16 @@ export function Button({
   return (
     <motion.button 
       type={type} 
-      className={cls} 
+      className={`${cls} relative overflow-hidden`} 
       onClick={onClick} 
       disabled={disabled}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+      onPointerDown={handlePointerDown}
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.96 }}
+      transition={{ type: 'spring', stiffness: 280, damping: 16 }}
     >
-      {children}
+      <span className="relative z-10 flex items-center justify-center gap-2">{children}</span>
+      <Ripple />
     </motion.button>
   )
 }
@@ -201,6 +211,18 @@ export function AnimatedCounter({
     <span ref={ref} className={className}>
       {prefix}{count}{suffix}
     </span>
+  )
+}
+
+function Ripple() {
+  return (
+    <span
+      className="absolute inset-0 rounded-[inherit]"
+      style={{
+        background: 'radial-gradient(circle at var(--ripple-x, 50%) var(--ripple-y, 50%), rgba(255,255,255,0.25) 0%, transparent 60%)',
+        pointerEvents: 'none',
+      }}
+    />
   )
 }
 

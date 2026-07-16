@@ -7,6 +7,7 @@ import SmoothScroll from "@/components/shared/SmoothScroll";
 import PageTransition from "@/components/shared/PageTransition";
 import ScrollProgress from "@/components/shared/ScrollProgress";
 import CustomCursor from "@/components/layout/CustomCursor";
+import QuickOrderFab from "@/components/shared/QuickOrderFab";
 import OrganizationSchema from "@/components/seo/OrganizationSchema";
 import WebSiteSchema from "@/components/seo/WebSiteSchema";
 
@@ -98,6 +99,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </SmoothScroll>
+        <QuickOrderFab />
         <Analytics />
       </body>
     </html>

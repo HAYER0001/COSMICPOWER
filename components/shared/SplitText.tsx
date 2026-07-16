@@ -8,6 +8,7 @@ interface SplitTextProps {
   className?: string
   delay?: number
   stagger?: number
+  emphasis?: number
 }
 
 export default function SplitText({
@@ -16,6 +17,7 @@ export default function SplitText({
   className = '',
   delay = 0,
   stagger = 0.04,
+  emphasis,
 }: SplitTextProps) {
   const Container = Tag
   const ref = useRef<HTMLElement>(null)
@@ -58,23 +60,55 @@ export default function SplitText({
       const { ScrollTrigger } = await import('gsap/ScrollTrigger')
       gsap.registerPlugin(ScrollTrigger)
 
-      gsap.to(spans, {
-        opacity: 1,
-        y: 0,
-        stagger,
-        delay,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 90%',
-          once: true,
-        },
-      })
+      if (emphasis !== undefined && emphasis >= 0 && emphasis < spans.length) {
+        const regular = [...spans].filter((_, i) => i !== emphasis)
+        gsap.to(regular, {
+          opacity: 1,
+          y: 0,
+          stagger,
+          delay,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            once: true,
+          },
+        })
+        gsap.fromTo(spans[emphasis],
+          { opacity: 0, y: '0.5em' },
+          {
+            opacity: 1,
+            y: 0,
+            delay: delay + emphasis * stagger,
+            duration: 0.7,
+            ease: 'elastic.out(1, 0.6)',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 90%',
+              once: true,
+            },
+          }
+        )
+      } else {
+        gsap.to(spans, {
+          opacity: 1,
+          y: 0,
+          stagger,
+          delay,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            once: true,
+          },
+        })
+      }
     }
 
     loadGsap()
-  }, [delay, stagger])
+  }, [delay, stagger, emphasis])
 
   return (
     <Container ref={ref as React.Ref<HTMLElement & HTMLHeadingElement>} className={className} style={{ opacity: 0 }}>

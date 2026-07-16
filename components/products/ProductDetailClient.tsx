@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
@@ -9,6 +9,7 @@ import { site } from '@/content/site'
 import { products } from '@/content/products'
 import MotionLoop from '@/components/shared/MotionLoop'
 import { Container, Button, Tag, Divider } from '@/components/shared/primitives'
+import { shimmerImgProps } from '@/components/shared/shimmer'
 import {
   ChevronRight,
   CheckCircle,
@@ -265,6 +266,7 @@ function RelatedProducts({ current }: { current: Product }) {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 640px) 50vw, 33vw"
+                {...shimmerImgProps}
               />
             </div>
             <div className="mt-2.5">
@@ -309,6 +311,7 @@ function MobileStickyBar({ product }: { product: Product }) {
 export default function ProductDetailClient({ product }: { product: Product }) {
   const [activeMedia, setActiveMedia] = useState(0)
   const [can3D, setCan3D] = useState(false)
+  const mediaRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -319,6 +322,27 @@ export default function ProductDetailClient({ product }: { product: Product }) {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setCan3D(finePointer && !reducedMotion)
   }, [])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (!('startViewTransition' in document)) return
+
+    const incomingSlug = sessionStorage.getItem('vt-product-slug')
+    if (incomingSlug === product.slug) {
+      sessionStorage.removeItem('vt-product-slug')
+      const el = mediaRef.current
+      if (el) {
+        el.style.viewTransitionName = 'product-media'
+        const cleanup = () => {
+          el.style.viewTransitionName = ''
+        }
+        document.addEventListener('transitionend', cleanup, { once: true })
+        document.addEventListener('transitioncancel', cleanup, { once: true })
+        setTimeout(cleanup, 1000)
+      }
+    }
+  }, [product.slug])
 
   const accordionItems = [
     {
@@ -342,7 +366,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left — Media Stage */}
           <div>
-            <div className="relative rounded-2xl overflow-hidden border border-white/5">
+            <div ref={mediaRef} className="relative rounded-2xl overflow-hidden border border-white/5">
               {activeMedia === 2 ? (
                 <ProductInspect slug={product.slug} poster={product.poster} name={product.name} />
               ) : activeMedia === 0 ? (

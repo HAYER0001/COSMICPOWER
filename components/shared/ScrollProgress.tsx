@@ -9,10 +9,19 @@ export default function ScrollProgress() {
     if (typeof window === 'undefined') return
 
     function handleScroll() {
-      const scrollTop = window.scrollY
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      if (docHeight > 0) {
-        setProgress(Math.min(scrollTop / docHeight, 1))
+      const article = document.querySelector<HTMLElement>('[data-article-progress]')
+      if (article) {
+        const articleTop = article.offsetTop
+        const articleH = article.scrollHeight
+        const total = articleH
+        const scrolled = window.scrollY - articleTop + window.innerHeight
+        setProgress(Math.min(Math.max(scrolled / total, 0), 1))
+      } else {
+        const scrollTop = window.scrollY
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight
+        if (docHeight > 0) {
+          setProgress(Math.min(scrollTop / docHeight, 1))
+        }
       }
     }
 
@@ -24,8 +33,8 @@ export default function ScrollProgress() {
   return (
     <div className="fixed top-0 left-0 right-0 z-[60] h-[2px] bg-transparent">
       <div
-        className="h-full bg-gradient-to-r from-gold-deep via-gold to-gold-light transition-transform origin-left"
-        style={{ transform: `scaleX(${progress})` }}
+        className="h-full bg-gradient-to-r from-gold-deep via-gold to-gold-light scale-x-0 origin-left transition-transform"
+        style={{ transform: `scaleX(${progress})`, transition: 'transform 0.05s linear' }}
       />
     </div>
   )

@@ -1,10 +1,63 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import type { JournalEntry } from '@/content/journal'
 import { site } from '@/content/site'
 import { Divider } from '@/components/shared/primitives'
 import { Link as LinkIcon, MessageCircle } from 'lucide-react'
+import Highlight from '@/components/shared/Highlight'
+
+const highlights: Record<string, [number, string][]> = {
+  'golden-grain-ancient-superfood': [
+    [0, 'makhana was prized in Ayurveda as a tridoshic food'],
+    [3, 'sattvic food that promotes mental clarity and spiritual well-being'],
+  ],
+  'from-wetlands-to-your-bowl': [
+    [1, 'Makhana is not planted in soil'],
+    [4, 'Golden Deer partners directly with these farming cooperatives'],
+  ],
+  '5-reasons-switch-to-makhana': [
+    [0, 'low glycaemic index'],
+    [1, 'one of the lowest-fat snack options available'],
+  ],
+  'makhana-for-every-diet': [
+    [0, 'seamlessly into almost every major dietary framework'],
+    [2, 'naturally free from gluten and grains'],
+  ],
+  'art-of-slow-roasting': [
+    [0, 'it is all in the roast'],
+    [2, 'the result is a snack that tastes of patience and care'],
+  ],
+  'beyond-bhujia-reinventing-indian-snacking': [
+    [0, 'woven into the fabric of Indian life'],
+    [2, 'makhana is perfectly positioned to become India\'s next great snack staple'],
+  ],
+  'why-nitrogen-flushed-packaging-matters': [
+    [0, 'the only preservative we use'],
+    [1, 'no chemical preservatives'],
+  ],
+}
+
+function renderWithHighlight(text: string, phrases: [number, string][]): ReactNode[] {
+  if (!phrases || phrases.length === 0) return [text]
+  const parts: ReactNode[] = [text]
+  for (const [, phrase] of phrases) {
+    for (let p = 0; p < parts.length; p++) {
+      const part = parts[p]
+      if (typeof part !== 'string') continue
+      const idx = part.indexOf(phrase)
+      if (idx >= 0) {
+        parts.splice(p, 1,
+          part.slice(0, idx),
+          <Highlight key={`hl-${phrase.slice(0, 16)}`}>{phrase}</Highlight>,
+          part.slice(idx + phrase.length)
+        )
+        break
+      }
+    }
+  }
+  return parts
+}
 
 const articleBody: Record<
   string,
@@ -139,12 +192,14 @@ export default function JournalArticleClient({
                 </a>
               )
             default:
+              const articleHighlights = highlights[entry.slug] || []
+              const txtParts = renderWithHighlight(block.content, articleHighlights.filter(([idx]) => idx === i))
               return (
                 <p
                   key={i}
                   className="text-sm sm:text-base text-forest-deep/70 leading-relaxed"
                 >
-                  {block.content}
+                  {txtParts.length > 1 ? txtParts : block.content}
                 </p>
               )
           }
