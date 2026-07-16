@@ -129,6 +129,7 @@ function CtaButtons({ product }: { product: Product }) {
   const hasBlinkit = product.commerce.blinkit !== 'ADD_URL'
   const hasZepto = product.commerce.zepto !== 'ADD_URL'
   const hasAmazon = product.commerce.amazon !== 'ADD_URL'
+  const hasIndiaMart = product.commerce.indiamart && product.commerce.indiamart !== 'ADD_URL'
 
   if (product.isBulk) {
     return (
@@ -169,7 +170,13 @@ function CtaButtons({ product }: { product: Product }) {
           Buy on Amazon
         </Button>
       )}
-      {!hasBlinkit && !hasZepto && !hasAmazon && (
+      {hasIndiaMart && (
+        <Button variant="gold-outline" href={product.commerce.indiamart!} className="w-full">
+          <ShoppingBag className="w-4 h-4" />
+          Buy on IndiaMart
+        </Button>
+      )}
+      {!hasBlinkit && !hasZepto && !hasAmazon && !hasIndiaMart && (
         <p className="text-xs text-forest-deep/40 text-center italic">Online ordering links coming soon. Stay tuned!</p>
       )}
       <Button
@@ -262,6 +269,7 @@ function MobileStickyBar({ product }: { product: Product }) {
   const hasBlinkit = product.commerce.blinkit !== 'ADD_URL'
   const hasZepto = product.commerce.zepto !== 'ADD_URL'
   const hasAmazon = product.commerce.amazon !== 'ADD_URL'
+  const hasIndiaMart = product.commerce.indiamart && product.commerce.indiamart !== 'ADD_URL'
 
   if (product.isBulk) {
     return (
@@ -280,10 +288,10 @@ function MobileStickyBar({ product }: { product: Product }) {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur-lg border-t border-gold/15 px-4 py-3 flex items-center gap-3 sm:hidden">
-      {(hasBlinkit || hasZepto) && (
-        <a href={hasBlinkit ? product.commerce.blinkit : product.commerce.zepto} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gold text-forest-deep text-sm font-medium rounded-lg active:scale-[0.97] transition-all">
+      {(hasBlinkit || hasZepto || hasIndiaMart) && (
+        <a href={hasBlinkit ? product.commerce.blinkit : hasZepto ? product.commerce.zepto : product.commerce.indiamart!} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gold text-forest-deep text-sm font-medium rounded-lg active:scale-[0.97] transition-all">
           <ShoppingBag className="w-4 h-4" />
-          Buy Now
+          {hasBlinkit ? 'Blinkit' : hasZepto ? 'Zepto' : 'IndiaMart'}
         </a>
       )}
       <a href={hasAmazon ? product.commerce.amazon : `https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like to know more about Golden Deer ${product.name} — `)}`} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-gold text-gold text-sm font-medium rounded-lg active:scale-[0.97] transition-all">

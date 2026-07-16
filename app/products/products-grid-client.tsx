@@ -118,23 +118,27 @@ function ProductCard({ product }: { product: Product }) {
               Bulk Inquiry
             </Link>
           ) : (
-            <div className="flex gap-2">
-              <a
-                href={product.commerce.blinkit}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 rounded-lg bg-gold/15 px-3 py-2 text-center text-xs font-medium text-gold-light hover:bg-gold/25 transition-colors"
-              >
-                Blinkit
-              </a>
-              <a
-                href={product.commerce.zepto}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 rounded-lg bg-gold/15 px-3 py-2 text-center text-xs font-medium text-gold-light hover:bg-gold/25 transition-colors"
-              >
-                Zepto
-              </a>
+            <div className="flex gap-2 flex-wrap">
+              {product.commerce.blinkit && product.commerce.blinkit !== 'ADD_URL' && (
+                <a href={product.commerce.blinkit} target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg bg-gold/20 border border-gold/30 px-3 py-2 text-center text-xs font-medium text-forest-deep hover:bg-gold hover:border-gold transition-all">
+                  Blinkit
+                </a>
+              )}
+              {product.commerce.zepto && product.commerce.zepto !== 'ADD_URL' && (
+                <a href={product.commerce.zepto} target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg bg-gold/20 border border-gold/30 px-3 py-2 text-center text-xs font-medium text-forest-deep hover:bg-gold hover:border-gold transition-all">
+                  Zepto
+                </a>
+              )}
+              {product.commerce.indiamart && product.commerce.indiamart !== 'ADD_URL' && (
+                <a href={product.commerce.indiamart} target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg bg-gold/20 border border-gold/30 px-3 py-2 text-center text-xs font-medium text-forest-deep hover:bg-gold hover:border-gold transition-all">
+                  IndiaMart
+                </a>
+              )}
+              {(!product.commerce.blinkit || product.commerce.blinkit === 'ADD_URL') &&
+               (!product.commerce.zepto || product.commerce.zepto === 'ADD_URL') &&
+               (!product.commerce.indiamart || product.commerce.indiamart === 'ADD_URL') && (
+                <p className="text-xs text-forest-deep/40 italic text-center w-full py-1">Ordering links coming soon.</p>
+              )}
             </div>
           )}
         </div>

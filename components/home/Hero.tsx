@@ -129,8 +129,8 @@ export default function Hero() {
           </div>
         )}
 
-        <div className="absolute inset-0 bg-cream/60" />
-        <div className="absolute inset-0 bg-grain" />
+        <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/20 to-transparent mix-blend-multiply" />
+        <div className="absolute inset-0 bg-grain opacity-50" />
       </div>
 
       <div
@@ -153,14 +153,14 @@ export default function Hero() {
 
         <p
           data-animate
-          className="text-base sm:text-lg lg:text-xl text-forest-deep/80 max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8"
+          className="text-base sm:text-lg lg:text-xl text-cream/90 max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8"
         >
           Premium roasted makhana — the ancient superfood, elevated.
         </p>
 
         <div
           data-animate
-          className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 text-xs sm:text-sm text-forest-deep/50 mb-8 sm:mb-10"
+          className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 text-xs sm:text-sm text-cream/70 mb-8 sm:mb-10"
         >
           <span>100% Natural</span>
           <span className="text-gold/30">&bull;</span>
