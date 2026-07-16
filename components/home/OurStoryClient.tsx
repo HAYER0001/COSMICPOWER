@@ -21,7 +21,7 @@ interface Chapter {
 const chapters: Chapter[] = [
   {
     video: '/videos/story/story-1.mp4',
-    poster: '/videos/story/story-1-poster.jpg',
+    poster: '',
     number: '01',
     title: 'The Wetlands & Our Farmers',
     paragraphs: [
@@ -31,7 +31,7 @@ const chapters: Chapter[] = [
   },
   {
     video: '/videos/story/story-2.mp4',
-    poster: '/videos/story/story-2-poster.jpg',
+    poster: '',
     number: '02',
     title: 'The Sort',
     paragraphs: [
@@ -41,7 +41,7 @@ const chapters: Chapter[] = [
   },
   {
     video: '/videos/story/story-3.mp4',
-    poster: '/videos/story/story-3-poster.jpg',
+    poster: '',
     number: '03',
     title: 'The Roast',
     paragraphs: [
@@ -51,7 +51,7 @@ const chapters: Chapter[] = [
   },
   {
     video: '/videos/story/story-4.mp4',
-    poster: '/videos/story/story-4-poster.jpg',
+    poster: '',
     number: '04',
     title: 'The Pack',
     paragraphs: [
