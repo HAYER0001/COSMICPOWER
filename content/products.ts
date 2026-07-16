@@ -38,8 +38,8 @@ const disclaimer =
 
 export const products: Product[] = [
   {
-    slug: 'classic-roast',
-    name: 'Classic Roast',
+    slug: 'plain',
+    name: 'Classic Plain',
     tagline: 'Pure. Lightly Salted. Irresistibly Crunchy.',
     description:
       'The taste that started it all. Our Classic Roast makhana is popped to golden perfection in the lightest veil of premium cold-pressed oil and finished with a whisper of fine sea salt. Every puff carries the pure, nutty essence of hand-picked jumbo fox nuts — nothing more, nothing less.',
@@ -67,8 +67,8 @@ export const products: Product[] = [
       'Cold-pressed sunflower oil',
       'Fine sea salt',
     ],
-    loop: '/videos/products/classic-roast.mp4',
-    poster: '/videos/products/classic-roast-poster.jpg',
+    loop: '/videos/products/plain.jpg',
+    poster: '/videos/products/plain.jpg',
     commerce: {
       blinkit: 'ADD_URL',
       zepto: 'ADD_URL',
@@ -78,8 +78,8 @@ export const products: Product[] = [
     isBulk: false,
   },
   {
-    slug: 'pink-salt-pepper',
-    name: 'Himalayan Pink Salt & Pepper',
+    slug: 'salted',
+    name: 'Salted',
     tagline: 'A Perfect Marriage of Mineral Salt and Cracked Pepper.',
     description:
       'Elevated. Ancient Himalayan pink salt meets freshly cracked black peppercorns on our signature slow-roasted makhana. The salt\'s subtle mineral complexity — pink-hued, sun-dried, hand-mined from the Khewra range — balances the warm bite of Tellicherry pepper for a savoury snack that feels deliberate, not accidental.',
@@ -108,8 +108,8 @@ export const products: Product[] = [
       'Himalayan pink salt',
       'Coarse black pepper',
     ],
-    loop: '/videos/products/pink-salt-pepper.mp4',
-    poster: '/videos/products/pink-salt-pepper-poster.jpg',
+    loop: '/videos/products/salted.jpg',
+    poster: '/videos/products/salted.jpg',
     commerce: {
       blinkit: 'ADD_URL',
       zepto: 'ADD_URL',
@@ -119,8 +119,8 @@ export const products: Product[] = [
     isBulk: false,
   },
   {
-    slug: 'tangy-tomato',
-    name: 'Tangy Tomato',
+    slug: 'peri-peri',
+    name: 'Peri Peri',
     tagline: 'Sun-Ripened Tang in Every Crunch.',
     description:
       'A burst of sun-ripened tomato goodness on a cloud of roasted makhana. We marry the bright acidity of real tomato with a whisper of spice, creating a snack that hits every note: tangy, savoury, and satisfyingly crisp. No artificial colours — just the warm red of real tomato, as nature intended.',
@@ -150,8 +150,8 @@ export const products: Product[] = [
       'Spices',
       'Sea salt',
     ],
-    loop: '/videos/products/tangy-tomato.mp4',
-    poster: '/videos/products/tangy-tomato-poster.jpg',
+    loop: '/videos/products/peri-peri.jpg',
+    poster: '/videos/products/peri-peri.jpg',
     commerce: {
       blinkit: 'ADD_URL',
       zepto: 'ADD_URL',
@@ -194,8 +194,8 @@ export const products: Product[] = [
       'Mustard powder',
       'Turmeric',
     ],
-    loop: '/videos/products/creamy-cheese.mp4',
-    poster: '/videos/products/creamy-cheese-poster.jpg',
+    loop: '/videos/products/creamy-cheese.jpg',
+    poster: '/videos/products/creamy-cheese.jpg',
     commerce: {
       blinkit: 'ADD_URL',
       zepto: 'ADD_URL',
@@ -205,8 +205,8 @@ export const products: Product[] = [
     isBulk: false,
   },
   {
-    slug: 'spicy-masala',
-    name: 'Spicy Masala',
+    slug: 'pudina',
+    name: 'Pudina',
     tagline: 'India\'s Favourite Spice Blend, Now on Makhana.',
     description:
       'A bold, aromatic masala blend — cumin, coriander, red chilli, ginger, and a hint of amchur — dusted generously over our signature golden puffs. This is makhana for the�chaat lover: complex, layered, and fiery in all the right ways. Every handful is a journey through India\'s spice cabinet.',
@@ -240,8 +240,8 @@ export const products: Product[] = [
       'Black salt',
       'Sea salt',
     ],
-    loop: '/videos/products/spicy-masala.mp4',
-    poster: '/videos/products/spicy-masala-poster.jpg',
+    loop: '/videos/products/pudina.jpg',
+    poster: '/videos/products/pudina.jpg',
     commerce: {
       blinkit: 'ADD_URL',
       zepto: 'ADD_URL',
@@ -276,8 +276,8 @@ export const products: Product[] = [
       'Nitrogen-flushed packaging option',
     ],
     ingredients: ['Premium raw makhana (fox nuts) — 100% pure, no additives'],
-    loop: '/videos/products/raw-makhana.mp4',
-    poster: '/videos/products/raw-makhana-poster.jpg',
+    loop: '/videos/products/plain-alt.jpg',
+    poster: '/videos/products/plain-alt.jpg',
     commerce: {
       blinkit: 'ADD_URL',
       zepto: 'ADD_URL',

@@ -123,7 +123,7 @@ export default function MotionLoop({
         priority={priority}
       />
 
-      {!videoError && (
+      {!videoError && !src.match(/\.(jpe?g|png|webp|gif)$/i) && (
         <video
           ref={videoRef}
           src={src}

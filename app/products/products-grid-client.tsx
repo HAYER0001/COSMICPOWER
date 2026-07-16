@@ -18,7 +18,7 @@ const filters: { key: FilterKey; label: string }[] = [
 
 function categorize(product: Product): FilterKey {
   if (product.slug === 'raw-makhana') return 'raw-bulk'
-  if (product.slug === 'classic-roast') return 'classic'
+  if (product.slug === 'plain') return 'classic'
   return 'flavoured'
 }
 
