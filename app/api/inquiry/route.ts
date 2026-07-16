@@ -96,14 +96,14 @@ export async function POST(request: NextRequest) {
 
     if (resend && toEmail) {
       await resend.emails.send({
-        from: 'Golden Deer <onboarding@resend.dev>',
+        from: 'Golden Deer <contact@cosmicpower.ltd>',
         to: toEmail,
         subject: `New Inquiry from ${name} — Golden Deer Website`,
         html: `<table style="border-collapse:collapse;width:100%;max-width:600px;background:#0F2E1E;font-family:system-ui,sans-serif;">${tableRows}</table>`,
       })
 
       await resend.emails.send({
-        from: 'Golden Deer <onboarding@resend.dev>',
+        from: 'Golden Deer <contact@cosmicpower.ltd>',
         to: email!,
         subject: 'Thank you for reaching out — Golden Deer',
         html: `<!DOCTYPE html>
