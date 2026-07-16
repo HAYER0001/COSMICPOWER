@@ -86,6 +86,10 @@ export default function MotionLoop({
           vid.play().catch(() => {})
         } else {
           vid.pause()
+          if (slotAcquired.current) {
+            slotAcquired.current = false
+            releaseSlot()
+          }
         }
       },
       { threshold: 0.4 }
