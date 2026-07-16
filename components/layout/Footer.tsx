@@ -34,7 +34,7 @@ export default function Footer() {
   const l = site.legal
 
   return (
-    <footer className="relative bg-cream border-t border-gold/10">
+    <footer className="relative bg-forest-deep border-t border-gold/10">
       <Container className="py-16 lg:py-20">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           <div className="lg:col-span-1 space-y-4">
@@ -45,7 +45,6 @@ export default function Footer() {
                 width={40}
                 height={40}
                 className="h-10 w-auto"
-                style={{ filter: 'brightness(0) saturate(100%) invert(14%) sepia(11%) saturate(2311%) hue-rotate(104deg) brightness(92%) contrast(89%)' }}
                 onError={(e) => {
                   const el = e.currentTarget
                   el.style.display = 'none'
@@ -53,12 +52,12 @@ export default function Footer() {
                 }}
               />
               <span
-                className="hidden text-xl font-display text-forest-deep"
+                className="hidden text-xl font-display text-gold"
               >
                 Golden Deer
               </span>
             </Link>
-            <p className="text-sm text-forest-deep/50 leading-relaxed max-w-xs">
+            <p className="text-sm text-gold/50 leading-relaxed max-w-xs">
               Premium roasted makhana — clean-label, slow-roasted, and sourced
               directly from India&apos;s finest growing belts.
             </p>
@@ -100,13 +99,13 @@ export default function Footer() {
             <h4 className="text-xs font-semibold tracking-[0.15em] uppercase text-gold">
               Corporate Information
             </h4>
-            <div className="space-y-2 text-xs text-forest-deep/40 leading-relaxed">
-              <p><span className="text-forest-deep/60">Company:</span> {l.company}</p>
-              <p><span className="text-forest-deep/60">CIN:</span> {l.cin}</p>
-              <p><span className="text-forest-deep/60">GSTIN:</span> {l.gstin}</p>
-              <p><span className="text-forest-deep/60">Startup India:</span> {l.startupIndia}</p>
-              <p><span className="text-forest-deep/60">MSME:</span> {l.msme}</p>
-              <p><span className="text-forest-deep/60">FSSAI:</span> {l.fssaiLicense}</p>
+            <div className="space-y-2 text-xs text-gold/50 leading-relaxed">
+              <p><span className="text-gold/70">Company:</span> {l.company}</p>
+              <p><span className="text-gold/70">CIN:</span> {l.cin}</p>
+              <p><span className="text-gold/70">GSTIN:</span> {l.gstin}</p>
+              <p><span className="text-gold/70">Startup India:</span> {l.startupIndia}</p>
+              <p><span className="text-gold/70">MSME:</span> {l.msme}</p>
+              <p><span className="text-gold/70">FSSAI:</span> {l.fssaiLicense}</p>
             </div>
           </div>
         </div>
@@ -122,7 +121,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="text-forest-deep transition-colors hover:text-gold"
+                className="text-gold/80 transition-colors hover:text-gold-light"
               >
                 <s.icon />
               </a>
@@ -134,14 +133,14 @@ export default function Footer() {
               <Link
                 key={p.label}
                 href={p.href}
-                className="text-xs font-medium text-forest-deep/80 transition-colors hover:text-gold"
+                className="text-xs font-medium text-gold/80 transition-colors hover:text-gold-light"
               >
                 {p.label}
               </Link>
             ))}
           </div>
 
-          <p className="text-xs text-forest-deep/60">
+          <p className="text-xs text-gold/60">
             &copy; {new Date().getFullYear()} {l.company}. All rights reserved.
           </p>
         </div>
@@ -154,7 +153,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="text-sm font-medium text-forest-deep transition-colors hover:text-gold"
+      className="text-sm font-medium text-gold transition-colors hover:text-gold-light"
     >
       {children}
     </Link>

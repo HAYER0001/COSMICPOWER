@@ -23,7 +23,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <nav className="glass px-4 sm:px-6 lg:px-8">
+      <nav className="bg-forest-deep border-b border-gold/10 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between">
           <Link href="/" className="relative z-10 flex items-center gap-3">
             <Image
@@ -32,7 +32,6 @@ export default function Header() {
               width={36}
               height={36}
               className="h-9 w-auto"
-              style={{ filter: 'brightness(0) saturate(100%) invert(14%) sepia(11%) saturate(2311%) hue-rotate(104deg) brightness(92%) contrast(89%)' }}
               priority
               onError={(e) => {
                 const el = e.currentTarget
@@ -41,7 +40,7 @@ export default function Header() {
               }}
             />
             <span
-              className="hidden text-lg font-semibold tracking-wide text-forest-deep sm:inline font-display"
+              className="hidden text-lg font-semibold tracking-wide text-gold sm:inline font-display"
             >
               Golden Deer
             </span>
@@ -61,8 +60,8 @@ export default function Header() {
             </Button>
           </div>
 
-          <button
-            className="relative z-10 lg:hidden p-2 text-forest-deep"
+            <button
+              className="relative z-10 lg:hidden p-2 text-gold"
             onClick={() => setOpen(!open)}
             aria-label={open ? 'Close menu' : 'Open menu'}
           >
@@ -77,7 +76,7 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 top-16 z-40 bg-cream/95 backdrop-blur-xl overflow-y-auto pb-12 lg:hidden"
+            className="fixed inset-0 top-16 z-40 bg-forest-deep/95 backdrop-blur-xl overflow-y-auto pb-12 lg:hidden"
           >
             <div className="flex flex-col items-center justify-start min-h-full gap-6 pt-8 pb-12">
               {navLinks.map((link, i) => (
@@ -89,7 +88,7 @@ export default function Header() {
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ delay: i * stagger }}
                   onClick={() => setOpen(false)}
-                  className="text-2xl font-display text-forest-deep transition-colors hover:text-gold"
+                  className="text-2xl font-display text-gold transition-colors hover:text-gold-light"
                 >
                   {link.label}
                 </motion.a>
@@ -117,7 +116,7 @@ function NavItem({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
-      className="relative px-3 py-2 text-sm font-medium text-forest-deep transition-colors hover:text-gold"
+      className="relative px-3 py-2 text-sm font-medium text-gold transition-colors hover:text-gold-light"
     >
       {children}
       <motion.span
