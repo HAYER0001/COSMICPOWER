@@ -5,7 +5,7 @@ import { Container } from '@/components/shared/primitives'
 import MotionLoop from '@/components/shared/MotionLoop'
 import { ChevronRight } from 'lucide-react'
 
-const BASE_URL = 'https://goldendeer.in'
+const BASE_URL = 'https://www.cosmicpower.ltd'
 
 export const metadata: Metadata = {
   title: 'Recipes — Golden Deer',

@@ -4,7 +4,7 @@ import { products } from '@/content/products'
 import { site } from '@/content/site'
 import ProductDetailClient from '@/components/products/ProductDetailClient'
 
-const BASE_URL = 'https://goldendeer.in'
+const BASE_URL = 'https://www.cosmicpower.ltd'
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }))

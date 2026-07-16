@@ -7,7 +7,7 @@ import { Container } from '@/components/shared/primitives'
 import JournalArticleClient from '@/components/journal/JournalArticleClient'
 import { ChevronRight } from 'lucide-react'
 
-const BASE_URL = 'https://goldendeer.in'
+const BASE_URL = 'https://www.cosmicpower.ltd'
 
 export function generateStaticParams() {
   return journal.map((e) => ({ slug: e.slug }))

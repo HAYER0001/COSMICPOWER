@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { site } from '@/content/site'
 import { Container, SectionHeading } from '@/components/shared/primitives'
 
-const BASE_URL = 'https://goldendeer.in'
+const BASE_URL = 'https://www.cosmicpower.ltd'
 const LAST_UPDATED = '15 April 2026'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
       <div className="mt-12 max-w-3xl space-y-6 text-sm text-forest-deep/65 leading-relaxed">
         <p>
           <strong className="text-forest-deep/80">{site.legal.company}</strong> (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or
-          &ldquo;our&rdquo;) operates the Golden Deer website (<Link href="/" className="text-gold transition-colors hover:text-gold-light">goldendeer.in</Link>).
+          &ldquo;our&rdquo;) operates the Golden Deer website (<Link href="/" className="text-gold transition-colors hover:text-gold-light">cosmicpower.ltd</Link>).
           This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when
           you visit our website or interact with us.
         </p>

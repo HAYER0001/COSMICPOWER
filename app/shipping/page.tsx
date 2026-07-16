@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { site } from '@/content/site'
 import { Container, SectionHeading } from '@/components/shared/primitives'
 
-const BASE_URL = 'https://goldendeer.in'
+const BASE_URL = 'https://www.cosmicpower.ltd'
 const LAST_UPDATED = '15 April 2026'
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -1,6 +1,6 @@
 import { site } from '@/content/site'
 
-const BASE_URL = 'https://goldendeer.in'
+const BASE_URL = 'https://www.cosmicpower.ltd'
 
 export default function WebSiteSchema() {
   const jsonLd = {

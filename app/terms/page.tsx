@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { site } from '@/content/site'
 import { Container, SectionHeading } from '@/components/shared/primitives'
 
-const BASE_URL = 'https://goldendeer.in'
+const BASE_URL = 'https://www.cosmicpower.ltd'
 const LAST_UPDATED = '15 April 2026'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -44,7 +44,7 @@ export default function TermsPage() {
 
       <div className="mt-12 max-w-3xl space-y-6 text-sm text-forest-deep/65 leading-relaxed">
         <p>
-          These Terms of Service (&ldquo;Terms&rdquo;) govern your use of the Golden Deer website (goldendeer.in)
+          These Terms of Service (&ldquo;Terms&rdquo;) govern your use of the Golden Deer website (cosmicpower.ltd)
           operated by <strong className="text-forest-deep/80">{site.legal.company}</strong> (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;).
           By accessing or using this website, you agree to be bound by these Terms. If you do not agree, please
           discontinue use of the site immediately.

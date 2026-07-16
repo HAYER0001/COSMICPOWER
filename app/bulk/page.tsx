@@ -23,7 +23,7 @@ import {
   Package,
 } from 'lucide-react'
 
-const BASE_URL = 'https://goldendeer.in'
+const BASE_URL = 'https://www.cosmicpower.ltd'
 const rawMakhana = products.find((p) => p.slug === 'raw-makhana')
 const bulkFaq = faq.filter((f) => f.category === 'bulk')
 

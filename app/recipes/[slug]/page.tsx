@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { recipes } from '@/content/recipes'
 import RecipeDetailClient from '@/components/recipes/RecipeDetailClient'
 
-const BASE_URL = 'https://goldendeer.in'
+const BASE_URL = 'https://www.cosmicpower.ltd'
 
 export function generateStaticParams() {
   return recipes.map((r) => ({ slug: r.slug }))

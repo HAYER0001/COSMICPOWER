@@ -22,7 +22,7 @@ const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://goldendeer.in";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cosmicpower.ltd";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

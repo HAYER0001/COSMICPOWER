@@ -5,7 +5,7 @@ import { journal } from '@/content/journal'
 import { Container, Tag } from '@/components/shared/primitives'
 import { ChevronRight } from 'lucide-react'
 
-const BASE_URL = 'https://goldendeer.in'
+const BASE_URL = 'https://www.cosmicpower.ltd'
 
 const categories: Record<string, string> = {
   'golden-grain-ancient-superfood': 'Wellness',

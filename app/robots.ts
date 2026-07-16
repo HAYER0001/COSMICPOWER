@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://goldendeer.in/sitemap.xml',
+    sitemap: 'https://www.cosmicpower.ltd/sitemap.xml',
   }
 }

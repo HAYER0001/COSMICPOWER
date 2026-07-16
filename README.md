@@ -12,7 +12,7 @@ Production-grade marketing + dual-funnel commerce website for **Golden Deer**, t
 | Animation | Framer Motion 12 + GSAP 3 + ScrollTrigger + Lenis |
 | Icons | Lucide React |
 | Email | Resend (free tier) |
-| Domain | golden-deer.vercel.app → goldendeer.in |
+| Domain | golden-deer.vercel.app → cosmicpower.ltd |
 | Fonts | Cormorant Garamond (display), Inter (body) |
 
 ## Quick Start
@@ -122,7 +122,7 @@ All content lives in `content/` as typed TS files:
 1. Push to GitHub
 2. Import in Vercel
 3. Set environment variables in Vercel dashboard
-4. Point `goldendeer.in` CNAME to `cname.vercel.com`
+4. Point `cosmicpower.ltd` CNAME to `cname.vercel.com`
 5. Run `bash scripts/optimize-videos.sh` after uploading video assets
 6. Verify `npm run build` passes before every deploy
 # COSMICPOWER

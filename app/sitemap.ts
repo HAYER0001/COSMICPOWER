@@ -3,7 +3,7 @@ import { products } from '@/content/products'
 import { recipes } from '@/content/recipes'
 import { journal } from '@/content/journal'
 
-const BASE_URL = 'https://goldendeer.in'
+const BASE_URL = 'https://www.cosmicpower.ltd'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

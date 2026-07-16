@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { products } from '@/content/products'
 import ProductsGridClient from './products-grid-client'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://goldendeer.in'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.cosmicpower.ltd'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

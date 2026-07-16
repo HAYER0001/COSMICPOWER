@@ -18,7 +18,7 @@
 | Field | Value in `content/site.ts` | Replace with |
 |-------|---------------------------|--------------|
 | WhatsApp number | `contact.whatsappNumber: "ADD_WHATSAPP_NUMBER"` | Real 10-digit number with country code (e.g. `919876543210`) |
-| Contact email | `contact.email: "ADD_CONTACT_EMAIL"` | Real inbox (e.g. `hello@goldendeer.in`) |
+| Contact email | `contact.email: "ADD_CONTACT_EMAIL"` | Real inbox (e.g. `hello@cosmicpower.ltd`) |
 | Instagram URL | `socials.instagram: "ADD_URL"` | e.g. `https://instagram.com/goldendeer` |
 | YouTube URL | `socials.youtube: "ADD_URL"` | e.g. `https://youtube.com/@goldendeer` |
 | LinkedIn URL | `socials.linkedin: "ADD_URL"` | e.g. `https://linkedin.com/company/goldendeer` |
@@ -53,10 +53,10 @@ Create `.env.local` from `.env.example`:
 | Variable | Description | Example |
 |----------|-------------|---------|
 | `RESEND_API_KEY` | Resend API key for transactional emails | `re_xxxxxxxxxxxx` |
-| `INQUIRY_TO_EMAIL` | Where bulk inquiry notifications go | `partners@goldendeer.in` |
-| `NEXT_PUBLIC_SITE_URL` | Production URL (affects OG images, canonicals) | `https://goldendeer.in` |
+| `INQUIRY_TO_EMAIL` | Where bulk inquiry notifications go | `partners@cosmicpower.ltd` |
+| `NEXT_PUBLIC_SITE_URL` | Production URL (affects OG images, canonicals) | `https://www.cosmicpower.ltd` |
 | `NEXT_PUBLIC_GA_ID` | Google Analytics 4 measurement ID | `G-XXXXXXXXXX` |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp number used sitewide for wa.me links | `919876543210` |
 | `NEXT_PUBLIC_API_URL` | (optional) Override API base | — |
 
-**Important:** After verifying the Resend domain, change the `from` address in `app/api/inquiry/route.ts` from `onboarding@resend.dev` to a verified `@goldendeer.in` address.
+**Important:** After verifying the Resend domain, change the `from` address in `app/api/inquiry/route.ts` from `onboarding@resend.dev` to a verified `@cosmicpower.ltd` address.
