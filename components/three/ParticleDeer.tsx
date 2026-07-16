@@ -37,8 +37,8 @@ async function sampleLogoImage(dpr: number) {
       const alpha = data[(y * w + x) * 4 + 3]
       if (alpha > 128) {
         positions.push(
-          ((x - cx) / maxDim) * 4.0,
-          (-(y - cy) / maxDim) * 4.0,
+          ((x - cx) / maxDim) * 6.0,
+          (-(y - cy) / maxDim) * 6.0,
           (Math.random() - 0.5) * 0.5
         )
       }
@@ -272,7 +272,7 @@ function DeerParticles({
         args={[-8, 8, 8, -8, 0.1, 100]}
         position={[0, 0, 10]}
       />
-      <group ref={groupRef} position={[0, 0.8, 0]}>
+      <group ref={groupRef} position={[0, 1.5, 0]}>
         <points>
           <bufferGeometry ref={geoRef}>
             <bufferAttribute
@@ -338,18 +338,18 @@ export default function ParticleDeer() {
   return (
     <section
       id="particle-deer-section"
-      className="relative py-20 sm:py-28 overflow-hidden bg-cream-dark/20 select-none"
-      style={{ minHeight: '60vh' }}
+      className="relative flex flex-col justify-end pt-[40vh] pb-20 sm:pb-28 overflow-hidden bg-cream-dark/20 select-none"
+      style={{ minHeight: '80vh' }}
     >
       <div className="absolute inset-0">
         <Scene3D scene={scene} className="w-full h-full">
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center pb-[25vh]">
             <div className="animate-fade-in">
               <Image
                 src="/images/logo.png"
                 alt=""
-                width={140}
-                height={140}
+                width={180}
+                height={180}
                 className="opacity-25"
                 aria-hidden
               />
@@ -358,7 +358,7 @@ export default function ParticleDeer() {
         </Scene3D>
       </div>
 
-      <div className="relative z-10 pointer-events-none">
+      <div className="relative z-10 pointer-events-none mt-auto">
         <Container>
           <SectionHeading
             eyebrow="The mark of purity"
