@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Container, Tag } from '@/components/shared/primitives'
-import { products } from '@/content/products'
 
 const BASE_URL = 'https://www.cosmicpower.ltd'
 

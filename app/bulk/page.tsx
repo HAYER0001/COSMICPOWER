@@ -109,7 +109,7 @@ export default function BulkPage() {
   return (
     <>
       {/* Hero Band */}
-      <section className="relative h-[50vh] min-h-[320px] flex items-center">
+      <section className="relative h-[50vh] min-h-[320px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <MotionLoop
             src="/videos/gifting.mp4"

@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Container, Tag } from '@/components/shared/primitives'
 import { comparisons } from '@/content/comparisons'
-import { products } from '@/content/products'
 
 const BASE_URL = 'https://www.cosmicpower.ltd'
 

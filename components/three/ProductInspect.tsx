@@ -1,14 +1,13 @@
 'use client'
 
-import { useEffect, useRef, useMemo, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import {
   PresentationControls, RoundedBox, ContactShadows,
-  Float, Environment, Text,
+  Float, Environment,
   MeshTransmissionMaterial,
 } from '@react-three/drei'
 import { TextureLoader, type Mesh } from 'three'
-import * as THREE from 'three'
 
 // ----------------------------------------------------------------
 // Pouch — foil-laminate pack textured with the product image

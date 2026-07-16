@@ -6,7 +6,6 @@ import { Container, Tag, Divider } from '@/components/shared/primitives'
 
 const BASE_URL = 'https://www.cosmicpower.ltd'
 const l = site.legal
-const rawProduct = products.find((p) => p.slug === 'raw-makhana')
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

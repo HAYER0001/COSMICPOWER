@@ -58,6 +58,7 @@ export default function FAQPage() {
       <BackgroundWrapper>
       <Container className="py-20 lg:py-28">
         <Breadcrumb />
+        <h1 className="sr-only">Frequently Asked Questions — Golden Deer</h1>
         <SectionHeading
           eyebrow="FAQ"
           title="Frequently Asked Questions"

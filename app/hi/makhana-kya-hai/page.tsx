@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import LangSetter from '@/components/seo/LangSetter'
 import { Container, Tag } from '@/components/shared/primitives'
 
 const BASE_URL = 'https://www.cosmicpower.ltd'
@@ -100,6 +101,7 @@ export default function MakhanaKyaHai() {
 
   return (
     <>
+      <LangSetter lang="hi" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main className="min-h-screen bg-cream" lang="hi">
         <Container className="py-12 lg:py-20 max-w-4xl">
@@ -161,7 +163,7 @@ export default function MakhanaKyaHai() {
               कच्चा मखाना खाने लायक़ नहीं होता। जो सफ़ेद, फूला हुआ मखाना आप बाज़ार में खरीदते हैं, वह कच्चे बीजों को भूनने और फुलाने (पॉपिंग) की प्रक्रिया से तैयार होता है — ठीक वैसे ही जैसे मक्का से पॉपकॉर्न बनता है। पूरी प्रक्रिया जानने के लिए हमारा <Link href="/makhana" className="text-gold underline underline-offset-2">इंग्लिश मखाना गाइड</Link> देखें।
             </p>
             <p className="mt-3 text-sm sm:text-base text-forest-deep/80 leading-relaxed">
-              मखाना को कमल के बीज (lotus seeds) से भ्रमित न करें — ये बोटैनिकल रूप से अलग हैं। दोनों भारतीय खाने और आयुर्वेद में उपयोग होते हैं, लेकिन मखाना (Euryale ferox) को ही उत्तर भारत में "फूल मखाना" कहा जाता है। अंतर समझने के लिए हमारा <Link href="/makhana/glossary/lotus-seeds-vs-makhana" className="text-gold underline underline-offset-2">lotus seeds vs makhana ग्लॉसरी पेज</Link> पढ़ें।
+              मखाना को कमल के बीज (lotus seeds) से भ्रमित न करें — ये बोटैनिकल रूप से अलग हैं। दोनों भारतीय खाने और आयुर्वेद में उपयोग होते हैं, लेकिन मखाना (Euryale ferox) को ही उत्तर भारत में &ldquo;फूल मखाना&rdquo; कहा जाता है। अंतर समझने के लिए हमारा <Link href="/makhana/glossary/lotus-seeds-vs-makhana" className="text-gold underline underline-offset-2">lotus seeds vs makhana ग्लॉसरी पेज</Link> पढ़ें।
             </p>
           </Section>
 
@@ -258,7 +260,7 @@ export default function MakhanaKyaHai() {
                 <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-gold/15 text-gold-deep text-xs font-bold font-mono mt-0.5">✗</span>
                 <div>
                   <span className="text-sm font-semibold text-forest-deep">फ्राइड (तला हुआ): </span>
-                  <span className="text-sm sm:text-base text-forest-deep/80 leading-relaxed">डीप फ़्राई या हैवी ऑल में तल कर बनाया जाता है। फ़ैट 15-25 ग्राम/100 ग्राम तक हो सकता है, कैलोरी दोगुनी, और न्यूट्रीएंट्स डीप फ़्राइंग में नष्ट हो जाते हैं। पैकेट पर "रोस्टेड" लिखा होने का मतलब यह नहीं कि वह सच में भुना हुआ है — इंग्रीडिएंट्स चेक करें।</span>
+                  <span className="text-sm sm:text-base text-forest-deep/80 leading-relaxed">डीप फ़्राई या हैवी ऑल में तल कर बनाया जाता है। फ़ैट 15-25 ग्राम/100 ग्राम तक हो सकता है, कैलोरी दोगुनी, और न्यूट्रीएंट्स डीप फ़्राइंग में नष्ट हो जाते हैं। पैकेट पर &ldquo;रोस्टेड&rdquo; लिखा होने का मतलब यह नहीं कि वह सच में भुना हुआ है — इंग्रीडिएंट्स चेक करें।</span>
                 </div>
               </div>
             </div>
@@ -335,12 +337,12 @@ export default function MakhanaKyaHai() {
               गोल्डन डियर बिहार के किसानों से सीधा 5-6 सूत जंबो ग्रेड मखाना लाता है — टचलेस रोस्टेड, क्लीन-लेबल, नाइट्रोजन-फ़्लश्ड। हमारे क्लासिक रोस्ट में सिर्फ़ तीन इंग्रीडिएंट्स: मखाना, कोल्ड-प्रेस्ड ऑइल, और सी सॉल्ट। कोई आर्टिफ़िशियल फ्लेवर, कोई प्रिज़र्वेटिव, कोई MSG नहीं।
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-4">
-              <a
+              <Link
                 href="/products"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gold text-forest-deep font-medium text-sm tracking-wide transition-all hover:bg-gold-light"
               >
                 मखाना खरीदें
-              </a>
+              </Link>
               <a
                 href="/bulk"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-gold text-gold font-medium text-sm tracking-wide transition-all hover:bg-gold hover:text-forest-deep"

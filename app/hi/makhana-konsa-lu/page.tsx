@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import LangSetter from '@/components/seo/LangSetter'
 import { Container, Tag } from '@/components/shared/primitives'
 
 const BASE_URL = 'https://www.cosmicpower.ltd'
@@ -55,6 +56,7 @@ const jsonLd = {
 export default function MakhanaKonsaLu() {
   return (
     <>
+      <LangSetter lang="hi" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main className="min-h-screen bg-cream" lang="hi">
         <Container className="py-12 lg:py-20 max-w-4xl">
@@ -75,7 +77,7 @@ export default function MakhanaKonsaLu() {
 
           <div className="mb-6 p-4 rounded-xl border border-gold/30 bg-gradient-to-br from-gold/[0.05] to-transparent speakable-summary">
             <p className="text-sm text-forest-deep leading-relaxed">
-              <strong>Agar aap soch rahe hain "makhana konsa lu"</strong> — roasted, raw, flavoured, ya plain — toh yeh guide aapko decision lene mein help karegi. Honest selection framework jo budget, taste, aur use case ke hisaab se recommend karta hai.
+              <strong>Agar aap soch rahe hain &ldquo;makhana konsa lu&rdquo;</strong> — roasted, raw, flavoured, ya plain — toh yeh guide aapko decision lene mein help karegi. Honest selection framework jo budget, taste, aur use case ke hisaab se recommend karta hai.
             </p>
           </div>
 

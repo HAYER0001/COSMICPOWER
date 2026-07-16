@@ -4,14 +4,25 @@ import { useRef, useEffect, useState, useMemo } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 
+interface Particle {
+  t: number
+  factor: number
+  speed: number
+  x: number
+  y: number
+  z: number
+}
+
 function AmbientDust() {
   const count = 100
   const mesh = useRef<THREE.InstancedMesh>(null!)
   const dummy = useMemo(() => new THREE.Object3D(), [])
-  
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const particles = useMemo(() => {
-    const temp = []
+  const particles = useRef<Particle[]>([])
+  const ready = useRef(false)
+
+  useEffect(() => {
+    if (ready.current) return
+    const temp: Particle[] = []
     for (let i = 0; i < count; i++) {
       temp.push({
         t: Math.random() * 100,
@@ -22,24 +33,27 @@ function AmbientDust() {
         z: (Math.random() - 0.5) * 10,
       })
     }
-    return temp
+    particles.current = temp
+    ready.current = true
   }, [])
 
   useFrame(() => {
-    particles.forEach((particle, i) => {
-      particle.t += particle.speed
-      particle.y += particle.speed * 2
-      if (particle.y > 10) particle.y = -10
-      
+    if (!ready.current) return
+    const p = particles.current
+    for (let i = 0; i < p.length; i++) {
+      p[i].t += p[i].speed
+      p[i].y += p[i].speed * 2
+      if (p[i].y > 10) p[i].y = -10
+
       dummy.position.set(
-        particle.x + Math.sin(particle.t) * particle.factor,
-        particle.y,
-        particle.z + Math.cos(particle.t) * particle.factor
+        p[i].x + Math.sin(p[i].t) * p[i].factor,
+        p[i].y,
+        p[i].z + Math.cos(p[i].t) * p[i].factor
       )
-      dummy.scale.setScalar(particle.factor * 0.02)
+      dummy.scale.setScalar(p[i].factor * 0.02)
       dummy.updateMatrix()
       mesh.current.setMatrixAt(i, dummy.matrix)
-    })
+    }
     mesh.current.instanceMatrix.needsUpdate = true
   })
 
@@ -55,7 +69,7 @@ function CursorOrb() {
   const meshRef = useRef<THREE.Mesh>(null!)
   const lightRef = useRef<THREE.PointLight>(null!)
   const { viewport, size } = useThree()
-  
+
   const target = useRef(new THREE.Vector3(0, 0, 0))
   const current = useRef(new THREE.Vector3(0, 0, 0))
 
@@ -91,20 +105,19 @@ function CursorOrb() {
 }
 
 export default function Global3DOverlay() {
-  const [mounted, setMounted] = useState(false)
-  const [isDesktop, setIsDesktop] = useState(false)
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
     const finePointer = window.matchMedia('(pointer: fine)').matches
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (finePointer && !reducedMotion) {
-      setIsDesktop(true)
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setShow(true)
     }
-    setMounted(true)
   }, [])
 
-  if (!mounted || !isDesktop) return null
+  if (!show) return null
 
   return (
     <div className="fixed inset-0 z-50 pointer-events-none">

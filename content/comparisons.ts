@@ -15,9 +15,6 @@ export interface Comparison {
   linkTo?: { label: string; href: string }
 }
 
-const disclaimer =
-  'All values are approximate and based on published USDA/NIN databases per 100 g unless noted. Verify against lab analysis before on-pack claims. Comparisons are for plain / unflavoured versions; flavoured variants will differ.'
-
 export const comparisons: Comparison[] = [
   {
     slug: 'makhana-vs-chips',

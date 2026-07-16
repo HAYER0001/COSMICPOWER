@@ -1,10 +1,3 @@
-import * as fs from 'node:fs'
-import * as path from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const projectRoot = path.resolve(__dirname, '..')
-
 const key = '9ab8000ebeeda97d2a754f132a1a6ed5'
 const host = 'www.cosmicpower.ltd'
 const keyLocation = `https://${host}/${key}.txt`

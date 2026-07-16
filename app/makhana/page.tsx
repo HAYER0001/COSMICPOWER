@@ -1,9 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Container, Tag } from '@/components/shared/primitives'
-import { products } from '@/content/products'
-import { site } from '@/content/site'
-import { faq } from '@/content/faq'
 
 const BASE_URL = 'https://www.cosmicpower.ltd'
 
@@ -32,9 +29,6 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: ['makhana', 'fox nuts', 'phool makhana', 'what is makhana', 'makhana benefits', 'makhana nutrition', 'makhana grades', 'suta makhana', 'Euryale ferox', 'makhana guide', 'how to roast makhana', 'makhana storage', 'makhana cultivation', 'Mithila Makhana GI', 'Bihar makhana'],
   }
 }
-
-const cooked = products.filter((p) => p.slug !== 'raw-makhana')
-const raw = products.find((p) => p.slug === 'raw-makhana')!
 
 const sectionIntro: Record<string, string> = {
   'what-is': 'Makhana, also known as fox nuts or phool makhana, are the popped seeds of Euryale ferox, an aquatic plant cultivated in stagnant wetland ponds across the Gangetic plains of Bihar, India. The seeds are harvested, dried, and roasted to produce a light, crunchy puff that is naturally gluten-free, high in protein, and very low in fat.',
@@ -279,7 +273,7 @@ export default function MakhanaGuide() {
                 </tbody>
               </table>
             </div>
-            <p className="text-xs text-forest-deep/40 italic mt-2">{products[0].nutrition.disclaimer} &middot; <Link href="/makhana/nutrition" className="text-gold underline underline-offset-2">Full nutrition reference &rarr;</Link></p>
+            <p className="text-xs text-forest-deep/40 italic mt-2">Approximate values based on published USDA / NIN databases. Verify against lab analysis before on-pack claims. &middot; <Link href="/makhana/nutrition" className="text-gold underline underline-offset-2">Full nutrition reference &rarr;</Link></p>
             <p className="mt-3 text-sm sm:text-base text-forest-deep/80 leading-relaxed">
               Makhana is also a source of antioxidants (flavonoids, phenolic acids), potassium, zinc, and iron. Its protein content is notably high for a seed-based snack — comparable to quinoa and higher than most puffed grains. The very low fat content (0.1 g per 100 g) makes it one of the lowest-fat snack options available. Per-variant nutrition for each flavour is listed on individual <Link href="/products" className="text-gold underline underline-offset-2">product pages</Link>.
             </p>
