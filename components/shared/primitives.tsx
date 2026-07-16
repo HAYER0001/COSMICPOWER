@@ -26,6 +26,8 @@ interface ButtonProps {
   disabled?: boolean
 }
 
+import { motion } from 'framer-motion'
+
 export function Button({
   variant = 'gold-solid',
   children,
@@ -36,7 +38,7 @@ export function Button({
   disabled = false,
 }: ButtonProps) {
   const base =
-    'inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium tracking-wide transition-all duration-200 active:translate-y-px disabled:opacity-50 disabled:pointer-events-none'
+    'inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium tracking-wide transition-colors active:translate-y-px disabled:opacity-50 disabled:pointer-events-none'
 
   const variants: Record<string, string> = {
     'gold-solid':
@@ -51,16 +53,31 @@ export function Button({
 
   if (href && !disabled) {
     return (
-      <a href={href} className={cls} onClick={onClick}>
+      <motion.a 
+        href={href} 
+        className={cls} 
+        onClick={onClick}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+      >
         {children}
-      </a>
+      </motion.a>
     )
   }
 
   return (
-    <button type={type} className={cls} onClick={onClick} disabled={disabled}>
+    <motion.button 
+      type={type} 
+      className={cls} 
+      onClick={onClick} 
+      disabled={disabled}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+    >
       {children}
-    </button>
+    </motion.button>
   )
 }
 
