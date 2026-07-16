@@ -1,9 +1,12 @@
 'use client'
 
 import { useRef, useEffect, useState, useCallback } from 'react'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { ChevronDown } from 'lucide-react'
 import { Button } from '@/components/shared/primitives'
+
+const HeroPearls = dynamic(() => import('@/components/three/HeroPearls'), { ssr: false })
 
 interface NetworkInfo {
   saveData?: boolean
@@ -132,6 +135,8 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/20 to-transparent mix-blend-multiply" />
         <div className="absolute inset-0 bg-grain opacity-50" />
       </div>
+
+      <HeroPearls />
 
       <div
         ref={overlayRef}

@@ -141,7 +141,7 @@ export default function BulkPage() {
             </Button>
             <Button
               variant="gold-outline"
-              href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent('Hi, I\'d like a bulk quote for Golden Deer makhana — grade/quantity: ')}`}
+              href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent('Hi, I\'d like a bulk quote for Golden Deer makhana — grade/quantity: ')}`}
             >
               <MessageCircle className="w-4 h-4" />
               WhatsApp Us
@@ -325,7 +325,7 @@ export default function BulkPage() {
             </p>
             <Button
               variant="gold-solid"
-              href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent('Hi, I\'d like a bulk quote for Golden Deer makhana — grade/quantity: ')}`}
+              href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent('Hi, I\'d like a bulk quote for Golden Deer makhana — grade/quantity: ')}`}
             >
               <MessageCircle className="w-4 h-4" />
               Get Bulk Quote on WhatsApp

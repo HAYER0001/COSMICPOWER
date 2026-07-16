@@ -184,7 +184,7 @@ export default function JournalArticleClient({
           {copied ? 'Copied!' : 'Copy Link'}
         </button>
         <a
-          href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Check out this article: ${entry.title} — ${typeof window !== 'undefined' ? window.location.href : ''}`)}`}
+          href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(`Check out this article: ${entry.title} — ${typeof window !== 'undefined' ? window.location.href : ''}`)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium border border-forest/10 rounded-lg text-forest-deep/70 hover:text-forest-deep hover:border-gold/30 transition-all"
