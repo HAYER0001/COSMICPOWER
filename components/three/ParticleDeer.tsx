@@ -37,8 +37,8 @@ async function sampleLogoImage(dpr: number) {
       const alpha = data[(y * w + x) * 4 + 3]
       if (alpha > 128) {
         positions.push(
-          ((x - cx) / maxDim) * 2.5,
-          (-(y - cy) / maxDim) * 2.5,
+          ((x - cx) / maxDim) * 4.0,
+          (-(y - cy) / maxDim) * 4.0,
           (Math.random() - 0.5) * 0.5
         )
       }
@@ -93,6 +93,7 @@ function DeerParticles({
   const progress = useRef({ value: 0 })
   const geoRef = useRef<THREE.BufferGeometry>(null)
   const posRef = useRef(new Float32Array(scatter))
+  const groupRef = useRef<THREE.Group>(null)
 
 
 
@@ -167,6 +168,11 @@ function DeerParticles({
     const p = progress.current.value
     const geo = geoRef.current
     const pos = posRef.current
+    
+    if (groupRef.current) {
+      groupRef.current.rotation.y = state.clock.elapsedTime * 0.3
+    }
+    
     if (!geo) return
 
     let morph: number
@@ -266,29 +272,31 @@ function DeerParticles({
         args={[-8, 8, 8, -8, 0.1, 100]}
         position={[0, 0, 10]}
       />
-      <points>
-        <bufferGeometry ref={geoRef}>
-          <bufferAttribute
-            attach="attributes-position"
-            /* eslint-disable-next-line react-hooks/refs */
-            args={[posRef.current, 3]}
+      <group ref={groupRef} position={[0, 0.8, 0]}>
+        <points>
+          <bufferGeometry ref={geoRef}>
+            <bufferAttribute
+              attach="attributes-position"
+              /* eslint-disable-next-line react-hooks/refs */
+              args={[posRef.current, 3]}
+            />
+            <bufferAttribute
+              attach="attributes-color"
+              args={[colorAttr, 3]}
+            />
+          </bufferGeometry>
+          <pointsMaterial
+            size={0.07}
+            map={texture}
+            transparent
+            blending={THREE.AdditiveBlending}
+            depthWrite={false}
+            vertexColors
+            opacity={0.9}
+            sizeAttenuation={false}
           />
-          <bufferAttribute
-            attach="attributes-color"
-            args={[colorAttr, 3]}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          size={0.07}
-          map={texture}
-          transparent
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-          vertexColors
-          opacity={0.9}
-          sizeAttenuation={false}
-        />
-      </points>
+        </points>
+      </group>
     </>
   )
 }
