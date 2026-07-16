@@ -96,31 +96,33 @@ export default function Hero() {
       className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-cream"
     >
       <div ref={bgRef} className="absolute inset-0 will-change-transform">
-        <Image
-          src="/videos/hero-poster.jpg"
-          alt=""
-          aria-hidden
-          fill
-          className="object-cover scale-[1.15]"
-          sizes="100vw"
-          priority
-        />
-
-        {!videoError && (
-          <video
-            ref={videoRef}
-            muted
-            autoPlay
-            loop
-            playsInline
-            preload="metadata"
+        <div className="absolute -inset-[15%] w-[130%] h-[130%]">
+          <Image
+            src="/videos/hero-poster.jpg"
+            alt=""
             aria-hidden
-            onError={handleVideoError}
-            className="absolute inset-0 w-full h-full object-cover scale-[1.15]"
-          >
-            <source src="/videos/hero.mp4" type="video/mp4" />
-          </video>
-        )}
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+
+          {!videoError && (
+            <video
+              ref={videoRef}
+              muted
+              autoPlay
+              loop
+              playsInline
+              preload="metadata"
+              aria-hidden
+              onError={handleVideoError}
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src="/videos/hero.mp4" type="video/mp4" />
+            </video>
+          )}
+        </div>
 
         {videoError && (
           <div className="absolute inset-0 bg-gradient-to-br from-cream-dark to-cream flex items-center justify-center">
