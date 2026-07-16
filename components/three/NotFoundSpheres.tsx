@@ -3,6 +3,10 @@
 import { useEffect, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
+import {
+  GoldenStudio,
+  MAKHANA_IVORY,
+} from '@/lib/three/golden-studio'
 
 const COUNT = 20
 const RADIUS = 0.12
@@ -24,7 +28,6 @@ export default function NotFoundSpheres() {
   const initialized = useRef(false)
   const cursor = useRef({ x: 0, y: 0 })
   const cursorSmoothed = useRef({ x: 0, y: 0 })
-
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
       cursor.current.x = (e.clientX / window.innerWidth) * 2 - 1
@@ -52,12 +55,7 @@ export default function NotFoundSpheres() {
       initialized.current = true
       const geo = new THREE.SphereGeometry(RADIUS, 16, 16)
       const mat = new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color('#C9A24B'),
-        metalness: 0.5,
-        roughness: 0.3,
-        clearcoat: 0.3,
-        emissive: new THREE.Color('#C9A24B'),
-        emissiveIntensity: 0.08,
+        ...MAKHANA_IVORY,
       })
       for (let i = 0; i < COUNT; i++) {
         const mesh = new THREE.Mesh(geo, mat)
@@ -136,5 +134,10 @@ export default function NotFoundSpheres() {
     }
   })
 
-  return <group ref={groupRef} />
+  return (
+    <>
+      <GoldenStudio fogIntensity={0.04} />
+      <group ref={groupRef} />
+    </>
+  )
 }

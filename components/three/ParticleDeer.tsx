@@ -94,14 +94,32 @@ function DeerParticles({
   const geoRef = useRef<THREE.BufferGeometry>(null)
   const posRef = useRef(new Float32Array(scatter))
 
-  const phases = useMemo(() => {
-    const arr = new Float32Array(count)
-    // eslint-disable-next-line react-hooks/purity
-    for (let i = 0; i < count; i++) arr[i] = Math.random() * Math.PI * 2
-    return arr
-  }, [count])
 
-  const gold = useMemo(() => new THREE.Color('#E8C97A'), [])
+
+  const [colorAttr] = useState(() => {
+    const arr = new Float32Array(count * 3)
+    const colA = new THREE.Color('#E8C97A')
+    const colB = new THREE.Color('#C9A24B')
+    for (let i = 0; i < count; i++) {
+      const t = Math.random()
+      const c = colA.clone().lerp(colB, t)
+      arr[i * 3] = c.r
+      arr[i * 3 + 1] = c.g
+      arr[i * 3 + 2] = c.b
+    }
+    return arr
+  })
+
+  const baseColorsRef = useRef<Float32Array>(null!)
+  const phasesRef = useRef<Float32Array>(null!)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    baseColorsRef.current = new Float32Array(colorAttr)
+    const p = new Float32Array(count)
+    for (let i = 0; i < count; i++) p[i] = Math.random() * Math.PI * 2
+    phasesRef.current = p
+  }, [colorAttr, count])
 
   const texture = useMemo(() => {
     const c = document.createElement('canvas')
@@ -117,16 +135,6 @@ function DeerParticles({
     ctx.fillRect(0, 0, 64, 64)
     return new THREE.CanvasTexture(c)
   }, [])
-
-  const colorAttr = useMemo(() => {
-    const arr = new Float32Array(count * 3)
-    for (let i = 0; i < count; i++) {
-      arr[i * 3] = gold.r
-      arr[i * 3 + 1] = gold.g
-      arr[i * 3 + 2] = gold.b
-    }
-    return arr
-  }, [count, gold])
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -187,6 +195,7 @@ function DeerParticles({
       1 + Math.sin(time * 0.6) * 0.015 * breathing
 
     const colors = geo.attributes.color.array as Float32Array
+    const base = baseColorsRef.current
     
     // Orthographic bounds are -8 to 8
     const mx = state.pointer.x * 8
@@ -239,11 +248,11 @@ function DeerParticles({
                 (0.55 +
                   0.45 *
                     (0.5 +
-                      0.5 * Math.sin(time * 2.5 + phases[i]))))
+                      0.5 * Math.sin(time * 2.5 + phasesRef.current[i]))))
           : 1
-      colors[i3] = gold.r * sh
-      colors[i3 + 1] = gold.g * sh
-      colors[i3 + 2] = gold.b * sh
+      colors[i3] = base[i3] * sh
+      colors[i3 + 1] = base[i3 + 1] * sh
+      colors[i3 + 2] = base[i3 + 2] * sh
     }
 
     geo.attributes.position.needsUpdate = true

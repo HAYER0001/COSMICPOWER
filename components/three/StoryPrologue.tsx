@@ -2,10 +2,15 @@
 
 import { useRef, useEffect, useMemo, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { PerspectiveCamera, ContactShadows } from '@react-three/drei'
+import { PerspectiveCamera } from '@react-three/drei'
 import * as THREE from 'three'
 import Scene3D from './Scene3D'
 import { Container } from '@/components/shared/primitives'
+import {
+  GoldenStudio,
+  StudioShadows,
+  MakhanaIvoryMaterial,
+} from '@/lib/three/golden-studio'
 
 const PEARL_COUNT = 35
 
@@ -48,10 +53,7 @@ function PrologueScene({ progress }: { progress: { current: number } }) {
   return (
     <>
       <PerspectiveCamera ref={camRef} makeDefault position={[0, 0, 17]} fov={45} near={0.5} far={40} />
-      <fogExp2 attach="fog" args={['#0F2E1E', 0.02]} />
-      <ambientLight intensity={0.25} color="#FFE4C4" />
-      <directionalLight position={[4, 6, 3]} intensity={1.5} color="#FFD699" />
-      <directionalLight position={[-2, 1, -4]} intensity={0.3} color="#B8D4E8" />
+      <GoldenStudio fogIntensity={0.02} />
 
       <mesh ref={shaftRef} position={[3.5, 2, -8]} rotation={[0.2, -0.3, 0.05]}>
         <planeGeometry args={[2.5, 7]} />
@@ -66,19 +68,12 @@ function PrologueScene({ progress }: { progress: { current: number } }) {
         {pearls.map((p, i) => (
           <mesh key={i} position={[p.x, p.y, p.z]} scale={p.s} rotation={[p.rx, p.ry, p.rz]}>
             <sphereGeometry args={[0.5, 16, 12]} />
-            <meshPhysicalMaterial
-              color="#F5F0E8"
-              roughness={0.45}
-              metalness={0.05}
-              clearcoat={0.35}
-              clearcoatRoughness={0.3}
-              envMapIntensity={0.5}
-            />
+            <MakhanaIvoryMaterial />
           </mesh>
         ))}
       </group>
 
-      <ContactShadows position={[0, -3.5, 0]} opacity={0.4} scale={14} blur={3} far={5} color="#0F2E1E" />
+      <StudioShadows position={[0, -3.5, 0]} opacity={0.4} scale={14} blur={3} far={5} color="#0F2E1E" />
     </>
   )
 }

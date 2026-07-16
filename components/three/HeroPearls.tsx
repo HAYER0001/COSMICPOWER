@@ -2,9 +2,13 @@
 
 import { useRef, useMemo, useState, useEffect } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
-import { Environment, Lightformer } from '@react-three/drei'
 import * as THREE from 'three'
 import Scene3D from './Scene3D'
+import {
+  GoldenStudio,
+  MakhanaIvoryMaterial,
+  GoldDustMaterial,
+} from '@/lib/three/golden-studio'
 
 const PEARL_COUNT = 10
 const DUST_COUNT = 250
@@ -40,28 +44,11 @@ function getDustPositions(exclusionHalf: number): Float32Array {
   return pos
 }
 
-function createDustTexture(): THREE.CanvasTexture {
-  const canvas = document.createElement('canvas')
-  canvas.width = 32
-  canvas.height = 32
-  const ctx = canvas.getContext('2d')!
-  const gradient = ctx.createRadialGradient(16, 16, 0, 16, 16, 16)
-  gradient.addColorStop(0, 'rgba(255, 215, 153, 1)')
-  gradient.addColorStop(0.3, 'rgba(255, 215, 153, 0.6)')
-  gradient.addColorStop(1, 'rgba(255, 215, 153, 0)')
-  ctx.fillStyle = gradient
-  ctx.fillRect(0, 0, 32, 32)
-  const tex = new THREE.CanvasTexture(canvas)
-  tex.needsUpdate = true
-  return tex
-}
-
 function HeroPearlsScene() {
   const groupRef = useRef<THREE.Group>(null)
   const dustRef = useRef<THREE.Points>(null)
   const { viewport } = useThree()
   const mouse = useRef({ x: 0, y: 0 })
-  const dustTex = useMemo(() => createDustTexture(), [])
 
   const exclusionHalf = 3.2
 
@@ -134,34 +121,7 @@ function HeroPearlsScene() {
 
   return (
     <>
-      <Environment resolution={256}>
-        <Lightformer
-          form="rect"
-          intensity={3}
-          color="#FFE4B5"
-          position={[-4, 4, -5]}
-          scale={[5, 3.5, 1]}
-        />
-        <Lightformer
-          form="rect"
-          intensity={1.2}
-          color="#FFD699"
-          position={[4, 1, -4]}
-          scale={[1.5, 5, 1]}
-        />
-        <Lightformer
-          form="rect"
-          intensity={0.5}
-          color="#B0C8D8"
-          position={[0, -4, -3]}
-          scale={[4, 1.5, 1]}
-        />
-      </Environment>
-
-      <fogExp2 attach="fog" args={['#0F2E1E', 0.03]} />
-
-      <ambientLight intensity={0.25} color="#FFE4C4" />
-      <directionalLight position={[-3, 4, 2]} intensity={1.8} color="#FFE4B5" />
+      <GoldenStudio fogIntensity={0.03} />
 
       <group ref={groupRef}>
         {pearls.map((p, idx) => (
@@ -170,14 +130,7 @@ function HeroPearlsScene() {
             geometry={p.geo}
             position={[p.baseX, p.baseY, p.baseZ]}
           >
-            <meshPhysicalMaterial
-              color={p.color}
-              metalness={0}
-              roughness={0.55}
-              clearcoat={0.2}
-              clearcoatRoughness={0.6}
-              envMapIntensity={0.9}
-            />
+            <MakhanaIvoryMaterial color={p.color} />
           </mesh>
         ))}
       </group>
@@ -190,15 +143,7 @@ function HeroPearlsScene() {
             count={DUST_COUNT}
           />
         </bufferGeometry>
-        <pointsMaterial
-          map={dustTex}
-          size={0.04}
-          transparent
-          opacity={0.3}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-          sizeAttenuation
-        />
+        <GoldDustMaterial size={0.04} />
       </points>
     </>
   )

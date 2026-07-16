@@ -101,7 +101,7 @@ export default function Hero() {
           alt=""
           aria-hidden
           fill
-          className="object-cover"
+          className="object-cover scale-[1.15]"
           sizes="100vw"
           priority
         />
@@ -116,7 +116,7 @@ export default function Hero() {
             preload="metadata"
             aria-hidden
             onError={handleVideoError}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover scale-[1.15]"
           >
             <source src="/videos/hero.mp4" type="video/mp4" />
           </video>

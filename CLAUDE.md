@@ -64,3 +64,28 @@ Logo: user-supplied at `/images/logo.png` (transparent PNG) — never generate o
 5. **Every 3D file is 'use client'** with guarded browser access (typeof window checks).
 6. **`npm run build` after every 3D task** — zero errors required.
 7. **All 3D scenes pass through `components/three/Scene3D.tsx`** — the single gate that checks `(pointer: fine)`, `prefers-reduced-motion`, `Save-Data`, and viewport intersection (≥30%) before mounting a lazy R3F Canvas.
+
+## 3D STYLE CONTRACT (all future 3D work — enforceable)
+
+### ALLOWED motifs
+- Makhana pearls — ivory-cream (`#F3EAD8` range), organic, PBR-lit, slight vertex noise
+- Gold dust — warm additive points (`#E8C97A`→`#C9A24B` ramp), soft sprite texture, 30% opacity
+- Deer crest — rendered ONLY via sampled-logo particles (ParticleDeer)
+- Product pouch — extruded rounded-rect, textured with pack image, goldFoil sheen
+- Glass jar of raw makhana — transmission glass + instanced makhanaIvory spheres
+- Light, fog, shadow — procedural studio rig only
+
+### ALWAYS banned
+- drei `<Sparkles>` / `<Stars>` — never import, never use
+- Naked geometric primitives as decoration — spheres, cubes, diamonds, torus, torusKnot, cones shown as standalone visual elements
+- Any grey, black, or untextured material visible on screen — every surface must carry a golden-studio preset or a branded color
+- Dark abstract blobs or unidentified dark shapes in any section
+- Any 3D object inside the central text band of any section — the headline + subline + CTA area must remain a clean exclusion zone, verified at 1440px and 1024px
+- Any 3D object rendered center-screen above copy or the product (HeroPearls drift in outer thirds only)
+
+### Every scene must
+- Use `<GoldenStudio>` — no ad-hoc lights, environments, or contact shadows anywhere else
+- Keep its non-WebGL fallback — Scene3D children render when gates fail
+- Have all materials from golden-studio presets (MakhanaIvoryMaterial, GoldFoilMaterial, ClearGlassMaterial, AgedBrassMaterial, GoldDustMaterial) or config objects (MAKHANA_IVORY, GOLD_FOIL, AGED_BRASS)
+- Set Canvas `pointer-events: none` unless the scene is explicitly interactive (ProductInspect only)
+- Pass through Scene3D unless the scene requires direct user interaction (ProductInspect only)
