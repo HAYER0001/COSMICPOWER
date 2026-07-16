@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ChevronRight, ArrowRight, MessageCircle } from 'lucide-react'
 import { products } from '@/content/products'
 import { recipes } from '@/content/recipes'
@@ -73,8 +74,8 @@ function SignatureRange() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {retailProducts.map((p) => (
             <Link key={p.slug} href={`/products/${p.slug}`} className="group block rounded-xl border border-white/5 bg-cream-dark/40 overflow-hidden hover:border-gold/25 transition-all">
-              <div className="aspect-[4/5] bg-cream flex items-center justify-center">
-                <span className="text-forest-deep/20 font-display text-lg text-center px-4">{p.name}</span>
+              <div className="relative aspect-[4/5] bg-cream overflow-hidden">
+                <Image src={p.poster} alt={p.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
               </div>
               <div className="p-4">
                 <div className="flex flex-wrap gap-1.5 mb-2">
@@ -88,8 +89,8 @@ function SignatureRange() {
           ))}
           {rawProduct && (
             <Link href={`/products/${rawProduct.slug}`} className="group block rounded-xl border border-gold/20 bg-gold/5 overflow-hidden hover:border-gold/40 transition-all">
-              <div className="aspect-[4/5] bg-cream flex items-center justify-center">
-                <span className="text-gold/30 font-display text-lg text-center px-4">{rawProduct.name}</span>
+              <div className="relative aspect-[4/5] bg-cream overflow-hidden">
+                <Image src={rawProduct.poster} alt={rawProduct.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
               </div>
               <div className="p-4">
                 <Tag variant="gold">Bulk &amp; Retail</Tag>
