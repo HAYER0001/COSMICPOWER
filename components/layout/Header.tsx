@@ -32,6 +32,7 @@ export default function Header() {
               width={36}
               height={36}
               className="h-9 w-auto"
+              style={{ filter: 'brightness(0) saturate(100%) invert(14%) sepia(11%) saturate(2311%) hue-rotate(104deg) brightness(92%) contrast(89%)' }}
               priority
               onError={(e) => {
                 const el = e.currentTarget
@@ -88,7 +89,7 @@ export default function Header() {
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ delay: i * stagger }}
                   onClick={() => setOpen(false)}
-                  className="text-2xl font-display text-forest-deep/80 transition-colors hover:text-gold"
+                  className="text-2xl font-display text-forest-deep transition-colors hover:text-gold"
                 >
                   {link.label}
                 </motion.a>
@@ -116,7 +117,7 @@ function NavItem({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
-      className="relative px-3 py-2 text-sm font-medium text-forest-deep/70 transition-colors hover:text-forest-deep"
+      className="relative px-3 py-2 text-sm font-medium text-forest-deep transition-colors hover:text-gold"
     >
       {children}
       <motion.span

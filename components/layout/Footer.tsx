@@ -45,6 +45,7 @@ export default function Footer() {
                 width={40}
                 height={40}
                 className="h-10 w-auto"
+                style={{ filter: 'brightness(0) saturate(100%) invert(14%) sepia(11%) saturate(2311%) hue-rotate(104deg) brightness(92%) contrast(89%)' }}
                 onError={(e) => {
                   const el = e.currentTarget
                   el.style.display = 'none'
@@ -121,7 +122,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="text-forest-deep/30 transition-colors hover:text-gold"
+                className="text-forest-deep transition-colors hover:text-gold"
               >
                 <s.icon />
               </a>
@@ -133,14 +134,14 @@ export default function Footer() {
               <Link
                 key={p.label}
                 href={p.href}
-                className="text-xs text-forest-deep/30 transition-colors hover:text-forest-deep/60"
+                className="text-xs font-medium text-forest-deep/80 transition-colors hover:text-gold"
               >
                 {p.label}
               </Link>
             ))}
           </div>
 
-          <p className="text-xs text-forest-deep/20">
+          <p className="text-xs text-forest-deep/60">
             &copy; {new Date().getFullYear()} {l.company}. All rights reserved.
           </p>
         </div>
@@ -153,7 +154,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="text-sm text-forest-deep/50 transition-colors hover:text-forest-deep"
+      className="text-sm font-medium text-forest-deep transition-colors hover:text-gold"
     >
       {children}
     </Link>
