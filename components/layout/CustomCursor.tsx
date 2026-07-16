@@ -49,16 +49,18 @@ export default function CustomCursor() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed top-0 left-0 z-[9999] rounded-full border border-gold/40 bg-gold/10 mix-blend-difference"
+      className="pointer-events-none fixed top-0 left-0 z-[9999] rounded-full border border-gold/50"
       style={{
         x: cursorXSpring,
         y: cursorYSpring,
-        width: isHovering ? 48 : 24,
-        height: isHovering ? 48 : 24,
+        width: isHovering ? 40 : 20,
+        height: isHovering ? 40 : 20,
+        backgroundColor: 'transparent',
       }}
       animate={{
-        scale: isHovering ? 1.2 : 1,
-        backgroundColor: isHovering ? 'rgba(232, 201, 122, 0.2)' : 'rgba(232, 201, 122, 0.1)'
+        scale: isHovering ? 1.3 : 1,
+        borderColor: isHovering ? 'rgba(201, 162, 75, 0.8)' : 'rgba(201, 162, 75, 0.5)',
+        boxShadow: isHovering ? '0 0 12px rgba(201, 162, 75, 0.2)' : '0 0 4px rgba(201, 162, 75, 0.1)',
       }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       aria-hidden

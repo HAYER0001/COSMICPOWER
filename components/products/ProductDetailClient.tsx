@@ -285,7 +285,7 @@ function MobileStickyBar({ product }: { product: Product }) {
 
   if (product.isBulk) {
     return (
-      <div className="fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur-lg border-t border-gold/15 px-4 py-3 flex items-center gap-3 sm:hidden">
+      <div className="fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur-lg border-t border-gold/15 px-4 py-3 flex items-center gap-3 sm:hidden" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 0.75rem)' }}>
         <a href="/bulk#inquiry" className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gold text-forest-deep text-sm font-medium rounded-lg active:scale-[0.97] transition-all">
           <MessageCircle className="w-4 h-4" />
           Bulk Quote
@@ -299,7 +299,7 @@ function MobileStickyBar({ product }: { product: Product }) {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur-lg border-t border-gold/15 px-4 py-3 flex items-center gap-3 sm:hidden">
+    <div className="fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur-lg border-t border-gold/15 px-4 py-3 flex items-center gap-3 sm:hidden" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 0.75rem)' }}>
       <a href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(`Hi, I'd like to order Golden Deer ${product.name}. Here is the link: ${wpUrl}`)}`} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gold text-forest-deep text-sm font-medium rounded-lg active:scale-[0.97] transition-all">
         <MessageCircle className="w-4 h-4" />
         Order via WhatsApp

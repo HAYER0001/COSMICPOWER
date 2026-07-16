@@ -292,7 +292,7 @@ function DeerParticles({
             blending={THREE.AdditiveBlending}
             depthWrite={false}
             vertexColors
-            opacity={0.9}
+            opacity={0.65}
             sizeAttenuation={false}
           />
         </points>
@@ -338,7 +338,7 @@ export default function ParticleDeer() {
   return (
     <section
       id="particle-deer-section"
-      className="relative flex flex-col justify-end pt-[40vh] pb-20 sm:pb-28 overflow-hidden bg-cream-dark/20 select-none"
+      className="relative flex flex-col justify-end pt-[40vh] pb-20 sm:pb-28 overflow-hidden bg-cream select-none"
       style={{ minHeight: '80vh' }}
     >
       <div className="absolute inset-0">

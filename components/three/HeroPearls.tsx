@@ -10,7 +10,7 @@ import {
   GoldDustMaterial,
 } from '@/lib/three/golden-studio'
 
-const PEARL_COUNT = 10
+const PEARL_COUNT = 8
 const DUST_COUNT = 250
 
 function createPearlGeometry(size: number): THREE.BufferGeometry {
@@ -130,7 +130,7 @@ function HeroPearlsScene() {
             geometry={p.geo}
             position={[p.baseX, p.baseY, p.baseZ]}
           >
-            <MakhanaIvoryMaterial color={p.color} />
+            <MakhanaIvoryMaterial color={p.color} transparent opacity={0.4} />
           </mesh>
         ))}
       </group>

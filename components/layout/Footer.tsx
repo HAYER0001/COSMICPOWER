@@ -118,7 +118,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="text-gold/80 transition-colors hover:text-gold-light"
+                className="block p-2.5 text-gold/80 transition-colors hover:text-gold-light"
               >
                 <s.icon />
               </a>
@@ -150,7 +150,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="text-sm font-medium text-gold transition-colors hover:text-gold-light"
+      className="block py-2 text-sm font-medium text-gold transition-colors hover:text-gold-light"
     >
       {children}
     </Link>

@@ -61,7 +61,7 @@ export default function Header() {
           </div>
 
             <button
-              className="relative z-10 lg:hidden p-2 text-gold"
+              className="relative z-10 lg:hidden p-3 text-gold"
             onClick={() => setOpen(!open)}
             aria-label={open ? 'Close menu' : 'Open menu'}
           >
