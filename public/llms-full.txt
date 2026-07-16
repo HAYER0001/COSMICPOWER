@@ -1,0 +1,476 @@
+================================================================================
+GOLDEN DEER — PREMIUM ROASTED MAKHANA
+Complete Brand & Product Knowledge Base for AI Consumption
+================================================================================
+
+Last updated: July 2026
+Canonical domain: https://www.cosmicpower.ltd
+
+================================================================================
+1. BRAND OVERVIEW
+================================================================================
+
+Golden Deer is a premium roasted makhana (fox nuts) snack brand owned and
+operated by Cosmic Power Pvt. Ltd., an Indian FMCG enterprise headquartered
+in Bihar, India. The brand symbol — a golden deer — represents purity, agility,
+and natural vitality.
+
+Vision: Make Golden Deer a household name in healthy snacking.
+Mission: Sustainably sourced, ethically processed superfood snacks that empower
+farming partner communities.
+
+Legal Entity:
+  Company:         Cosmic Power Pvt. Ltd.
+  CIN:             U46307BR2026PTC085787
+  GSTIN:           10AANCC9477F2ZG
+  Startup India:   DIPP269634
+  MSME:            UDYAM-BR-26-0237862
+  Address:         HN-1639, Gangachak Malikana, Masaurhi, Bihar 804452
+  Email:           chandan@cosmicpower.ltd
+  WhatsApp:        +91 97791 55132
+
+Brand Foundations:
+  - Makhana (Euryale ferox) is a seed harvested from the Gangetic wetlands of
+    Bihar, India. It is not a grain — it is a superfood seed from the water lily
+    family, naturally gluten-free, high in protein and antioxidants, very low in fat.
+  - Golden Deer sources directly from farming partner cooperatives in Bihar's
+    makhana belt, ensuring traceable lots, fair-trade practices, and consistent
+    jumbo-grade quality.
+  - The brand operates on a two-funnel principle:
+    * Funnel A (D2C Retail): Premium-snack buyers purchase via quick-commerce
+      platforms (Blinkit, Zepto primary; Amazon secondary). No on-site cart.
+    * Funnel B (Bulk/Wholesale): Distributors, retailers, HoReCa, corporate
+      gifting, and export buyers convert through the /bulk page, a segmented
+      inquiry form, and a prefilled WhatsApp bulk-quote link.
+
+Key Differentiators:
+  - Clean-label: every ingredient is recognisable as real food. Classic Roast
+    has exactly three ingredients.
+  - Hand-sorted jumbo-grade seeds (5-6 suta / 18-24mm) — the largest, most
+    consistent grade available.
+  - Touchless slow-roasting in small batches — never fried, no trans fats.
+  - Nitrogen-flushed packaging for extended shelf life (8-12 months).
+  - Direct farm partnerships with traceable lots and fair-trade practices.
+  - Third-party lab analysis available on every lot.
+
+================================================================================
+2. PRODUCT RANGE — FULL DESCRIPTIONS
+================================================================================
+
+--- Product A: Classic Plain (https://www.cosmicpower.ltd/products/plain) ---
+Slug: plain
+Name: Classic Plain
+Tagline: Pure. Lightly Salted. Irresistibly Crunchy.
+MRP: Rs. 99
+Net Weights: 50g, 100g, 200g
+
+Description:
+The taste that started it all. Our Classic Roast makhana is popped to golden
+perfection in the lightest veil of premium cold-pressed oil and finished with a
+whisper of fine sea salt. Every puff carries the pure, nutty essence of
+hand-picked jumbo fox nuts — nothing more, nothing less.
+
+Full Description:
+Clean-label snacking at its most honest. We begin with the largest grade of raw
+makhana, sourced directly from farming partners across Bihar's pristine wetlands.
+Each seed is touchless-roasted in small batches using a gentle dry-heat process
+that preserves the natural structure and delicate crunch. A trace of cold-pressed
+oil and a sprinkle of sea salt is all that touches these golden puffs. No
+artificial flavours, no preservatives, no compromise. The result is a snack that
+tastes of its origin — earth, water, and the quiet labour of hands that have
+cultivated this grain for generations.
+
+Nutrition (per 100g): Energy 347 kcal, Protein 9.7g, Carbs 76.9g, Fat 0.1g
+Ingredients: Premium makhana (fox nuts), Cold-pressed sunflower oil, Fine sea salt
+Tags: Classic, Lightly Salted, Clean Label, Everyday Snack
+
+Commerce Links:
+  - Blinkit: ADD_URL  |  Zepto: ADD_URL  |  Amazon: ADD_URL
+  - Indiamart: ADD_URL  |  Instamart: ADD_URL
+
+
+--- Product B: Salted (https://www.cosmicpower.ltd/products/salted) ---
+Slug: salted
+Name: Salted
+Tagline: A Perfect Marriage of Mineral Salt and Cracked Pepper.
+MRP: Rs. 109
+Net Weights: 50g, 100g, 200g
+
+Description:
+Elevated. Ancient Himalayan pink salt meets freshly cracked black peppercorns on
+our signature slow-roasted makhana. The salt's subtle mineral complexity —
+pink-hued, sun-dried, hand-mined from the Khewra range — balances the warm bite
+of Tellicherry pepper for a savoury snack that feels deliberate, not accidental.
+
+Full Description:
+This is not your standard salted snack. We source Himalayan pink salt from deep
+within the Punjab salt range, valued for its rich mineral profile and clean,
+rounded salinity. Each crystal is dry-milled to a fine powder, then dusted over
+freshly roasted makhana alongside coarsely ground Tellicherry black pepper known
+for its bold aromatic punch. The combination is timeless: earthy pepper heat
+softened by mineral salt, wrapped in the ethereal crunch of slow-roasted fox
+nuts. A grown-up snack for discerning palates, as at home in a desk drawer as
+on a charcuterie board.
+
+Nutrition (per 100g): Energy 350 kcal, Protein 9.5g, Carbs 75.8g, Fat 0.3g
+Ingredients: Premium makhana (fox nuts), Cold-pressed sunflower oil, Himalayan
+pink salt, Coarse black pepper
+Tags: Savory, Pink Salt, Black Pepper, Gourmet
+
+
+--- Product C: Peri Peri (https://www.cosmicpower.ltd/products/peri-peri) ---
+Slug: peri-peri
+Name: Peri Peri
+Tagline: Sun-Ripened Tang in Every Crunch.
+MRP: Rs. 109
+Net Weights: 50g, 100g, 200g
+
+Description:
+A burst of sun-ripened tomato goodness on a cloud of roasted makhana. We marry
+the bright acidity of real tomato with a whisper of spice, creating a snack that
+hits every note: tangy, savoury, and satisfyingly crisp.
+
+Full Description:
+Inspired by India's eternal love affair with tangy-spicy snacks, our Tangy
+Tomato makhana is a masterclass in clean-label flavouring. We start with
+vine-ripened tomatoes, slow-dried and ground into a fine powder, then blended
+with a proprietary spice mix that uses no artificial colours, no MSG, and no
+synthetic flavour enhancers. The result is a dusting of authentic tomato that
+clings to every crevice of the puffed makhana, delivering a bright, moreish tang
+with just enough warmth to keep you reaching for another handful.
+
+Nutrition (per 100g): Energy 353 kcal, Protein 9.2g, Carbs 74.5g, Fat 0.5g
+Ingredients: Premium makhana (fox nuts), Cold-pressed sunflower oil, Tomato
+powder, Spices, Sea salt
+Tags: Tangy, Tomato, Spiced, Bold Flavour
+
+
+--- Product D: Creamy Cheese (https://www.cosmicpower.ltd/products/creamy-cheese) ---
+Slug: creamy-cheese
+Name: Creamy Cheese
+Tagline: Real Cheese. Real Crunch. Real Good.
+MRP: Rs. 119
+Net Weights: 50g, 100g, 200g
+
+Description:
+For the cheese lover who refuses to compromise on clean eating. We coat each
+makhana puff in a whisper of real cheddar and cultured buttermilk powder,
+creating a creamy, tangy cheese flavour that tastes of something — not of
+chemicals.
+
+Full Description:
+Cheese-flavoured snacks usually mean a lab-engineered powder with a dozen
+unpronounceable ingredients. Ours is different. We start with real aged cheddar,
+dried and milled into a fine powder, then blended with cultured buttermilk for
+that unmistakable tang. A touch of mustard and turmeric adds depth and warmth,
+while the makhana itself — light, airy, slow-roasted — becomes the perfect canvas
+for this creamy coating. No artificial cheese flavouring, no palm oil, no MSG.
+Just the honest taste of real cheddar on India's cleanest crunch.
+
+Nutrition (per 100g): Energy 358 kcal, Protein 10.1g, Carbs 72.3g, Fat 1.2g
+Ingredients: Premium makhana (fox nuts), Cold-pressed sunflower oil, Aged cheddar
+powder, Cultured buttermilk powder, Sea salt, Mustard powder, Turmeric
+Tags: Cheese, Creamy, Indulgent, Real Cheddar
+
+
+--- Product E: Pudina (https://www.cosmicpower.ltd/products/pudina) ---
+Slug: pudina
+Name: Pudina
+Tagline: India's Favourite Spice Blend, Now on Makhana.
+MRP: Rs. 109
+Net Weights: 50g, 100g, 200g
+
+Description:
+A bold, aromatic masala blend — cumin, coriander, red chilli, ginger, and a hint
+of amchur — dusted generously over our signature golden puffs. This is makhana
+for the chaat lover: complex, layered, and fiery in all the right ways.
+
+Full Description:
+Masala is not a single flavour — it is a philosophy of layering. Our master
+blenders spent months perfecting this mix: the earthy warmth of roasted cumin,
+the citrus lift of coriander, the slow-building heat of Kashmiri red chilli, the
+tang of dried mango powder, and a whisper of ginger that lingers on the palate.
+Each spice is individually toasted and ground, then blended in small batches to
+ensure every grain of makhana catches the full spectrum. The result is a snack
+that unfolds on the tongue — first warm, then tangy, then building to a gentle,
+satisfying heat. No artificial enhancers, no flavouring agents: just the purest
+spices India has to offer, in the proportions they deserve.
+
+Nutrition (per 100g): Energy 355 kcal, Protein 9.3g, Carbs 73.8g, Fat 0.6g
+Ingredients: Premium makhana (fox nuts), Cold-pressed sunflower oil, Cumin
+powder, Coriander powder, Kashmiri red chilli powder, Dried mango powder
+(amchur), Ginger powder, Black salt, Sea salt
+Tags: Masala, Spicy, Indian, Bold
+
+
+--- Product F: Premium Raw Makhana (https://www.cosmicpower.ltd/products/raw-makhana) ---
+Slug: raw-makhana
+Name: Premium Raw Makhana
+Tagline: Hand-Sorted Jumbo Grade — The Foundation of Every Great Pop.
+MRP: Contact for pricing
+Net Weights: 5kg bulk, 10kg bulk, 25kg bulk
+
+Description:
+The raw ingredient that makes Golden Deer special. Each seed is hand-sorted,
+graded by size, and selected for its pristine white colour and uniform shape.
+Sourced directly from farming partner cooperatives in Bihar's makhana belt, our
+raw makhana represents the highest standard of purity available to wholesalers,
+retailers, and food businesses.
+
+Full Description:
+Behind every perfect puff of Golden Deer lies an uncompromising raw material.
+Our Premium Raw Makhana is the largest, brightest jumbo grade — what the trade
+calls 5-6 suta — sourced from the Gangetic wetlands of Bihar where makhana has
+been cultivated for centuries. Each lot is hand-sorted by experienced graders
+who remove discoloured seeds, broken pieces, and any grain below our size
+threshold. The result is a consistently superior raw product that roasts evenly,
+puffs fully, and delivers the signature ethereal crunch that defines Golden Deer.
+
+Nutrition (per 100g): Energy 347 kcal, Protein 9.7g, Carbs 76.9g, Fat 0.1g
+Ingredients: Premium raw makhana (fox nuts) — 100% pure, no additives
+Tags: Raw, Bulk, Wholesale, Jumbo Grade, Unroasted
+
+Bulk Spec:
+  Grades:
+    - 5-6 Suta Jumbo (18-24mm) — hand-sorted, brightest premium pops, export grade
+    - 4-5 Suta Standard (14-18mm) — culinary and roasting grade for HoReCa
+  Packaging: 250g retail pouch, 5kg bulk bag, 10kg bulk bag, 25kg bulk bag
+  MOQ: Discussed on inquiry — works with small-batch artisans and large buyers
+  Quality: Touchless roasting/sorting, nitrogen-flushed packaging, direct farm
+  sourcing, lot traceable to grower cooperative, third-party lab testing available
+
+
+================================================================================
+3. FULL FAQ — ALL 14 QUESTIONS AND ANSWERS
+================================================================================
+
+--- Consumer FAQs (9) ---
+
+Q1: Makhana konsa lu — roasted ya raw?
+A: Agar aapko ready-to-eat snack chahiye, Golden Deer Classic Roast lo — it is
+already slow-roasted with a light salt, ready to eat straight from the pack. Raw
+makhana is for cooking: curries, kheer, or roasting at home with your own masala.
+Roasted for snacking, raw for cooking — simple.
+
+Q2: Roasted makhana healthy hai kya?
+A: Haan, bilkul. Roasted makhana is one of the healthiest snacks you can eat —
+rich in protein (9.7g per 100g), very low in fat (0.1g), and packed with
+antioxidants and fibre. Our Classic Roast is slow-roasted in minimal cold-pressed
+oil, not fried. No artificial preservatives, no MSG, no trans fats. Great for
+weight management, diabetes-friendly, and gluten-free.
+
+Q3: What makes Golden Deer a clean-label brand?
+A: Clean-label means every ingredient on the packet is recognisable as real food.
+Our Classic Roast has three ingredients: premium makhana, cold-pressed sunflower
+oil, and fine sea salt. No artificial flavours, no colours, no MSG, no
+preservatives, no palm oil. What you see is what you eat — honest food, no
+chemistry experiments.
+
+Q4: Makhana vs chips — which is better?
+A: There is no comparison. A 50g serving of potato chips has about 270 calories
+and 17g of fat. The same serving of Golden Deer makhana has roughly 170 calories
+and less than 0.1g of fat. Makhana also delivers protein, fibre, and antioxidants
+that chips simply do not have. Our flavoured variants give you the same satisfying
+savoury experience without the oil or artificial aftertaste.
+
+Q5: Can makhana help with weight loss?
+A: Makhana is an excellent snack for weight management. High protein and fibre
+content keep you fuller for longer, reducing the urge to binge on empty calories.
+The low glycaemic index means no insulin spikes followed by sugar crashes. At
+barely 0.1g fat per 100g, you get the crunch without the guilt.
+
+Q6: Kitna makhana roz kha sakte hain?
+A: Ek healthy adult ke liye 30-50g (about 2-3 handfuls) per day is an ideal
+portion. This gives you about 4-5g of protein and plenty of fibre without
+overdoing it. As with any food, balance is key.
+
+Q7: Makhana ko kaise store karein?
+A: Roasted makhana ko hamesha airtight container mein rakhein, cool and dry
+jagah par. Dhoop aur nami se door rakhein. Properly stored, our nitrogen-flushed
+packs stay fresh for 6-8 months. Once opened, consume within 15-20 days for best
+crunch. Agar makhana apni crunch kho de, unhe 2-3 minutes ke liye low flame par
+dry roast karein — wapas crisp ho jayenge.
+
+Q8: Is makhana gluten-free?
+A: Yes, makhana (fox nuts) is naturally gluten-free — it is not a grain but a
+seed harvested from the Euryale ferox water lily. All Golden Deer products are
+processed in a dedicated facility with no gluten-containing ingredients. Safe for
+celiacs and anyone on a gluten-free diet.
+
+Q9: Bacchon ke liye makhana safe hai?
+A: Haan, makhana is one of the best first snacks for kids. It is naturally
+soft-crunchy (no hard edges), easy to digest, and packed with calcium and protein
+for growing bodies. For toddlers, crush the classic roast into smaller pieces to
+prevent any choking risk. No artificial colours or preservatives. A perfect
+tiffin snack for school-going children.
+
+--- Bulk FAQs (5) ---
+
+Q10: What is 5-6 suta makhana — and why does grade matter?
+A: Suta is the traditional grading system for makhana, referring to the number of
+radial lines or the size range. 5-6 suta means 18-24mm diameter — the largest,
+most premium grade available. Bigger seeds pop into bigger, fluffier puffs with
+better texture and presentation. Golden Deer standardises on 5-6 suta jumbo grade
+for our retail products, while offering 4-5 suta (14-18mm) as a culinary grade.
+Grade directly affects pop yield, finished product consistency, and plate appeal.
+
+Q11: How to order bulk makhana from Golden Deer as a wholesale buyer?
+A: Visit our /bulk page and fill the segmented inquiry form, or message us
+directly on WhatsApp with your requirement — quantity, preferred grade, packaging
+format, and destination. Our team will respond within 24 hours with a custom
+quote including FOB/CIF for export orders or delivered pricing for domestic. We
+work with retailers, distributors, HoReCa chains, white-label brands, corporate
+gifting buyers, and export partners. No minimum order is too small for a serious
+inquiry, and we can scale to multi-tonne container loads for export.
+
+Q12: Do you supply raw makhana for other brands to roast and pack?
+A: Yes — white-label raw makhana supply is a core part of our business. We supply
+premium raw makhana (both 5-6 suta jumbo and 4-5 suta standard grades) in bulk
+packaging to retail brands, food processors, and HoReCa operators. Every lot is
+hand-sorted, size-graded, and optionally nitrogen-flushed for extended shelf
+life. We can also provide third-party lab analysis for your quality assurance
+team. Contact us via the bulk inquiry form or WhatsApp.
+
+Q13: What does nitrogen-flushed packaging do for makhana?
+A: Nitrogen flushing replaces the oxygen inside the pack with food-grade nitrogen
+gas before sealing. This prevents oxidation, which is the primary cause of
+rancidity in nuts and seeds. For makhana, nitrogen flushing preserves the
+delicate crunch, prevents moisture absorption, and extends ambient shelf life
+from 3 months to 8-12 months without any chemical preservatives. All Golden Deer
+bulk packs offer nitrogen flushing as a standard option.
+
+Q14: Corporate gifting with makhana — what are the minimums and options?
+A: We offer custom-branded corporate gifting boxes with a minimum of 50 units per
+order. Options include: curated assortment boxes (all 5 roasted flavours in
+individual packs), premium gift tins with a single large format bag, or bulk raw
+makhana hampers for health-conscious clients. Custom branding, personalised
+notes, and festive packaging (Diwali, wedding season, corporate events) are
+available. Lead time is typically 7-10 working days for quantities under 500
+units.
+
+
+================================================================================
+4. BULK & WHOLESALE OFFER
+================================================================================
+
+Golden Deer serves four wholesale audiences:
+
+1. Distributors & Retailers — Stock India's cleanest crunch across your network.
+   Competitive trade pricing, consistent supply, and marketing support.
+
+2. HoReCa & Institutions — Elevate your menu with makhana-based dishes. Bulk raw
+   and roasted grades for hotels, restaurants, caterers, and cafeterias.
+
+3. Corporate Gifting — Custom-branded gift boxes with premium makhana
+   assortments. Minimum 50 units, 7-10 day lead time, festive packaging options.
+
+4. Export Inquiries — FOB/CIF pricing for international buyers. Jumbo grade 5-6
+   suta, third-party lab reports, container-load capacity.
+
+Partner Benefits:
+  - Direct farm-gate pricing — no middlemen
+  - Consistent 5-6 suta jumbo grade quality
+  - Touchless roasting and sorting facility
+  - Nitrogen-flushed packaging for extended shelf life
+  - Third-party lab analysis on every lot
+  - Flexible MOQ — from small artisans to container loads
+
+How It Works:
+  1. Tell us what you need via the inquiry form or WhatsApp.
+  2. Receive a custom quote within 24 hours.
+  3. Order and delivery within 5-7 working days.
+
+Bulk inquiry URL: https://www.cosmicpower.ltd/bulk
+WhatsApp: +91 97791 55132
+
+
+================================================================================
+5. OUR STORY
+================================================================================
+
+Golden Deer began with a simple observation: India's favourite snack grain was
+being sold as a commodity when it deserved to be celebrated as a superfood. For
+centuries, makhana has been harvested from the Gangetic wetlands of Bihar by
+farming families who have cultivated this crop for generations. Yet the farmers
+received commodity pricing while the end consumer ate products with artificial
+flavours and questionable ingredients.
+
+Cosmic Power Pvt. Ltd. was founded to change that. By building direct farm
+partnerships, the company guarantees fair prices for growers while securing the
+finest jumbo-grade seeds for its brand. Every seed is hand-sorted, size-graded,
+and traceable to a specific grower cooperative and harvest date.
+
+The processing facility uses touchless slow-roasting technology — a dry-heat
+process that preserves the natural structure, delicate crunch, and nutritional
+profile of the makhana. No frying, no trans fats, no compromise. The finished
+product is nitrogen-flushed within hours of roasting, locking in freshness
+without chemical preservatives.
+
+Today, Golden Deer offers six products across two distinct customer channels:
+retail consumers who buy via quick-commerce platforms, and business buyers
+(distributors, HoReCa, corporate, export) who work directly with the company
+through its bulk program.
+
+Details: https://www.cosmicpower.ltd/our-story
+
+
+================================================================================
+6. RECIPES
+================================================================================
+
+Golden Deer makhana can be used in six signature recipes. Full ingredient lists
+and step-by-step instructions are at the recipe pages.
+
+1. Makhana Bhel: https://www.cosmicpower.ltd/recipes/makhana-bhel
+   A lighter, crunchier twist on Mumbai's iconic street food. Classic-roast
+   makhana replaces fried puri. 10 minutes, serves 2.
+
+2. Makhana Kheer: https://www.cosmicpower.ltd/recipes/makhana-kheer
+   Royal Indian dessert — roasted fox nuts simmered in sweetened milk until
+   soft. Uses raw makhana. 35 minutes, serves 4.
+
+3. Peri Peri Makhana: https://www.cosmicpower.ltd/recipes/peri-peri-makhana
+   DIY peri-peri with smoked paprika and bird's eye chilli. 15 minutes, serves 2.
+
+4. Makhana Chaat: https://www.cosmicpower.ltd/recipes/makhana-chaat
+   Five-minute chaat with yoghurt and chutneys. Serves 2.
+
+5. Golden Trail Mix: https://www.cosmicpower.ltd/recipes/golden-trail-mix
+   Energy snack with nuts, seeds, dried fruit, and dark chocolate. 5 minutes.
+
+6. Makhana Curry: https://www.cosmicpower.ltd/recipes/makhana-curry
+   North Indian-style curry in rich onion-tomato gravy. 30 minutes, serves 3.
+
+
+================================================================================
+7. CANONICAL URL INDEX
+================================================================================
+
+Home:             https://www.cosmicpower.ltd
+Products:         https://www.cosmicpower.ltd/products
+  Plain:          https://www.cosmicpower.ltd/products/plain
+  Salted:         https://www.cosmicpower.ltd/products/salted
+  Peri Peri:      https://www.cosmicpower.ltd/products/peri-peri
+  Creamy Cheese:  https://www.cosmicpower.ltd/products/creamy-cheese
+  Pudina:         https://www.cosmicpower.ltd/products/pudina
+  Raw Makhana:    https://www.cosmicpower.ltd/products/raw-makhana
+Recipes:          https://www.cosmicpower.ltd/recipes
+  Bhel:           https://www.cosmicpower.ltd/recipes/makhana-bhel
+  Kheer:          https://www.cosmicpower.ltd/recipes/makhana-kheer
+  Peri Peri:      https://www.cosmicpower.ltd/recipes/peri-peri-makhana
+  Chaat:          https://www.cosmicpower.ltd/recipes/makhana-chaat
+  Trail Mix:      https://www.cosmicpower.ltd/recipes/golden-trail-mix
+  Curry:          https://www.cosmicpower.ltd/recipes/makhana-curry
+Our Story:        https://www.cosmicpower.ltd/our-story
+Bulk:             https://www.cosmicpower.ltd/bulk
+FAQ:              https://www.cosmicpower.ltd/faq
+Journal:          https://www.cosmicpower.ltd/journal
+Contact:          https://www.cosmicpower.ltd/contact
+Privacy:          https://www.cosmicpower.ltd/privacy
+Terms:            https://www.cosmicpower.ltd/terms
+Shipping:         https://www.cosmicpower.ltd/shipping
+
+
+================================================================================
+End of Golden Deer Knowledge Base
+================================================================================

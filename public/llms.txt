@@ -1,41 +1,49 @@
 # Golden Deer — Premium Roasted Makhana
 
-## About
-Golden Deer is a premium roasted makhana (fox nuts) brand owned by Cosmic Power Pvt. Ltd., an Indian FMCG enterprise. We produce clean-label, slow-roasted makhana snacks for retail consumers and supply hand-sorted jumbo-grade raw makhana for bulk and wholesale buyers.
+> Golden Deer is a premium roasted makhana (fox nuts) brand owned by Cosmic Power Pvt. Ltd. We produce clean-label, slow-roasted makhana snacks for retail consumers and supply hand-sorted jumbo-grade raw makhana for bulk/wholesale buyers.
 
 ## Brand & Legal
-- Brand: Golden Deer
-- Parent Company: Cosmic Power Pvt. Ltd.
-- CIN: U46307BR2026PTC085787
-- GSTIN: 10AANCC9477F2ZG
-- Startup India: DIPP269634
-- MSME: UDYAM-BR-26-0237862
+- Brand: Golden Deer | Parent: Cosmic Power Pvt. Ltd.
+- CIN: U46307BR2026PTC085787 | GSTIN: 10AANCC9477F2ZG
+- Startup India: DIPP269634 | MSME: UDYAM-BR-26-0237862
+- Address: HN-1639, Gangachak Malikana, Masaurhi, Bihar 804452
+- Email: chandan@cosmicpower.ltd | WhatsApp: +91 97791 55132
 
 ## Product Range (6 SKUs)
-1. Classic Roast — lightly salted, popped in minimal healthy fats
-2. Himalayan Pink Salt & Pepper — mineral salt + cracked pepper
-3. Tangy Tomato — sun-ripened tomato dusting
-4. Creamy Cheese — real aged cheddar coating
-5. Spicy Masala — traditional Indian spice blend
-6. Premium Raw Makhana — hand-sorted jumbo grade (5-6 suta), retail AND bulk
+1. Classic Plain (`/products/plain`) — lightly salted, popped in minimal healthy fats. MRP ₹99
+2. Salted (`/products/salted`) — Himalayan pink salt & cracked pepper. MRP ₹109
+3. Peri Peri (`/products/peri-peri`) — sun-ripened tomato dusting. MRP ₹109
+4. Creamy Cheese (`/products/creamy-cheese`) — real aged cheddar coating. MRP ₹119
+5. Pudina (`/products/pudina`) — traditional Indian spice blend. MRP ₹109
+6. Premium Raw Makhana (`/products/raw-makhana`) — hand-sorted jumbo grade, retail AND bulk. Contact for pricing
+
+## Bulk & Wholesale
+- Raw makhana grades: 5-6 Suta Jumbo (18-24mm), 4-5 Suta Standard (14-18mm)
+- Packaging: 250g retail pouch, 5kg/10kg/25kg bulk bags
+- Audiences: Distributors/Retailers, HoReCa/Institutions, Corporate Gifting (min 50 units), Export
+- Inquire at: https://www.cosmicpower.ltd/bulk
 
 ## Key Differentiators
-- Clean-label: 3 ingredients for Classic Roast — makhana, cold-pressed oil, sea salt
+- Clean-label: 3 ingredients for Classic Plain — makhana, cold-pressed oil, sea salt
 - High protein (9.7g/100g), very low fat (0.1g/100g), naturally gluten-free
-- Hand-sorted jumbo-grade seeds with grade traceability
-- Touchless slow-roasting — never fried, no artificial preservatives
-- Airtight nitrogen-flushed packaging for extended shelf life
+- Hand-sorted jumbo-grade seeds, touchless slow-roasting, nitrogen-flushed packaging
 - Direct farmer partnerships with fair-trade practices
 
 ## Sales Channels
-- Retail D2C: quick-commerce platforms (Blinkit, Zepto) and Amazon
-- Bulk & Wholesale: direct inquiry via website form or WhatsApp
+- Retail D2C: Blinkit, Zepto, Amazon
+- Bulk & Wholesale: https://www.cosmicpower.ltd/bulk or WhatsApp +91 97791 55132
 
 ## Canonical URLs
 - Home: https://www.cosmicpower.ltd
 - Products: https://www.cosmicpower.ltd/products
 - Recipes: https://www.cosmicpower.ltd/recipes
 - Our Story: https://www.cosmicpower.ltd/our-story
-- Bulk & Wholesale: https://www.cosmicpower.ltd/bulk
+- Bulk: https://www.cosmicpower.ltd/bulk
+- FAQ: https://www.cosmicpower.ltd/faq
 - Journal: https://www.cosmicpower.ltd/journal
 - Contact: https://www.cosmicpower.ltd/contact
+- Privacy: https://www.cosmicpower.ltd/privacy
+- Terms: https://www.cosmicpower.ltd/terms
+- Shipping: https://www.cosmicpower.ltd/shipping
+
+> For the complete brand story, all product descriptions, full FAQ answers, and bulk offer as one plain-text feed, see /llms-full.txt
