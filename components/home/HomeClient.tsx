@@ -12,6 +12,7 @@ import { products } from '@/content/products'
 import { recipes } from '@/content/recipes'
 import { site } from '@/content/site'
 import { Container, Button, SectionHeading, Tag, AnimatedCounter } from '@/components/shared/primitives'
+import MotionLoop from '@/components/shared/MotionLoop'
 
 export default function HomeClient() {
   return (
@@ -119,8 +120,8 @@ function FarmDirect() {
     <section className="py-16 sm:py-24 bg-cream-dark/30">
       <Container>
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          <div className="aspect-[4/3] rounded-xl bg-cream flex items-center justify-center">
-            <span className="text-forest-deep/20 font-display text-xl">Farm film</span>
+          <div className="aspect-[4/3] rounded-xl bg-cream flex items-center justify-center overflow-hidden">
+            <MotionLoop src="/videos/story/story-1.mp4" poster="" aspect="4/3" alt="Farm direct" className="w-full h-full" />
           </div>
           <div>
             <Tag variant="gold" className="mb-4">Farm Direct</Tag>
@@ -193,21 +194,26 @@ function RecipesTeaser() {
 }
 
 function JournalTeaser() {
+  const articles = [
+    { title: 'Makhana Konsa Lu? Sahi Makhana Chunne ki Poori Guide', video: '/videos/story/story-2.mp4' },
+    { title: 'Best Clean-Label Makhana Brand in India', video: '/videos/story/story-3.mp4' },
+    { title: 'Is Roasted Makhana Healthy?', video: '/videos/story/story-4.mp4' },
+  ]
   return (
     <section className="py-16 sm:py-24 bg-cream-dark/30">
       <Container>
         <SectionHeading eyebrow="Journal" title="Stories from the Wetlands" lede="Articles, guides, and deep dives into the world of makhana." align="center" className="mb-12" />
         <div className="grid sm:grid-cols-3 gap-6">
-          {['Makhana Konsa Lu? Sahi Makhana Chunne ki Poori Guide', 'Best Clean-Label Makhana Brand in India', 'Is Roasted Makhana Healthy?'].map((title, i) => (
-            <div key={i} className="rounded-xl border border-white/5 bg-cream-dark/40 overflow-hidden">
-              <div className="aspect-[4/3] bg-cream flex items-center justify-center">
-                <span className="text-forest-deep/20 font-display text-sm text-center px-4">{title.split(' ').slice(0, 3).join(' ')}...</span>
+          {articles.map((a, i) => (
+            <Link href="/journal" key={i} className="group block rounded-xl border border-white/5 bg-cream-dark/40 overflow-hidden hover:border-gold/25 transition-all">
+              <div className="aspect-[4/3] bg-cream overflow-hidden">
+                <MotionLoop src={a.video} poster="" aspect="4/3" alt={a.title} className="w-full h-full group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="p-4">
                 <p className="text-xs text-forest-deep/50 mb-1">Journal</p>
-                <h3 className="font-display text-sm text-forest-deep line-clamp-2">{title}</h3>
+                <h3 className="font-display text-sm text-forest-deep group-hover:text-gold transition-colors line-clamp-2">{a.title}</h3>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="text-center mt-10">
