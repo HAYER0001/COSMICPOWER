@@ -72,6 +72,13 @@ export default function Footer() {
               <li><FooterLink href="/our-story">Our Story</FooterLink></li>
               <li><FooterLink href="/journal">Journal</FooterLink></li>
               <li><FooterLink href="/contact">Contact</FooterLink></li>
+              <li><FooterLink href="/brand">Brand Facts</FooterLink></li>
+              <li><FooterLink href="/makhana">Makhana Guide</FooterLink></li>
+              <li><FooterLink href="/makhana/glossary">Glossary</FooterLink></li>
+              <li><FooterLink href="/makhana/nutrition">Nutrition</FooterLink></li>
+              <li><FooterLink href="/makhana/vs">Comparisons</FooterLink></li>
+              <li><FooterLink href="/hi/makhana-kya-hai">हिंदी — मखाना क्या है?</FooterLink></li>
+              <li><FooterLink href="/editorial-policy">Editorial Policy</FooterLink></li>
             </ul>
           </div>
 

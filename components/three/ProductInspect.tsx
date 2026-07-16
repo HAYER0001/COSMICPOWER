@@ -3,7 +3,7 @@
 import { useEffect, useRef, useMemo, useState } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import {
-  OrbitControls, RoundedBox, ContactShadows,
+  PresentationControls, RoundedBox, ContactShadows,
   Float, Environment, Text,
   MeshTransmissionMaterial,
 } from '@react-three/drei'
@@ -121,21 +121,8 @@ function GlassJarScene() {
 // ----------------------------------------------------------------
 // Controls
 // ----------------------------------------------------------------
-function SceneControls({ isRaw }: { isRaw: boolean }) {
-  return (
-    <OrbitControls
-      enablePan={false}
-      enableDamping
-      dampingFactor={0.1}
-      minDistance={3.5}
-      maxDistance={9}
-      minPolarAngle={isRaw ? 0 : Math.PI / 2 - 0.3}
-      maxPolarAngle={isRaw ? Math.PI : Math.PI / 2 + 0.3}
-      minAzimuthAngle={isRaw ? undefined : -Math.PI * 0.19}
-      maxAzimuthAngle={isRaw ? undefined : Math.PI * 0.19}
-    />
-  )
-}
+// OrbitControls removed in favor of PresentationControls which wraps the scene directly
+
 
 // ----------------------------------------------------------------
 // Lights shared by both scenes
@@ -217,7 +204,16 @@ export default function ProductInspect({
       >
         <color attach="background" args={['#0F2E1E']} />
 
-        {isRaw ? <GlassJarScene /> : <PouchScene poster={poster} />}
+        <PresentationControls
+          global
+          cursor={true}
+          snap={true}
+          rotation={[0, 0, 0]}
+          polar={isRaw ? [-Math.PI / 3, Math.PI / 3] : [-0.2, 0.2]}
+          azimuth={isRaw ? [-Math.PI, Math.PI] : [-0.5, 0.5]}
+        >
+          {isRaw ? <GlassJarScene /> : <PouchScene poster={poster} />}
+        </PresentationControls>
 
         <SceneLights />
 
@@ -228,8 +224,6 @@ export default function ProductInspect({
           blur={2.5}
           far={isRaw ? 3 : 5}
         />
-
-        <SceneControls isRaw={isRaw} />
         <Environment preset="studio" />
       </Canvas>
     </div>

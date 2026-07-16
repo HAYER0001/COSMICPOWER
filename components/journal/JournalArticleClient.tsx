@@ -151,6 +151,23 @@ export default function JournalArticleClient({
         })}
       </div>
 
+      <div className="mt-10 p-5 rounded-xl border border-gold/15 bg-gold/[0.03]">
+        <p className="text-sm text-forest-deep/80 leading-relaxed">
+          <strong className="text-forest-deep">Makhana: The Complete Guide</strong> — Learn everything about makhana (fox nuts): what it is, how it is grown, suta grades explained, nutrition per 100g, health benefits, how to roast and season at home, the honest buying checklist, and its role in Indian tradition.{' '}
+          <a href="/makhana" className="text-gold underline underline-offset-2 font-medium whitespace-nowrap">
+            Read the full guide &rarr;
+          </a>
+        </p>
+      </div>
+
+      <div className="mt-6 p-4 rounded-xl border border-gold/15 bg-gold/[0.03]">
+        <p className="text-xs text-forest-deep/60 leading-relaxed">
+          Accuracy commitment &middot; Our content follows the{' '}
+          <a href="/editorial-policy" className="text-gold underline underline-offset-2">Editorial Policy</a>.
+          Nutrition figures are approximate — verify against the pack label for your specific batch.
+            </p>
+          </div>
+
       <Divider className="my-8" />
 
       {/* Share Row */}

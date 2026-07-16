@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next'
 import { products } from '@/content/products'
 import { recipes } from '@/content/recipes'
 import { journal } from '@/content/journal'
+import { glossary } from '@/content/glossary'
+import { comparisons } from '@/content/comparisons'
 
 const BASE_URL = 'https://www.cosmicpower.ltd'
 
@@ -17,6 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${BASE_URL}/terms`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${BASE_URL}/shipping`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${BASE_URL}/brand`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE_URL}/makhana`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
+    { url: `${BASE_URL}/makhana/glossary`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE_URL}/makhana/vs`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE_URL}/makhana/nutrition`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE_URL}/editorial-policy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
   ]
 
   const productRoutes: MetadataRoute.Sitemap = products.map((p) => ({
@@ -24,6 +32,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.8,
+  }))
+
+  const glossaryRoutes: MetadataRoute.Sitemap = glossary.map((g) => ({
+    url: `${BASE_URL}/makhana/glossary/${g.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.5,
   }))
 
   const recipeRoutes: MetadataRoute.Sitemap = recipes.map((r) => ({
@@ -40,5 +55,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
-  return [...staticRoutes, ...productRoutes, ...recipeRoutes, ...journalRoutes]
+  const comparisonRoutes: MetadataRoute.Sitemap = comparisons.map((c) => ({
+    url: `${BASE_URL}/makhana/vs/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }))
+
+  const hindiRoutes: MetadataRoute.Sitemap = [
+    { url: `${BASE_URL}/hi/makhana-kya-hai`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE_URL}/hi/makhana-konsa-lu`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
+  ]
+
+  return [...staticRoutes, ...productRoutes, ...recipeRoutes, ...journalRoutes, ...glossaryRoutes, ...comparisonRoutes, ...hindiRoutes]
 }

@@ -64,6 +64,10 @@ export default function FAQPage() {
           lede="Everything you need to know about Golden Deer premium roasted makhana — from snacking tips to bulk orders."
         />
 
+        <p className="mt-4 text-sm text-forest-deep/60">
+              For a comprehensive guide to makhana — fox nuts, grades explained, nutrition table, health benefits, how to roast at home, buying checklist, and cultural significance — see the{' '}
+              <Link href="/makhana" className="underline underline-offset-2 text-gold/80 hover:text-gold transition-colors">Makhana Guide</Link>.
+            </p>
         <div className="mt-12 max-w-3xl space-y-12">
           <FAQAccordion items={consumerFaqs} title="For Snackers" />
           <FAQAccordion items={bulkFaqs} title="For Bulk Buyers" />

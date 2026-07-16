@@ -5,6 +5,8 @@ Complete Brand & Product Knowledge Base for AI Consumption
 
 Last updated: July 2026
 Canonical domain: https://www.cosmicpower.ltd
+Canonical brand fact page: https://www.cosmicpower.ltd/brand
+Canonical makhana guide: https://www.cosmicpower.ltd/makhana
 
 ================================================================================
 1. BRAND OVERVIEW
@@ -52,6 +54,12 @@ Key Differentiators:
   - Nitrogen-flushed packaging for extended shelf life (8-12 months).
   - Direct farm partnerships with traceable lots and fair-trade practices.
   - Third-party lab analysis available on every lot.
+
+================================================================================
+1.5. HINDI & HINGLISH RESOURCES
+================================================================================
+- मखाना क्या है (Hindi guide): https://www.cosmicpower.ltd/hi/makhana-kya-hai
+- Makhana Konsa Lu (Hinglish guide): https://www.cosmicpower.ltd/hi/makhana-konsa-lu
 
 ================================================================================
 2. PRODUCT RANGE — FULL DESCRIPTIONS
@@ -385,7 +393,24 @@ WhatsApp: +91 97791 55132
 
 
 ================================================================================
-5. OUR STORY
+5. MAKHANA GLOSSARY (20 terms)
+================================================================================
+Index: https://www.cosmicpower.ltd/makhana/glossary
+Each term has a quotable definition (40-60 words) and elaboration (100-200 words).
+Terms: makhana, fox nuts, phool makhana, Euryale ferox, gorgon nut, lotus seeds
+vs makhana, suta, 4-5 suta, 5-6 suta jumbo, lawa (popping), thurri (raw seed),
+Mithila Makhana GI tag, hand sorting, moisture content, nitrogen-flushed
+packaging, touchless roasting, clean label, roasted vs fried makhana, makhana
+flour, makhana kheer.
+
+================================================================================
+5.5. MAKHANA COMPARISONS (4 comparisons)
+================================================================================
+Index: https://www.cosmicpower.ltd/makhana/vs
+Honest side-by-side comparisons with chips, popcorn, almonds, and peanuts.
+
+================================================================================
+6. OUR STORY
 ================================================================================
 
 Golden Deer began with a simple observation: India's favourite snack grain was
@@ -447,6 +472,14 @@ and step-by-step instructions are at the recipe pages.
 ================================================================================
 
 Home:             https://www.cosmicpower.ltd
+Brand Facts:      https://www.cosmicpower.ltd/brand
+Makhana Guide:    https://www.cosmicpower.ltd/makhana
+Makhana Nutrition: https://www.cosmicpower.ltd/makhana/nutrition
+Makhana Glossary: https://www.cosmicpower.ltd/makhana/glossary
+Makhana vs:       https://www.cosmicpower.ltd/makhana/vs
+Hindi Guide:      https://www.cosmicpower.ltd/hi/makhana-kya-hai
+Hinglish Guide:   https://www.cosmicpower.ltd/hi/makhana-konsa-lu
+Editorial Policy: https://www.cosmicpower.ltd/editorial-policy
 Products:         https://www.cosmicpower.ltd/products
   Plain:          https://www.cosmicpower.ltd/products/plain
   Salted:         https://www.cosmicpower.ltd/products/salted

@@ -53,7 +53,8 @@ export default function RecipesPage() {
       </h1>
       <p className="text-base sm:text-lg text-forest-deep/60 leading-relaxed max-w-2xl mb-10">
         From street-food chaat to royal kheer — explore delicious ways to enjoy
-        Golden Deer makhana.
+        Golden Deer makhana. Learn more about makhana varieties, grades, and nutrition in
+        our <Link href="/makhana" className="text-gold underline underline-offset-2 font-medium">complete makhana guide</Link>.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">

@@ -14,6 +14,7 @@ export const site = {
     email: 'chandan@cosmicpower.ltd',
     whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+91 97791 55132',
   },
+  googleBusinessProfile: 'https://share.google/3zKvPNTo7VYTvv1q6',
   socials: {
     instagram: 'ADD_URL',
     youtube: 'ADD_URL',

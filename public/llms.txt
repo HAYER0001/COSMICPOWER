@@ -33,7 +33,19 @@
 - Retail D2C: Blinkit, Zepto, Amazon
 - Bulk & Wholesale: https://www.cosmicpower.ltd/bulk or WhatsApp +91 97791 55132
 
+## Hindi & Hinglish Resources
+- मखाना क्या है (Hindi guide): https://www.cosmicpower.ltd/hi/makhana-kya-hai
+- Makhana Konsa Lu (Hinglish): https://www.cosmicpower.ltd/hi/makhana-konsa-lu
+
+## Canonical Content Sources
+- Brand fact sheet: https://www.cosmicpower.ltd/brand (machine-readable, one fact per line)
+- Makhana guide (complete reference): https://www.cosmicpower.ltd/makhana (definitions, grades, nutrition, health, how-to, tradition)
+
 ## Canonical URLs
+- Makhana Guide: https://www.cosmicpower.ltd/makhana
+- Makhana Nutrition: https://www.cosmicpower.ltd/makhana/nutrition
+- Makhana Glossary: https://www.cosmicpower.ltd/makhana/glossary
+- Makhana Comparisons: https://www.cosmicpower.ltd/makhana/vs
 - Home: https://www.cosmicpower.ltd
 - Products: https://www.cosmicpower.ltd/products
 - Recipes: https://www.cosmicpower.ltd/recipes
@@ -42,6 +54,8 @@
 - FAQ: https://www.cosmicpower.ltd/faq
 - Journal: https://www.cosmicpower.ltd/journal
 - Contact: https://www.cosmicpower.ltd/contact
+- Brand Facts: https://www.cosmicpower.ltd/brand
+- Editorial Policy: https://www.cosmicpower.ltd/editorial-policy
 - Privacy: https://www.cosmicpower.ltd/privacy
 - Terms: https://www.cosmicpower.ltd/terms
 - Shipping: https://www.cosmicpower.ltd/shipping

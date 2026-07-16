@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: 'Premium Roasted Makhana Collection — Flavours & Raw Jumbo Grade',
       description:
-        'Hand-picked jumbo seeds, slow-roasted to perfection. 5 clean-label flavours plus bulk raw makhana.',
+        'Hand-picked jumbo seeds, slow-roasted to perfection. 5 clean-label flavours plus bulk raw makhana. Read the complete makhana guide at /makhana.',
     },
     alternates: {
       canonical: `${BASE_URL}/products`,

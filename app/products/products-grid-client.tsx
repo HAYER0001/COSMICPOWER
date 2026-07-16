@@ -65,6 +65,13 @@ export default function ProductsGridClient() {
           <ProductCard key={product.slug} product={product} />
         ))}
       </div>
+
+      <div className="mt-12 p-5 rounded-xl border border-gold/20 bg-gradient-to-br from-gold/[0.03] to-transparent text-center">
+        <p className="text-sm text-forest-deep/70 leading-relaxed">
+          Learn about makhana varieties, suta grades, nutrition, and how to choose the best quality — explore our{' '}
+          <Link href="/makhana" className="text-gold underline underline-offset-2 font-medium">complete makhana guide</Link>.
+        </p>
+      </div>
     </Container>
   )
 }
@@ -148,3 +155,4 @@ function ProductCard({ product }: { product: Product }) {
     </article>
   )
 }
+

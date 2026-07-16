@@ -7,6 +7,7 @@ export default function OrganizationSchema() {
     site.socials.instagram,
     site.socials.youtube,
     site.socials.linkedin,
+    site.googleBusinessProfile,
   ].filter((url) => url !== 'ADD_URL')
 
   const jsonLd = {

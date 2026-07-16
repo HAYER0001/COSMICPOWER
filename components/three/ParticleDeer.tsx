@@ -187,6 +187,10 @@ function DeerParticles({
       1 + Math.sin(time * 0.6) * 0.015 * breathing
 
     const colors = geo.attributes.color.array as Float32Array
+    
+    // Orthographic bounds are -8 to 8
+    const mx = state.pointer.x * 8
+    const my = state.pointer.y * 8
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3
@@ -216,6 +220,16 @@ function DeerParticles({
       pos[i3] *= breathScale
       pos[i3 + 1] *= breathScale
       pos[i3 + 2] *= breathScale
+
+      // Interactive mouse repulsion
+      const distX = pos[i3] - mx
+      const distY = pos[i3 + 1] - my
+      const distSq = distX * distX + distY * distY
+      if (distSq < 4) { // radius of repulsion
+        const force = (4 - distSq) / 4
+        pos[i3] += distX * force * 0.5
+        pos[i3 + 1] += distY * force * 0.5
+      }
 
       const sh =
         shimmer > 0

@@ -388,6 +388,11 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             <Divider />
             <QuickAnswer product={product} />
             <NutritionTable product={product} />
+            <div className="text-xs text-forest-deep/50">
+              <Link href="/makhana/nutrition" className="text-gold underline underline-offset-2">Full makhana nutrition reference &rarr;</Link>
+              {' · '}
+              <Link href="/makhana" className="text-gold underline underline-offset-2">Makhana guide</Link>
+            </div>
             <div>
               <h3 className="font-display text-xl text-forest-deep mb-3">Ingredients</h3>
               <p className="text-sm text-forest-deep/70 leading-relaxed">{product.ingredients.join(', ')}.</p>
