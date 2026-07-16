@@ -7,7 +7,7 @@ import { useState, useEffect, type ReactNode, useRef } from 'react'
 export default function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname()
   const [useDirect, setUseDirect] = useState(false)
-  const prevPath = useRef(pathname)
+  const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -15,15 +15,19 @@ export default function PageTransition({ children }: { children: ReactNode }) {
     const hasVT = 'startViewTransition' in document
     const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+    clearTimeout(timerRef.current)
+
     if (vtUsed && hasVT && !rm) {
       sessionStorage.removeItem('vt-product-slug')
-      setUseDirect(true)
-      const timer = setTimeout(() => setUseDirect(false), 100)
-      return () => clearTimeout(timer)
+      timerRef.current = setTimeout(() => {
+        setUseDirect(true)
+        requestAnimationFrame(() => {
+          timerRef.current = setTimeout(() => setUseDirect(false), 80)
+        })
+      }, 0)
+    } else {
+      timerRef.current = setTimeout(() => setUseDirect(false), 0)
     }
-
-    prevPath.current = pathname
-    setUseDirect(false)
   }, [pathname])
 
   if (useDirect) {

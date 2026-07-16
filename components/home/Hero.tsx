@@ -96,7 +96,7 @@ export default function Hero() {
       className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-cream"
     >
       <div ref={bgRef} className="absolute inset-0 will-change-transform">
-        <div className="absolute -inset-[15%] w-[130%] h-[130%]">
+        <div className="absolute inset-0 scale-[1.3]">
           <Image
             src="/videos/hero-poster.jpg"
             alt=""
