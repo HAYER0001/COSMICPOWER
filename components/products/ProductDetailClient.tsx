@@ -126,10 +126,13 @@ function Accordion({ items }: { items: { title: string; content: string }[] }) {
 }
 
 function CtaButtons({ product }: { product: Product }) {
-  const hasBlinkit = product.commerce.blinkit !== 'ADD_URL'
-  const hasZepto = product.commerce.zepto !== 'ADD_URL'
-  const hasAmazon = product.commerce.amazon !== 'ADD_URL'
-  const hasIndiaMart = product.commerce.indiamart && product.commerce.indiamart !== 'ADD_URL'
+  const isBlinkit = product.commerce.blinkit !== 'ADD_URL'
+  const isZepto = product.commerce.zepto !== 'ADD_URL'
+  const isAmazon = product.commerce.amazon !== 'ADD_URL'
+  const isIndiaMart = product.commerce.indiamart && product.commerce.indiamart !== 'ADD_URL'
+  const isInstamart = product.commerce.instamart && product.commerce.instamart !== 'ADD_URL'
+
+  const wpUrl = `https://cosmicpower.ltd/products/${product.slug}`
 
   if (product.isBulk) {
     return (
@@ -140,7 +143,7 @@ function CtaButtons({ product }: { product: Product }) {
         </Button>
         <Button
           variant="gold-outline"
-          href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like a wholesale quote for Golden Deer raw makhana — grade/quantity: `)}`}
+          href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like a wholesale quote for Golden Deer raw makhana — grade/quantity: (Link: ${wpUrl})`)}`}
           className="w-full"
         >
           <MessageCircle className="w-4 h-4" />
@@ -152,37 +155,30 @@ function CtaButtons({ product }: { product: Product }) {
 
   return (
     <div className="flex flex-col gap-2.5">
-      {hasBlinkit && (
-        <Button variant="gold-solid" href={product.commerce.blinkit} className="w-full">
-          <ShoppingBag className="w-4 h-4" />
-          Buy on Blinkit
-        </Button>
-      )}
-      {hasZepto && (
-        <Button variant="gold-solid" href={product.commerce.zepto} className="w-full">
-          <ShoppingBag className="w-4 h-4" />
-          Buy on Zepto
-        </Button>
-      )}
-      {hasAmazon && (
-        <Button variant="gold-outline" href={product.commerce.amazon} className="w-full">
-          <ShoppingBag className="w-4 h-4" />
-          Buy on Amazon
-        </Button>
-      )}
-      {hasIndiaMart && (
-        <Button variant="gold-outline" href={product.commerce.indiamart!} className="w-full">
-          <ShoppingBag className="w-4 h-4" />
-          Buy on IndiaMart
-        </Button>
-      )}
-      {!hasBlinkit && !hasZepto && !hasAmazon && !hasIndiaMart && (
-        <p className="text-xs text-forest-deep/40 text-center italic">Online ordering links coming soon. Stay tuned!</p>
-      )}
+      <Button variant={isBlinkit ? "gold-solid" : "gold-outline"} href={product.commerce.blinkit} className="w-full" disabled={!isBlinkit}>
+        <ShoppingBag className="w-4 h-4" />
+        {isBlinkit ? 'Buy on Blinkit' : 'Blinkit (Coming Soon)'}
+      </Button>
+      <Button variant={isZepto ? "gold-solid" : "gold-outline"} href={product.commerce.zepto} className="w-full" disabled={!isZepto}>
+        <ShoppingBag className="w-4 h-4" />
+        {isZepto ? 'Buy on Zepto' : 'Zepto (Coming Soon)'}
+      </Button>
+      <Button variant={isInstamart ? "gold-solid" : "gold-outline"} href={product.commerce.instamart || '#'} className="w-full" disabled={!isInstamart}>
+        <ShoppingBag className="w-4 h-4" />
+        {isInstamart ? 'Buy on Instamart' : 'Instamart (Coming Soon)'}
+      </Button>
+      <Button variant="gold-outline" href={product.commerce.amazon} className="w-full" disabled={!isAmazon}>
+        <ShoppingBag className="w-4 h-4" />
+        {isAmazon ? 'Buy on Amazon' : 'Amazon (Coming Soon)'}
+      </Button>
+      <Button variant="gold-outline" href={product.commerce.indiamart || '#'} className="w-full" disabled={!isIndiaMart}>
+        <ShoppingBag className="w-4 h-4" />
+        {isIndiaMart ? 'Buy on IndiaMart' : 'IndiaMart (Coming Soon)'}
+      </Button>
       <Button
         variant="ghost"
-        href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like to know more about Golden Deer ${product.name} — `)}`}
-        className="w-full text-xs"
+        href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like to order Golden Deer ${product.name}. Here is the link: ${wpUrl}`)}`}
+        className="w-full text-xs mt-2"
       >
         <MessageCircle className="w-3.5 h-3.5" />
         Order via WhatsApp
@@ -266,10 +262,7 @@ function RelatedProducts({ current }: { current: Product }) {
 }
 
 function MobileStickyBar({ product }: { product: Product }) {
-  const hasBlinkit = product.commerce.blinkit !== 'ADD_URL'
-  const hasZepto = product.commerce.zepto !== 'ADD_URL'
-  const hasAmazon = product.commerce.amazon !== 'ADD_URL'
-  const hasIndiaMart = product.commerce.indiamart && product.commerce.indiamart !== 'ADD_URL'
+  const wpUrl = `https://cosmicpower.ltd/products/${product.slug}`
 
   if (product.isBulk) {
     return (
@@ -278,7 +271,7 @@ function MobileStickyBar({ product }: { product: Product }) {
           <MessageCircle className="w-4 h-4" />
           Bulk Quote
         </a>
-        <a href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like a wholesale quote for Golden Deer raw makhana — grade/quantity: `)}`} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-gold text-gold text-sm font-medium rounded-lg active:scale-[0.97] transition-all">
+        <a href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like a wholesale quote for Golden Deer raw makhana — grade/quantity: (Link: ${wpUrl})`)}`} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-gold text-gold text-sm font-medium rounded-lg active:scale-[0.97] transition-all">
           <MessageCircle className="w-4 h-4" />
           WhatsApp
         </a>
@@ -288,15 +281,9 @@ function MobileStickyBar({ product }: { product: Product }) {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur-lg border-t border-gold/15 px-4 py-3 flex items-center gap-3 sm:hidden">
-      {(hasBlinkit || hasZepto || hasIndiaMart) && (
-        <a href={hasBlinkit ? product.commerce.blinkit : hasZepto ? product.commerce.zepto : product.commerce.indiamart!} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gold text-forest-deep text-sm font-medium rounded-lg active:scale-[0.97] transition-all">
-          <ShoppingBag className="w-4 h-4" />
-          {hasBlinkit ? 'Blinkit' : hasZepto ? 'Zepto' : 'IndiaMart'}
-        </a>
-      )}
-      <a href={hasAmazon ? product.commerce.amazon : `https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like to know more about Golden Deer ${product.name} — `)}`} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-gold text-gold text-sm font-medium rounded-lg active:scale-[0.97] transition-all">
-        {hasAmazon ? <ShoppingBag className="w-4 h-4" /> : <MessageCircle className="w-3.5 h-3.5" />}
-        {hasAmazon ? 'Amazon' : 'WhatsApp'}
+      <a href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like to order Golden Deer ${product.name}. Here is the link: ${wpUrl}`)}`} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gold text-forest-deep text-sm font-medium rounded-lg active:scale-[0.97] transition-all">
+        <MessageCircle className="w-4 h-4" />
+        Order via WhatsApp
       </a>
     </div>
   )

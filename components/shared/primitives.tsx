@@ -49,7 +49,7 @@ export function Button({
 
   const cls = `${base} ${variants[variant]} ${className}`
 
-  if (href) {
+  if (href && !disabled) {
     return (
       <a href={href} className={cls} onClick={onClick}>
         {children}

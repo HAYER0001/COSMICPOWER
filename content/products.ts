@@ -23,6 +23,7 @@ export interface Product {
     zepto: string
     amazon: string
     indiamart?: string
+    instamart?: string
   }
   isBulk: boolean
   bulkSpec?: {
@@ -74,6 +75,7 @@ export const products: Product[] = [
       zepto: 'ADD_URL',
       amazon: 'ADD_URL',
       indiamart: 'ADD_URL',
+      instamart: 'ADD_URL',
     },
     isBulk: false,
   },
@@ -115,6 +117,7 @@ export const products: Product[] = [
       zepto: 'ADD_URL',
       amazon: 'ADD_URL',
       indiamart: 'ADD_URL',
+      instamart: 'ADD_URL',
     },
     isBulk: false,
   },
@@ -157,6 +160,7 @@ export const products: Product[] = [
       zepto: 'ADD_URL',
       amazon: 'ADD_URL',
       indiamart: 'ADD_URL',
+      instamart: 'ADD_URL',
     },
     isBulk: false,
   },
@@ -201,6 +205,7 @@ export const products: Product[] = [
       zepto: 'ADD_URL',
       amazon: 'ADD_URL',
       indiamart: 'ADD_URL',
+      instamart: 'ADD_URL',
     },
     isBulk: false,
   },
@@ -247,6 +252,7 @@ export const products: Product[] = [
       zepto: 'ADD_URL',
       amazon: 'ADD_URL',
       indiamart: 'ADD_URL',
+      instamart: 'ADD_URL',
     },
     isBulk: false,
   },
@@ -283,6 +289,7 @@ export const products: Product[] = [
       zepto: 'ADD_URL',
       amazon: 'ADD_URL',
       indiamart: 'ADD_URL',
+      instamart: 'ADD_URL',
     },
     isBulk: true,
     bulkSpec: {

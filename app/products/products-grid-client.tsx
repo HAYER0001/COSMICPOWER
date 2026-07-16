@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { products } from '@/content/products'
+import { site } from '@/content/site'
 import { Container, SectionHeading, Tag } from '@/components/shared/primitives'
 import type { Product } from '@/content/products'
 
@@ -119,26 +120,27 @@ function ProductCard({ product }: { product: Product }) {
             </Link>
           ) : (
             <div className="flex gap-2 flex-wrap">
-              {product.commerce.blinkit && product.commerce.blinkit !== 'ADD_URL' && (
-                <a href={product.commerce.blinkit} target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg bg-gold/20 border border-gold/30 px-3 py-2 text-center text-xs font-medium text-forest-deep hover:bg-gold hover:border-gold transition-all">
-                  Blinkit
-                </a>
-              )}
-              {product.commerce.zepto && product.commerce.zepto !== 'ADD_URL' && (
-                <a href={product.commerce.zepto} target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg bg-gold/20 border border-gold/30 px-3 py-2 text-center text-xs font-medium text-forest-deep hover:bg-gold hover:border-gold transition-all">
-                  Zepto
-                </a>
-              )}
-              {product.commerce.indiamart && product.commerce.indiamart !== 'ADD_URL' && (
-                <a href={product.commerce.indiamart} target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg bg-gold/20 border border-gold/30 px-3 py-2 text-center text-xs font-medium text-forest-deep hover:bg-gold hover:border-gold transition-all">
-                  IndiaMart
-                </a>
-              )}
-              {(!product.commerce.blinkit || product.commerce.blinkit === 'ADD_URL') &&
-               (!product.commerce.zepto || product.commerce.zepto === 'ADD_URL') &&
-               (!product.commerce.indiamart || product.commerce.indiamart === 'ADD_URL') && (
-                <p className="text-xs text-forest-deep/40 italic text-center w-full py-1">Ordering links coming soon.</p>
-              )}
+              <span className={`flex-1 min-w-[70px] rounded-lg border px-2 py-1.5 text-center text-[10px] font-medium transition-all ${product.commerce.blinkit !== 'ADD_URL' ? 'bg-gold/20 border-gold/30 text-forest-deep hover:bg-gold hover:border-gold' : 'bg-transparent border-forest/10 text-forest-deep/40 cursor-not-allowed'}`}>
+                {product.commerce.blinkit !== 'ADD_URL' ? <a href={product.commerce.blinkit} target="_blank" rel="noreferrer" className="block w-full">Blinkit</a> : 'Blinkit (Soon)'}
+              </span>
+              <span className={`flex-1 min-w-[70px] rounded-lg border px-2 py-1.5 text-center text-[10px] font-medium transition-all ${product.commerce.zepto !== 'ADD_URL' ? 'bg-gold/20 border-gold/30 text-forest-deep hover:bg-gold hover:border-gold' : 'bg-transparent border-forest/10 text-forest-deep/40 cursor-not-allowed'}`}>
+                {product.commerce.zepto !== 'ADD_URL' ? <a href={product.commerce.zepto} target="_blank" rel="noreferrer" className="block w-full">Zepto</a> : 'Zepto (Soon)'}
+              </span>
+              <span className={`flex-1 min-w-[70px] rounded-lg border px-2 py-1.5 text-center text-[10px] font-medium transition-all ${product.commerce.instamart !== 'ADD_URL' ? 'bg-gold/20 border-gold/30 text-forest-deep hover:bg-gold hover:border-gold' : 'bg-transparent border-forest/10 text-forest-deep/40 cursor-not-allowed'}`}>
+                {product.commerce.instamart !== 'ADD_URL' ? <a href={product.commerce.instamart} target="_blank" rel="noreferrer" className="block w-full">Instamart</a> : 'Instamart (Soon)'}
+              </span>
+              <span className={`flex-1 min-w-[70px] rounded-lg border px-2 py-1.5 text-center text-[10px] font-medium transition-all ${product.commerce.amazon !== 'ADD_URL' ? 'bg-gold/20 border-gold/30 text-forest-deep hover:bg-gold hover:border-gold' : 'bg-transparent border-forest/10 text-forest-deep/40 cursor-not-allowed'}`}>
+                {product.commerce.amazon !== 'ADD_URL' ? <a href={product.commerce.amazon} target="_blank" rel="noreferrer" className="block w-full">Amazon</a> : 'Amazon (Soon)'}
+              </span>
+              <span className={`flex-1 min-w-[70px] rounded-lg border px-2 py-1.5 text-center text-[10px] font-medium transition-all ${product.commerce.indiamart !== 'ADD_URL' ? 'bg-gold/20 border-gold/30 text-forest-deep hover:bg-gold hover:border-gold' : 'bg-transparent border-forest/10 text-forest-deep/40 cursor-not-allowed'}`}>
+                {product.commerce.indiamart !== 'ADD_URL' ? <a href={product.commerce.indiamart} target="_blank" rel="noreferrer" className="block w-full">IndiaMart</a> : 'IndiaMart (Soon)'}
+              </span>
+              <a 
+                href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like to order Golden Deer ${product.name}. Here is the link: https://cosmicpower.ltd/products/${product.slug}`)}`}
+                className="w-full mt-1 flex items-center justify-center gap-1.5 rounded-lg border border-gold px-3 py-2 text-center text-xs font-medium text-gold hover:bg-gold hover:text-forest-deep transition-all"
+              >
+                Order via WhatsApp
+              </a>
             </div>
           )}
         </div>
