@@ -1,0 +1,23 @@
+{
+  "name": "Golden Deer",
+  "short_name": "Golden Deer",
+  "description": "Premium roasted makhana — clean-label, naturally gluten-free",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#081A10",
+  "theme_color": "#0F2E1E",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
