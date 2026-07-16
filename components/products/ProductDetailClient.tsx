@@ -143,7 +143,7 @@ function CtaButtons({ product }: { product: Product }) {
         </Button>
         <Button
           variant="gold-outline"
-          href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like a wholesale quote for Golden Deer raw makhana — grade/quantity: (Link: ${wpUrl})`)}`}
+          href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(`Hi, I'd like a wholesale quote for Golden Deer raw makhana — grade/quantity: (Link: ${wpUrl})`)}`}
           className="w-full"
         >
           <MessageCircle className="w-4 h-4" />
@@ -177,7 +177,7 @@ function CtaButtons({ product }: { product: Product }) {
       </Button>
       <Button
         variant="ghost"
-        href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like to order Golden Deer ${product.name}. Here is the link: ${wpUrl}`)}`}
+        href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(`Hi, I'd like to order Golden Deer ${product.name}. Here is the link: ${wpUrl}`)}`}
         className="w-full text-xs mt-2"
       >
         <MessageCircle className="w-3.5 h-3.5" />
@@ -271,7 +271,7 @@ function MobileStickyBar({ product }: { product: Product }) {
           <MessageCircle className="w-4 h-4" />
           Bulk Quote
         </a>
-        <a href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like a wholesale quote for Golden Deer raw makhana — grade/quantity: (Link: ${wpUrl})`)}`} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-gold text-gold text-sm font-medium rounded-lg active:scale-[0.97] transition-all">
+        <a href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(`Hi, I'd like a wholesale quote for Golden Deer raw makhana — grade/quantity: (Link: ${wpUrl})`)}`} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-gold text-gold text-sm font-medium rounded-lg active:scale-[0.97] transition-all">
           <MessageCircle className="w-4 h-4" />
           WhatsApp
         </a>
@@ -281,7 +281,7 @@ function MobileStickyBar({ product }: { product: Product }) {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur-lg border-t border-gold/15 px-4 py-3 flex items-center gap-3 sm:hidden">
-      <a href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like to order Golden Deer ${product.name}. Here is the link: ${wpUrl}`)}`} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gold text-forest-deep text-sm font-medium rounded-lg active:scale-[0.97] transition-all">
+      <a href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(`Hi, I'd like to order Golden Deer ${product.name}. Here is the link: ${wpUrl}`)}`} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gold text-forest-deep text-sm font-medium rounded-lg active:scale-[0.97] transition-all">
         <MessageCircle className="w-4 h-4" />
         Order via WhatsApp
       </a>

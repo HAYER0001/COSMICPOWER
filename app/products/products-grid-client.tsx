@@ -136,7 +136,7 @@ function ProductCard({ product }: { product: Product }) {
                 {product.commerce.indiamart !== 'ADD_URL' ? <a href={product.commerce.indiamart} target="_blank" rel="noreferrer" className="block w-full">IndiaMart</a> : 'IndiaMart (Soon)'}
               </span>
               <a 
-                href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(`Hi, I'd like to order Golden Deer ${product.name}. Here is the link: https://cosmicpower.ltd/products/${product.slug}`)}`}
+                href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(`Hi, I'd like to order Golden Deer ${product.name}. Here is the link: https://cosmicpower.ltd/products/${product.slug}`)}`}
                 className="w-full mt-1 flex items-center justify-center gap-1.5 rounded-lg border border-gold px-3 py-2 text-center text-xs font-medium text-gold hover:bg-gold hover:text-forest-deep transition-all"
               >
                 Order via WhatsApp

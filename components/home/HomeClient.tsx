@@ -147,7 +147,7 @@ function GiftingAndBulk() {
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button variant="gold-solid" href="/bulk">Explore Bulk &amp; Wholesale <ArrowRight className="w-4 h-4" /></Button>
-          <Button variant="gold-outline" href={`https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent('Hi, I\'d like a bulk quote for Golden Deer makhana — grade/quantity: ')}`}>
+          <Button variant="gold-outline" href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent('Hi, I\'d like a bulk quote for Golden Deer makhana — grade/quantity: ')}`}>
             <MessageCircle className="w-4 h-4" /> WhatsApp Inquiry
           </Button>
         </div>
