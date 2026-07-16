@@ -113,7 +113,7 @@ export default function BulkPage() {
         <div className="absolute inset-0">
           <MotionLoop
             src="/videos/gifting.mp4"
-            poster="/videos/gifting-poster.jpg"
+            poster=""
             aspect="16/9"
             alt="Golden Deer bulk makhana — premium gifting"
             priority

@@ -64,7 +64,7 @@ export default function Footer() {
             <div className="w-24 h-24 overflow-hidden rounded-lg border border-gold/10">
               <MotionLoop
                 src="/videos/logo-reveal.mp4"
-                poster="/videos/logo-reveal-poster.jpg"
+                poster=""
                 aspect="1/1"
                 alt="Golden Deer logo reveal"
                 className="w-full h-full"
