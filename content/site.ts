@@ -8,7 +8,7 @@ export const site = {
     startupIndia: 'DIPP269634',
     msme: 'UDYAM-BR-26-0237862',
     fssaiLicense: 'ADD_FSSAI_NUMBER',
-    address: 'C/o 1639, MALKANA, Gangachak, Ganga Chak, Masaurhi, Bihar 804452',
+    address: 'HN-1639, Gangachak Malikana, Masaurhi, Bihar 804452',
   },
   contact: {
     email: 'chandan@cosmicpower.ltd',
