@@ -36,13 +36,13 @@ export function Button({
   disabled = false,
 }: ButtonProps) {
   const base =
-    'inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium tracking-wide transition-all duration-200 active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none'
+    'inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium tracking-wide transition-all duration-200 active:translate-y-px disabled:opacity-50 disabled:pointer-events-none'
 
   const variants: Record<string, string> = {
     'gold-solid':
-      'bg-gold text-forest-deep hover:bg-gold-light hover:shadow-gold-glow-sm',
+      'bg-gold text-forest-deep shadow-[0_4px_6px_-1px_rgba(0,0,0,0.08),0_2px_4px_-2px_rgba(0,0,0,0.05),inset_0_1px_0_rgba(255,255,255,0.25)] hover:bg-gold-light hover:shadow-[0_6px_10px_-2px_rgba(0,0,0,0.1),0_3px_6px_-2px_rgba(0,0,0,0.05),inset_0_1px_0_rgba(255,255,255,0.35)] active:shadow-[0_1px_2px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.25)]',
     'gold-outline':
-      'border border-gold text-gold hover:bg-gold hover:text-forest-deep hover:shadow-gold-glow-sm',
+      'border border-gold text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] hover:bg-gold hover:text-forest-deep hover:shadow-gold-glow-sm active:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]',
     ghost:
       'text-forest-deep/70 hover:text-forest-deep hover:bg-forest-deep/5',
   }

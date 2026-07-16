@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useCallback, type ReactNode } from 'react'
+import { useRef, useCallback, useState, type ReactNode } from 'react'
 
 interface TiltCardProps {
   children: ReactNode
@@ -14,6 +14,7 @@ export default function TiltCard({
   maxTilt = 6,
 }: TiltCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
+  const [sheenVisible, setSheenVisible] = useState(false)
 
   const onMove = useCallback(
     (e: React.MouseEvent) => {
@@ -29,25 +30,38 @@ export default function TiltCard({
       const y = (e.clientY - rect.top) / rect.height - 0.5
 
       el.style.transform = `perspective(800px) rotateY(${x * maxTilt}deg) rotateX(${-y * maxTilt}deg)`
+      el.style.setProperty('--sheen-x', `${(x + 0.5) * 100}%`)
+      el.style.setProperty('--sheen-y', `${(-y + 0.5) * 100}%`)
+      setSheenVisible(true)
     },
-    [maxTilt]
+    [maxTilt],
   )
 
   const onLeave = useCallback(() => {
     const el = cardRef.current
     if (!el) return
     el.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg)'
+    setSheenVisible(false)
   }, [])
 
   return (
     <div
       ref={cardRef}
-      className={`will-change-transform transition-transform duration-200 ease-out ${className}`}
+      className={`relative will-change-transform transition-transform duration-200 ease-out overflow-hidden ${className}`}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       style={{ transformStyle: 'preserve-3d' }}
     >
       {children}
+      <div
+        className="pointer-events-none absolute inset-0 transition-opacity duration-300"
+        style={{
+          background:
+            'radial-gradient(circle at var(--sheen-x, 50%) var(--sheen-y, 50%), rgba(255,255,255,0.12) 0%, transparent 60%)',
+          opacity: sheenVisible ? 1 : 0,
+        }}
+        aria-hidden
+      />
     </div>
   )
 }

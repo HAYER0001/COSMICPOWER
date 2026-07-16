@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import type { Product } from '@/content/products'
 import { site } from '@/content/site'
 import { products } from '@/content/products'
@@ -14,7 +15,13 @@ import {
   ChevronDown,
   ShoppingBag,
   MessageCircle,
+  Rotate3D,
 } from 'lucide-react'
+
+const ProductInspect = dynamic(
+  () => import('@/components/three/ProductInspect'),
+  { ssr: false }
+)
 
 function Breadcrumb({ product }: { product: Product }) {
   return (
@@ -32,35 +39,45 @@ function ThumbnailRow({
   product,
   activeIndex,
   onSelect,
+  show3D,
 }: {
   product: Product
   activeIndex: number
   onSelect: (i: number) => void
+  show3D?: boolean
 }) {
-  const thumbs = [
+  const thumbs: { type: string; label: string; poster?: string; src?: string }[] = [
     { type: 'loop', label: 'Turntable', poster: product.poster },
     { type: 'poster', label: 'Still', src: product.poster },
   ]
+  if (show3D) thumbs.push({ type: '3d', label: 'View in 3D' })
   return (
     <div className="flex gap-2 mt-3">
       {thumbs.map((t, i) => (
         <button
           key={t.label}
           onClick={() => onSelect(i)}
-          className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 transition-all ${
+          className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 transition-all flex items-center justify-center ${
             activeIndex === i
               ? 'border-gold shadow-gold-glow-sm'
               : 'border-forest/10 hover:border-white/30'
           }`}
           aria-label={t.label}
         >
-          <Image
-            src={t.type === 'poster' ? t.src! : t.poster!}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="80px"
-          />
+          {t.type === '3d' ? (
+            <div className="flex flex-col items-center gap-0.5">
+              <Rotate3D className="w-5 h-5 text-forest-deep/60" />
+              <span className="text-[9px] leading-tight text-forest-deep/50 font-medium">3D</span>
+            </div>
+          ) : (
+            <Image
+              src={t.type === 'poster' ? t.src! : t.poster!}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="80px"
+            />
+          )}
         </button>
       ))}
     </div>
@@ -291,6 +308,17 @@ function MobileStickyBar({ product }: { product: Product }) {
 
 export default function ProductDetailClient({ product }: { product: Product }) {
   const [activeMedia, setActiveMedia] = useState(0)
+  const [can3D, setCan3D] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const finePointer = window.matchMedia('(pointer: fine)').matches
+    const reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCan3D(finePointer && !reducedMotion)
+  }, [])
 
   const accordionItems = [
     {
@@ -315,7 +343,9 @@ export default function ProductDetailClient({ product }: { product: Product }) {
           {/* Left — Media Stage */}
           <div>
             <div className="relative rounded-2xl overflow-hidden border border-white/5">
-              {activeMedia === 0 ? (
+              {activeMedia === 2 ? (
+                <ProductInspect slug={product.slug} poster={product.poster} name={product.name} />
+              ) : activeMedia === 0 ? (
                 <MotionLoop src={product.loop} poster={product.poster} aspect="4/5" alt={`${product.name} — Golden Deer premium roasted makhana`} className="w-full" priority />
               ) : (
                 <div className="relative" style={{ aspectRatio: '4 / 5' }}>
@@ -323,7 +353,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 </div>
               )}
             </div>
-            <ThumbnailRow product={product} activeIndex={activeMedia} onSelect={setActiveMedia} />
+            <ThumbnailRow product={product} activeIndex={activeMedia} onSelect={setActiveMedia} show3D={can3D} />
           </div>
 
           {/* Right — Product Info */}

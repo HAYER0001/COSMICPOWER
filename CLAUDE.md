@@ -55,3 +55,12 @@ Logo: user-supplied at `/images/logo.png` (transparent PNG) — never generate o
 - Framer Motion + GSAP/ScrollTrigger
 - Lenis (single scroll source)
 - Resend (free tier)
+
+## 3D LAYER RULES (additive — never replaces motion-first)
+1. **ADDITIVE ONLY** — every 3D feature mounts as an overlay or optional toggle. Never remove, replace, or restructure any existing MotionLoop, video, poster, section, or page. Existing elements remain the default and fallback.
+2. **Touch devices NEVER get WebGL** — they keep the video/poster experience. This is a performance feature, not a downgrade.
+3. **Max 1 mounted Canvas at a time** on any page (IO-gated via Scene3D).
+4. **Every 3D scene has a non-WebGL fallback** — the children of Scene3D render when conditions aren't met or when WebGL errors.
+5. **Every 3D file is 'use client'** with guarded browser access (typeof window checks).
+6. **`npm run build` after every 3D task** — zero errors required.
+7. **All 3D scenes pass through `components/three/Scene3D.tsx`** — the single gate that checks `(pointer: fine)`, `prefers-reduced-motion`, `Save-Data`, and viewport intersection (≥30%) before mounting a lazy R3F Canvas.

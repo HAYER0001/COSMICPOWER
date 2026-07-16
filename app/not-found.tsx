@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import NotFoundBoundary from '@/components/three/NotFoundBoundary'
 
 export const metadata: Metadata = {
   title: '404 — Page Not Found',
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
+    <NotFoundBoundary>
     <div className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-cream">
       <div className="absolute inset-0 bg-grain opacity-30" />
 
@@ -55,5 +57,6 @@ export default function NotFound() {
         </div>
       </div>
     </div>
+    </NotFoundBoundary>
   )
 }

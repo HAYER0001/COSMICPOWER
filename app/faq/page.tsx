@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { faq } from '@/content/faq'
 import { Container, SectionHeading } from '@/components/shared/primitives'
 import FAQAccordion from '@/components/faq/FAQAccordion'
+import BackgroundWrapper from '@/components/three/BackgroundWrapper'
 
 const BASE_URL = 'https://goldendeer.in'
 
@@ -54,6 +55,7 @@ export default function FAQPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <BackgroundWrapper>
       <Container className="py-20 lg:py-28">
         <Breadcrumb />
         <SectionHeading
@@ -67,6 +69,7 @@ export default function FAQPage() {
           <FAQAccordion items={bulkFaqs} title="For Bulk Buyers" />
         </div>
       </Container>
+      </BackgroundWrapper>
     </>
   )
 }

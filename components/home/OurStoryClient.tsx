@@ -1,7 +1,10 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import MotionLoop from '@/components/shared/MotionLoop'
 import ScrollReveal from '@/components/shared/ScrollReveal'
+
+const StoryPrologue = dynamic(() => import('@/components/three/StoryPrologue'), { ssr: false })
 import {
   Container,
   SectionHeading,
@@ -127,6 +130,8 @@ export default function OurStoryClient() {
           </Container>
         </section>
       </ScrollReveal>
+
+      <StoryPrologue />
 
       {chapters.map((ch, i) => (
         <ScrollReveal key={ch.number}>

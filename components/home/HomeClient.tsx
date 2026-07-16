@@ -1,9 +1,13 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ChevronRight, ArrowRight, MessageCircle } from 'lucide-react'
+
+const ParticleDeer = dynamic(() => import('@/components/three/ParticleDeer'), { ssr: false })
+const GoldFlowBackground = dynamic(() => import('@/components/three/GoldFlowBackground'), { ssr: false })
 import { products } from '@/content/products'
 import { recipes } from '@/content/recipes'
 import { site } from '@/content/site'
@@ -13,6 +17,7 @@ export default function HomeClient() {
   return (
     <>
       <WhyMakhana />
+      <ParticleDeer />
       <SignatureRange />
       <FarmDirect />
       <GiftingAndBulk />
@@ -239,7 +244,8 @@ function MarqueeBand() {
 
 function ClosingCTA() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="relative py-20 sm:py-28 overflow-hidden">
+      <GoldFlowBackground>
       <Container>
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight text-forest-deep mb-4">
@@ -254,6 +260,7 @@ function ClosingCTA() {
           </div>
         </div>
       </Container>
+      </GoldFlowBackground>
     </section>
   )
 }
