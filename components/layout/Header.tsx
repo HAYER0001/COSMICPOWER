@@ -76,9 +76,9 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 top-16 z-40 bg-cream/95 backdrop-blur-xl lg:hidden"
+            className="fixed inset-0 top-16 z-40 bg-cream/95 backdrop-blur-xl overflow-y-auto pb-12 lg:hidden"
           >
-            <div className="flex flex-col items-center justify-center gap-6 pt-12">
+            <div className="flex flex-col items-center justify-start min-h-full gap-6 pt-8 pb-12">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}
