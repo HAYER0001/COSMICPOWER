@@ -109,6 +109,19 @@ export default function BrandPage() {
               <DataRow label="FSSAI License" value={l.fssaiLicense} />
               <DataRow label="Registered Address" value={l.address} />
             </div>
+            <div className="mt-4 space-y-1">
+              <p className="text-xs text-forest-deep/40 italic">Government-issued documents:</p>
+              <Fact>
+                <a href="/licences/fssai-license.pdf" target="_blank" rel="noopener noreferrer" className="text-gold underline underline-offset-2">
+                  FSSAI License (Form C, Central) — 10426999000286
+                </a>
+              </Fact>
+              <Fact>
+                <a href="/licences/cosmic-power-dpr.pdf" target="_blank" rel="noopener noreferrer" className="text-gold underline underline-offset-2">
+                  Company Detailed Project Report (DPR)
+                </a>
+              </Fact>
+            </div>
           </Section>
 
           {/* Section 3: Full product range */}

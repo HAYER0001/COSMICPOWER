@@ -23,7 +23,7 @@
 | YouTube URL | `socials.youtube: "ADD_URL"` | e.g. `https://youtube.com/@goldendeer` |
 | LinkedIn URL | `socials.linkedin: "ADD_URL"` | e.g. `https://linkedin.com/company/goldendeer` |
 | Registered address | `legal.address: "ADD_REGISTERED_ADDRESS"` | Full registered office address |
-| FSSAI License | `legal.fssaiLicense: "ADD_FSSAI_NUMBER"` | 14-digit FSSAI license number |
+| ~~FSSAI License~~ | ~~`legal.fssaiLicense: "ADD_FSSAI_NUMBER"`~~ | Done → `10426999000286` |
 
 **File:** `content/site.ts`
 

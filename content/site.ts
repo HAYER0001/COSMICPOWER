@@ -7,7 +7,7 @@ export const site = {
     gstin: '10AANCC9477F2ZG',
     startupIndia: 'DIPP269634',
     msme: 'UDYAM-BR-26-0237862',
-    fssaiLicense: 'ADD_FSSAI_NUMBER',
+    fssaiLicense: '10426999000286',
     address: 'HN-1639, Gangachak Malikana, Masaurhi, Bihar 804452',
   },
   contact: {

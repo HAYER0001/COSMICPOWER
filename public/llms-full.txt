@@ -25,6 +25,7 @@ Legal Entity:
   Company:         Cosmic Power Pvt. Ltd.
   CIN:             U46307BR2026PTC085787
   GSTIN:           10AANCC9477F2ZG
+  FSSAI License:   10426999000286 (Central License, Trade/Retail — valid till 26-07-2027)
   Startup India:   DIPP269634
   MSME:            UDYAM-BR-26-0237862
   Address:         HN-1639, Gangachak Malikana, Masaurhi, Bihar 804452
