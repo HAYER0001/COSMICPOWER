@@ -110,10 +110,15 @@ export default function BrandPage() {
               <DataRow label="Registered Address" value={l.address} />
             </div>
             <div className="mt-4 space-y-1">
-              <p className="text-xs text-forest-deep/40 italic">Government-issued documents:</p>
+              <p className="text-xs text-forest-deep/40 italic">Government-issued documents & certifications:</p>
               <Fact>
                 <a href="/licences/fssai-license.pdf" target="_blank" rel="noopener noreferrer" className="text-gold underline underline-offset-2">
                   FSSAI License (Form C, Central) — 10426999000286
+                </a>
+              </Fact>
+              <Fact>
+                <a href="/licences/iso-9001-qms.pdf" target="_blank" rel="noopener noreferrer" className="text-gold underline underline-offset-2">
+                  ISO 9001:2015 QMS Certificate — E20260750767
                 </a>
               </Fact>
               <Fact>
@@ -140,6 +145,7 @@ export default function BrandPage() {
           {/* Section 4: What makes it different */}
           <Section id="what-makes-it-different" title="What Makes Golden Deer Different">
             <Fact>Farm-direct fair-trade sourcing — each lot traceable to grower cooperative and harvest date.</Fact>
+            <Fact>ISO 9001:2015 certified quality management — certificate E20260750767 (Audittech Certification, CAB #1190).</Fact>
             <Fact>Touchless slow-roasting — dry-heat process, never fried. Zero trans fats.</Fact>
             <Fact>Nitrogen-flushed packaging — oxygen removed at seal, extends shelf life to 8–12 months without preservatives.</Fact>
             <Fact>Clean-label ingredients — every ingredient on the packet is recognisable as real food. Classic Roast has exactly three ingredients.</Fact>

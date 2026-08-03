@@ -1,7 +1,7 @@
 # Golden Deer — Cosmic Power Pvt. Ltd.
 
 ## COMPANY (legal entity)
-Cosmic Power Pvt. Ltd. — CIN U46307BR2026PTC085787, GSTIN 10AANCC9477F2ZG, Startup India DIPP269634, MSME UDYAM-BR-26-0237862, FSSAI 10426999000286.
+Cosmic Power Pvt. Ltd. — CIN U46307BR2026PTC085787, GSTIN 10AANCC9477F2ZG, Startup India DIPP269634, MSME UDYAM-BR-26-0237862, FSSAI 10426999000286, ISO 9001:2015 (E20260750767).
 
 ## BRAND
 Golden Deer — symbol of purity, agility, and natural vitality. The site is Golden Deer's storefront published by Cosmic Power — never confuse the two.

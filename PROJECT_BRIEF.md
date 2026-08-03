@@ -43,6 +43,7 @@ The site serves two audiences:
 - **Startup India:** DIPP269634
 - **MSME:** UDYAM-BR-26-0237862
 - **FSSAI:** 10426999000286 (Central License — Trade/Retail, valid till 26-07-2027)
+- **ISO 9001:2015:** E20260750767 (QMS — Audittech Certification, CAB #1190, valid till 31-07-2029)
 - **Address:** HN-1639, Gangachak Malikana, Masaurhi, Bihar 804452
 - **Email:** chandan@cosmicpower.ltd
 - **WhatsApp:** +91 97791 55132
@@ -535,6 +536,7 @@ INQUIRY_TO_EMAIL=chandan@cosmicpower.ltd
 
 ### Business Data (must be filled)
 - [x] FSSAI license number → 10426999000286
+- [x] ISO 9001:2015 QMS certificate → E20260750767
 - [ ] Social media URLs (Instagram, YouTube, LinkedIn)
 - [ ] Commerce platform URLs (Blinkit, Zepto, Amazon)
 - [ ] Product video files (currently using .jpg posters as fallback)

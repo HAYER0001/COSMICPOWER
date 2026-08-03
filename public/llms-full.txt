@@ -26,6 +26,7 @@ Legal Entity:
   CIN:             U46307BR2026PTC085787
   GSTIN:           10AANCC9477F2ZG
   FSSAI License:   10426999000286 (Central License, Trade/Retail — valid till 26-07-2027)
+  ISO 9001:2015:   E20260750767 (QMS — Audittech Certification, CAB #1190, valid till 31-07-2029)
   Startup India:   DIPP269634
   MSME:            UDYAM-BR-26-0237862
   Address:         HN-1639, Gangachak Malikana, Masaurhi, Bihar 804452
@@ -49,6 +50,8 @@ Brand Foundations:
 Key Differentiators:
   - Clean-label: every ingredient is recognisable as real food. Classic Roast
     has exactly three ingredients.
+  - ISO 9001:2015 certified quality management system (certificate
+    E20260750767), audited by Audittech Certification (ACPL, CAB #1190).
   - Hand-sorted jumbo-grade seeds (5-6 suta / 18-24mm) — the largest, most
     consistent grade available.
   - Touchless slow-roasting in small batches — never fried, no trans fats.
