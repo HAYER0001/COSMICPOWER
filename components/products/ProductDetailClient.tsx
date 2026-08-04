@@ -122,22 +122,16 @@ function NutritionTable({ product }: { product: Product }) {
 }
 
 function Accordion({ items }: { items: { title: string; content: string }[] }) {
-  const [open, setOpen] = useState<number | null>(null)
   return (
     <div className="divide-y divide-white/10 border border-forest/10 rounded-xl">
       {items.map((item, i) => (
-        <div key={i}>
-          <button
-            onClick={() => setOpen(open === i ? null : i)}
-            className="flex items-center justify-between w-full px-5 py-4 text-left text-sm font-medium text-forest-deep/80 hover:text-forest-deep transition-colors"
-          >
+        <details key={i} className="group">
+          <summary className="flex cursor-pointer list-none items-center justify-between w-full px-5 py-4 text-left text-sm font-medium text-forest-deep/80 hover:text-forest-deep transition-colors [&::-webkit-details-marker]:hidden">
             {item.title}
-            <ChevronDown className={`w-4 h-4 transition-transform ${open === i ? 'rotate-180' : ''}`} />
-          </button>
-          {open === i && (
-            <div className="px-5 pb-4 text-sm text-forest-deep/60 leading-relaxed">{item.content}</div>
-          )}
-        </div>
+            <ChevronDown className="w-4 h-4 text-gold transition-transform group-open:rotate-180" />
+          </summary>
+          <div className="px-5 pb-4 text-sm text-forest-deep/60 leading-relaxed">{item.content}</div>
+        </details>
       ))}
     </div>
   )
