@@ -81,7 +81,7 @@ function WhyMakhana() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
           {[
             { label: 'Protein', value: 9.7, suffix: 'g', desc: 'per 100g' },
-            { label: 'Fibre', value: 14.5, suffix: 'g', desc: 'per 100g' },
+            { label: 'Fibre', value: 7.6, suffix: 'g', desc: 'per 100g' },
             { label: 'Gluten', value: 0, suffix: 'g', desc: 'naturally free' },
             { label: 'Natural', value: 100, suffix: '%', desc: 'clean label' },
           ].map((s, i) => (

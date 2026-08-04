@@ -156,13 +156,18 @@ export default function Hero() {
           className="relative z-10 font-display text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none mb-4 sm:mb-6"
         >
           <span className="text-gold-gradient">Golden Deer</span>
+          <span className="mt-3 block text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold text-cream/90 leading-tight">
+            Premium Hand-Popped Makhana (Fox Nuts)
+          </span>
         </h1>
 
         <p
           data-animate
           className="text-base sm:text-lg lg:text-xl text-cream/90 max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8"
         >
-          Premium roasted makhana — the ancient superfood, elevated.
+          Golden Deer by Cosmic Power Pvt. Ltd. is a clean-label makhana brand
+          from Bihar, India — hand-popped, high-protein, and naturally
+          gluten-free.
         </p>
 
         <div
