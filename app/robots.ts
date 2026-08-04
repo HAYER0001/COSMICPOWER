@@ -1,20 +1,45 @@
 import type { MetadataRoute } from 'next'
 
+const BOTS = [
+  'GPTBot',
+  'OAI-SearchBot',
+  'ChatGPT-User',
+  'PerplexityBot',
+  'Perplexity-User',
+  'ClaudeBot',
+  'Claude-User',
+  'anthropic-ai',
+  'Google-Extended',
+  'Googlebot',
+  'Bingbot',
+  'Applebot',
+  'Applebot-Extended',
+  'CCBot',
+  'Amazonbot',
+  'meta-externalagent',
+  'Bytespider',
+  'DuckDuckBot',
+  'YandexBot',
+  'cohere-ai',
+  'Diffbot',
+  'Timpibot',
+  'omgili',
+]
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: '*', allow: '/' },
-      { userAgent: 'GPTBot', allow: '/' },
-      { userAgent: 'OAI-SearchBot', allow: '/' },
-      { userAgent: 'ChatGPT-User', allow: '/' },
-      { userAgent: 'ClaudeBot', allow: '/' },
-      { userAgent: 'Claude-User', allow: '/' },
-      { userAgent: 'Google-Extended', allow: '/' },
-      { userAgent: 'PerplexityBot', allow: '/' },
-      { userAgent: 'CCBot', allow: '/' },
-      { userAgent: 'Applebot-Extended', allow: '/' },
-      { userAgent: 'meta-externalagent', allow: '/' },
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/cart/', '/checkout/', '/account/', '/admin/', '/search/'],
+      },
+      {
+        userAgent: BOTS,
+        allow: '/',
+      },
     ],
     sitemap: 'https://www.cosmicpower.ltd/sitemap.xml',
+    host: 'https://www.cosmicpower.ltd',
   }
 }

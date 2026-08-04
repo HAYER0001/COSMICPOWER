@@ -6,12 +6,14 @@ export default function WebSiteSchema() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: site.name,
+    '@id': `${BASE_URL}/#website`,
+    name: site.lockup,
     url: BASE_URL,
     description:
-      'Premium roasted makhana — clean-label, high-protein, naturally gluten-free. Sustainably sourced from pristine wetlands.',
+      'Premium hand-popped makhana (fox nuts / phool makhana) — clean-label, high-protein, naturally gluten-free. Sourced from the Gangetic wetlands of Bihar, India.',
     publisher: {
       '@type': 'Organization',
+      '@id': `${BASE_URL}/#organization`,
       name: site.legal.company,
       logo: `${BASE_URL}/images/logo.png`,
     },

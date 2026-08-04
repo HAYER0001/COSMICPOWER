@@ -1,6 +1,15 @@
 export const site = {
   name: 'Golden Deer',
-  tagline: 'Premium Roasted Makhana — Naturally Good.',
+  lockup: 'Golden Deer by Cosmic Power Pvt. Ltd.',
+  tagline: 'Premium Hand-Popped Makhana (Fox Nuts) — Naturally Good.',
+  category: 'premium hand-popped makhana (fox nuts / phool makhana)',
+  locality: 'Masaurhi',
+  region: 'Bihar',
+  country: 'India',
+  isoCountry: 'IN',
+  currency: 'INR',
+  markets: ['India (en, hi)'],
+  lastReviewed: '2026-08-04',
   legal: {
     company: 'Cosmic Power Pvt. Ltd.',
     cin: 'U46307BR2026PTC085787',

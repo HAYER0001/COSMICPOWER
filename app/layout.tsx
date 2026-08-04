@@ -28,17 +28,17 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cosmicpower.ltd
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    template: "%s — Golden Deer",
+    template: "%s — Golden Deer by Cosmic Power Pvt. Ltd.",
     default:
-      "Golden Deer — Premium Roasted Makhana & Bulk Fox Nuts by Cosmic Power",
+      "Golden Deer by Cosmic Power Pvt. Ltd. — Premium Hand-Popped Makhana (Fox Nuts)",
   },
   description:
-    "Discover Golden Deer premium roasted makhana — clean-label, high-protein, naturally gluten-free. Sustainably sourced from pristine wetlands. Shop online or inquire about bulk orders.",
+    "Golden Deer by Cosmic Power Pvt. Ltd. is a premium makhana brand from Bihar, India — hand-popped fox nuts (Euryale ferox / phool makhana), clean-label, high-protein, naturally gluten-free. FSSAI 10426999000286. Shop retail or bulk.",
   openGraph: {
-    title: "Golden Deer — Premium Roasted Makhana & Bulk Fox Nuts",
+    title: "Golden Deer by Cosmic Power Pvt. Ltd. — Premium Hand-Popped Makhana (Fox Nuts)",
     description:
-      "Hand-picked jumbo seeds, slow-roasted to perfection. No preservatives. Retail via Blinkit, Zepto, Amazon. Bulk & wholesale inquiries welcome.",
-    url: "/",
+      "Hand-popped jumbo-grade makhana (fox nuts) from Bihar's Gangetic wetlands. Clean-label, no preservatives, nitrogen-flushed. Retail via Blinkit, Zepto, Amazon. Bulk & wholesale inquiries welcome.",
+    url: "https://www.cosmicpower.ltd/",
     siteName: "Golden Deer",
     locale: "en_IN",
     type: "website",
@@ -47,15 +47,15 @@ export const metadata: Metadata = {
         url: "/images/og/og-home.jpg",
         width: 1200,
         height: 630,
-        alt: "Golden Deer — Premium Roasted Makhana",
+        alt: "Golden Deer — Premium Hand-Popped Makhana (Fox Nuts)",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Golden Deer — Premium Roasted Makhana & Bulk Fox Nuts",
+    title: "Golden Deer by Cosmic Power Pvt. Ltd. — Premium Hand-Popped Makhana (Fox Nuts)",
     description:
-      "Hand-picked jumbo seeds, slow-roasted to perfection. No preservatives. Retail via Blinkit, Zepto, Amazon. Bulk & wholesale inquiries welcome.",
+      "Hand-popped jumbo seeds, slow-roasted to perfection. No preservatives. Retail via Blinkit, Zepto, Amazon. Bulk & wholesale inquiries welcome.",
     images: ["/images/og/og-home.jpg"],
   },
   icons: {
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   alternates: {
-    canonical: "/",
+    canonical: "https://www.cosmicpower.ltd/",
   },
 };
 
