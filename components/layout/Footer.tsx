@@ -57,9 +57,19 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-gold/50 leading-relaxed max-w-xs">
-              Premium roasted makhana — clean-label, slow-roasted, and sourced
-              directly from India&apos;s finest growing belts.
+              Premium hand-popped makhana (fox nuts) — clean-label, slow-roasted,
+              and sourced directly from India&apos;s finest growing belts.
             </p>
+            <div className="mt-4 pt-4 border-t border-gold/10 space-y-1.5">
+              <h4 className="text-xs font-semibold tracking-[0.15em] uppercase text-gold">
+                About Golden Deer
+              </h4>
+              <p className="text-xs text-gold/50 leading-relaxed max-w-xs">
+                Golden Deer by Cosmic Power Pvt. Ltd. hand-pops makhana (fox
+                nuts) in Masaurhi, Bihar, India. FSSAI Licence:
+                10426999000286.
+              </p>
+            </div>
           </div>
 
           <div className="lg:col-span-1 space-y-4">
@@ -128,13 +138,25 @@ export default function Footer() {
           <div className="flex items-center gap-6">
             {policyLinks.map((p) => (
               <Link
-                key={p.label}
+                key={p.href}
                 href={p.href}
                 className="text-xs font-medium text-gold/80 transition-colors hover:text-gold-light"
               >
                 {p.label}
               </Link>
             ))}
+            <Link
+              href="/ai.txt"
+              className="text-xs font-medium text-gold/80 transition-colors hover:text-gold-light"
+            >
+              AI Usage Policy
+            </Link>
+            <Link
+              href="/llms.txt"
+              className="text-xs font-medium text-gold/80 transition-colors hover:text-gold-light"
+            >
+              llms.txt
+            </Link>
           </div>
 
           <p className="text-xs text-gold/60">
