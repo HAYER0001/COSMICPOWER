@@ -8,6 +8,7 @@ import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/shared/primitives'
 
 const navLinks = [
+  { label: 'Home', href: '/' },
   { label: 'Products', href: '/products' },
   { label: 'Recipes', href: '/recipes' },
   { label: 'Bulk & Wholesale', href: '/bulk' },
