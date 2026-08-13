@@ -47,8 +47,8 @@ export const products: Product[] = [
     descriptionFull:
       'Clean-label snacking at its most honest. We begin with the largest grade of raw makhana, sourced directly from farming partners across Bihar\'s pristine wetlands. Each seed is touchless-roasted in small batches using a gentle dry-heat process that preserves the natural structure and delicate crunch. A trace of cold-pressed oil and a sprinkle of sea salt is all that touches these golden puffs. No artificial flavours, no preservatives, no compromise. The result is a snack that tastes of its origin — earth, water, and the quiet labour of hands that have cultivated this grain for generations.',
     tags: ['Classic', 'Lightly Salted', 'Clean Label', 'Everyday Snack'],
-    mrp: '₹99',
-    netWeights: ['50g', '100g', '200g'],
+    mrp: '₹159',
+    netWeights: ['80gm'],
     nutrition: {
       energyKcal: 347,
       proteinG: 9.7,
@@ -88,8 +88,8 @@ export const products: Product[] = [
     descriptionFull:
       'This is not your standard salted snack. We source Himalayan pink salt from deep within the Punjab salt range, valued for its rich mineral profile and clean, rounded salinity. Each crystal is dry-milled to a fine powder, then dusted over freshly roasted makhana alongside coarsely ground Tellicherry black pepper known for its bold aromatic punch. The combination is timeless: earthy pepper heat softened by mineral salt, wrapped in the ethereal crunch of slow-roasted fox nuts. A grown-up snack for discerning palates, as at home in a desk drawer as on a charcuterie board.',
     tags: ['Savory', 'Pink Salt', 'Black Pepper', 'Gourmet'],
-    mrp: '₹109',
-    netWeights: ['50g', '100g', '200g'],
+    mrp: '₹159',
+    netWeights: ['80gm'],
     nutrition: {
       energyKcal: 350,
       proteinG: 9.5,
@@ -130,8 +130,8 @@ export const products: Product[] = [
     descriptionFull:
       'Inspired by the vibrant flavours of peri peri, our Peri Peri makhana delivers a masterclass in fiery snacking. We blend authentic bird\'s eye chilli with garlic, lemon, and a hint of herbs to create a seasoning that packs a punch. Every puff is generously coated, ensuring that the bold, tangy heat hits you right away, followed by the satisfying crunch of premium fox nuts. No artificial colours or MSG—just pure, fiery indulgence.',
     tags: ['Spicy', 'Peri Peri', 'Fiery', 'Bold Flavour'],
-    mrp: '₹109',
-    netWeights: ['50g', '100g', '200g'],
+    mrp: '₹159',
+    netWeights: ['80gm'],
     nutrition: {
       energyKcal: 353,
       proteinG: 9.2,
@@ -173,8 +173,8 @@ export const products: Product[] = [
     descriptionFull:
       'Inspired by India\'s eternal love affair with tangy-spicy snacks, our Tangy Tomato makhana is a masterclass in clean-label flavouring. We start with vine-ripened tomatoes, slow-dried and ground into a fine powder, then blended with a proprietary spice mix that uses no artificial colours, no MSG, and no synthetic flavour enhancers. The result is a dusting of authentic tomato that clings to every crevice of the puffed makhana, delivering a bright, moreish tang with just enough warmth to keep you reaching for another handful. It\'s the snack you grew up loving — reimagined for a cleaner plate.',
     tags: ['Tangy', 'Tomato', 'Spiced', 'Bold Flavour'],
-    mrp: '₹109',
-    netWeights: ['50g', '100g', '200g'],
+    mrp: '₹159',
+    netWeights: ['80gm'],
     nutrition: {
       energyKcal: 353,
       proteinG: 9.2,
@@ -216,8 +216,8 @@ export const products: Product[] = [
     descriptionFull:
       'Masala is not a single flavour — it is a philosophy of layering. Our master blenders spent months perfecting this mix: the earthy warmth of roasted cumin, the citrus lift of coriander, the slow-building heat of Kashmiri red chilli, the tang of dried mango powder, and a whisper of ginger that lingers on the palate. Each spice is individually toasted and ground, then blended in small batches to ensure every grain of makhana catches the full spectrum. The result is a snack that unfolds on the tongue — first warm, then tangy, then building to a gentle, satisfying heat. No artificial enhancers, no flavouring agents: just the purest spices India has to offer, in the proportions they deserve.',
     tags: ['Masala', 'Spicy', 'Indian', 'Bold'],
-    mrp: '₹109',
-    netWeights: ['50g', '100g', '200g'],
+    mrp: '₹159',
+    netWeights: ['80gm'],
     nutrition: {
       energyKcal: 355,
       proteinG: 9.3,
@@ -263,8 +263,8 @@ export const products: Product[] = [
     descriptionFull:
       'Behind every perfect puff of Golden Deer lies an uncompromising raw material. Our Premium Raw Makhana is the largest, brightest jumbo grade — what the trade calls 5–6 suta — sourced from the Gangetic wetlands of Bihar where makhana has been cultivated for centuries. Each lot is hand-sorted by experienced graders who remove discoloured seeds, broken pieces, and any grain below our size threshold. The result is a consistently superior raw product that roasts evenly, puffs fully, and delivers the signature ethereal crunch that defines Golden Deer. For retail brands seeking white-label supply, HoReCa kitchens creating innovative makhana-based dishes, and export buyers who demand the highest grade, this is the gold standard in raw fox nuts.',
     tags: ['Raw', 'Bulk', 'Wholesale', 'Jumbo Grade', 'Unroasted'],
-    mrp: 'Contact for pricing',
-    netWeights: ['5kg bulk', '10kg bulk', '25kg bulk'],
+    mrp: '₹129 - ₹320',
+    netWeights: ['80gm', '200gm'],
     nutrition: {
       energyKcal: 347,
       proteinG: 9.7,

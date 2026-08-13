@@ -35,7 +35,7 @@ const jsonLd = {
       brand: { '@type': 'Brand', name: 'Golden Deer' },
       offers: {
         '@type': 'Offer',
-        price: p.mrp.replace('₹', ''),
+        price: p.mrp.match(/\d+/)?.[0] || '0',
         priceCurrency: 'INR',
         availability: 'https://schema.org/InStock',
       },

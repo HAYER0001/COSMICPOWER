@@ -134,12 +134,12 @@ export default function BrandPage() {
             <p className="text-xs font-mono text-forest-deep/40 mb-4 uppercase tracking-wider">
               6 SKUs — one line each
             </p>
-            <Fact><ProductLink slug="plain">Classic Plain</ProductLink> — lightly salted, popped in cold-pressed oil. MRP ₹99. Three ingredients: makhana, sunflower oil, sea salt.</Fact>
-            <Fact><ProductLink slug="salted">Salted</ProductLink> — Himalayan pink salt and cracked black pepper. MRP ₹109.</Fact>
-            <Fact><ProductLink slug="peri-peri">Peri Peri</ProductLink> — real tomato powder and spice dusting. MRP ₹109.</Fact>
-            <Fact><ProductLink slug="creamy-cheese">Creamy Cheese</ProductLink> — real aged cheddar and cultured buttermilk. MRP ₹119.</Fact>
-            <Fact><ProductLink slug="pudina">Pudina</ProductLink> — cumin, coriander, Kashmiri red chilli, amchur, ginger. MRP ₹109.</Fact>
-            <Fact><ProductLink slug="raw-makhana">Premium Raw Makhana</ProductLink> — hand-sorted jumbo grade (5–6 suta, 18–24 mm), unroasted. Contact for pricing.</Fact>
+            <Fact><ProductLink slug="plain">Classic Plain</ProductLink> — lightly salted, popped in cold-pressed oil. MRP ₹159 (80gm). Three ingredients: makhana, sunflower oil, sea salt.</Fact>
+            <Fact><ProductLink slug="salted">Salted</ProductLink> — Himalayan pink salt and cracked black pepper. MRP ₹159 (80gm).</Fact>
+            <Fact><ProductLink slug="peri-peri">Peri Peri</ProductLink> — real tomato powder and spice dusting. MRP ₹159 (80gm).</Fact>
+            <Fact><ProductLink slug="creamy-cheese">Creamy Cheese</ProductLink> — real aged cheddar and cultured buttermilk. MRP ₹159 (80gm).</Fact>
+            <Fact><ProductLink slug="pudina">Pudina</ProductLink> — cumin, coriander, Kashmiri red chilli, amchur, ginger. MRP ₹159 (80gm).</Fact>
+            <Fact><ProductLink slug="raw-makhana">Premium Raw Makhana</ProductLink> — hand-sorted jumbo grade (5–6 suta, 18–24 mm), unroasted. MRP ₹129 (80gm) / ₹320 (200gm).</Fact>
           </Section>
 
           {/* Section 4: What makes it different */}

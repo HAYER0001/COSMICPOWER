@@ -75,7 +75,7 @@ export default async function ProductPage({
         image: `${BASE_URL}${product.poster}`,
         offers: {
           '@type': 'Offer',
-          price: product.mrp.replace('₹', ''),
+          price: product.mrp.match(/\d+/)?.[0] || '0',
           priceCurrency: 'INR',
           availability: 'https://schema.org/InStock',
           url: `${BASE_URL}/products/${product.slug}`,
