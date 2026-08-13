@@ -47,8 +47,8 @@ export const products: Product[] = [
     descriptionFull:
       'Clean-label snacking at its most honest. We begin with the largest grade of raw makhana, sourced directly from farming partners across Bihar\'s pristine wetlands. Each seed is touchless-roasted in small batches using a gentle dry-heat process that preserves the natural structure and delicate crunch. A trace of cold-pressed oil and a sprinkle of sea salt is all that touches these golden puffs. No artificial flavours, no preservatives, no compromise. The result is a snack that tastes of its origin — earth, water, and the quiet labour of hands that have cultivated this grain for generations.',
     tags: ['Classic', 'Lightly Salted', 'Clean Label', 'Everyday Snack'],
-    mrp: '₹159',
-    netWeights: ['80gm'],
+    mrp: '₹129 - ₹320',
+    netWeights: ['80gm', '200gm'],
     nutrition: {
       energyKcal: 347,
       proteinG: 9.7,
