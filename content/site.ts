@@ -17,7 +17,7 @@ export const site = {
     startupIndia: 'DIPP269634',
     msme: 'UDYAM-BR-26-0237862',
     fssaiLicense: '10426999000286',
-    address: 'HN-1639, Gangachak Malikana, Masaurhi, Bihar 804452',
+    address: '1639- Ganga chak malikana, Post office - Masaurhi, Police station- Masaurhi, Dist - Patna, Pin- 804452, State- Bihar',
   },
   contact: {
     email: 'chandan@cosmicpower.ltd',

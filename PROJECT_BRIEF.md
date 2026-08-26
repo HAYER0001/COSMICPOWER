@@ -44,7 +44,7 @@ The site serves two audiences:
 - **MSME:** UDYAM-BR-26-0237862
 - **FSSAI:** 10426999000286 (Central License — Trade/Retail, valid till 26-07-2027)
 - **ISO 9001:2015:** E20260750767 (QMS — Audittech Certification, CAB #1190, valid till 31-07-2029)
-- **Address:** HN-1639, Gangachak Malikana, Masaurhi, Bihar 804452
+- **Address:** 1639- Ganga chak malikana, Post office - Masaurhi, Police station- Masaurhi, Dist - Patna, Pin- 804452, State- Bihar
 - **Email:** chandan@cosmicpower.ltd
 - **WhatsApp:** +91 97791 55132
 - **Google Business:** https://share.google/3zKvPNTo7VYTvv1q6
