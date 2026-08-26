@@ -4,8 +4,9 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ShoppingBag } from 'lucide-react'
 import { Button } from '@/components/shared/primitives'
+import { useCartStore } from '@/lib/store/useCartStore'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -55,19 +56,23 @@ export default function Header() {
             ))}
           </div>
 
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-4">
             <Button variant="gold-solid" href="/products">
               Order Now
             </Button>
+            <CartButton />
           </div>
 
+          <div className="flex lg:hidden items-center gap-2">
+            <CartButton />
             <button
-              className="relative z-10 lg:hidden p-3 text-gold"
+              className="relative z-10 p-3 text-gold"
             onClick={() => setOpen(!open)}
             aria-label={open ? 'Close menu' : 'Open menu'}
           >
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
+          </div>
         </div>
       </nav>
 
@@ -126,5 +131,25 @@ function NavItem({ href, children }: { href: string; children: React.ReactNode }
         style={{ display: 'none' }}
       />
     </Link>
+  )
+}
+
+function CartButton() {
+  const { items, openCart } = useCartStore()
+  const itemCount = items.reduce((acc, item) => acc + item.quantity, 0)
+  
+  return (
+    <button
+      onClick={openCart}
+      className="relative flex items-center justify-center p-2 text-gold hover:text-gold-light transition-colors"
+      aria-label="Open cart"
+    >
+      <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
+      {itemCount > 0 && (
+        <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-gold-deep text-[10px] font-bold text-forest-deep">
+          {itemCount}
+        </span>
+      )}
+    </button>
   )
 }
