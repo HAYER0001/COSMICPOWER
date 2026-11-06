@@ -91,12 +91,72 @@ if (GOOGLE_CLIENT_ID && GOOGLE_CLIENT_SECRET) {
   )
 }
 
+const useSecureCookies = process.env.NODE_ENV === 'production'
+const cookiePrefix = useSecureCookies ? '__Secure-' : ''
+const cookieDomain =
+  process.env.NODE_ENV === 'production' ? '.cosmicpower.ltd' : undefined
+
 export const authOptions: NextAuthOptions = {
   providers,
+  useSecureCookies,
+  cookies: {
+    sessionToken: {
+      name: `${cookiePrefix}next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: useSecureCookies,
+        domain: cookieDomain,
+      },
+    },
+    callbackUrl: {
+      name: `${cookiePrefix}next-auth.callback-url`,
+      options: {
+        sameSite: 'lax',
+        path: '/',
+        secure: useSecureCookies,
+        domain: cookieDomain,
+      },
+    },
+    csrfToken: {
+      name: `${cookiePrefix}next-auth.csrf-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: useSecureCookies,
+        domain: cookieDomain,
+      },
+    },
+    pkceCodeVerifier: {
+      name: `${cookiePrefix}next-auth.pkce.code_verifier`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: useSecureCookies,
+        maxAge: 900,
+        domain: cookieDomain,
+      },
+    },
+    state: {
+      name: `${cookiePrefix}next-auth.state`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: useSecureCookies,
+        maxAge: 900,
+        domain: cookieDomain,
+      },
+    },
+  },
   callbacks: {
     async signIn({ user, account }) {
       if (account?.provider === 'google' && user?.email) {
         const email = user.email.toLowerCase()
+        const isAdminUser = email === ADMIN_EMAIL.trim().toLowerCase()
         try {
           const existing = await prisma.user.findUnique({ where: { email } })
           if (!existing) {
@@ -106,7 +166,7 @@ export const authOptions: NextAuthOptions = {
                 email,
                 name: user.name || email.split('@')[0],
                 password: placeholderPassword,
-                role: email === ADMIN_EMAIL.toLowerCase() ? 'ADMIN' : 'USER',
+                role: isAdminUser ? 'ADMIN' : 'USER',
               },
             })
             user.id = newUser.id
@@ -119,10 +179,11 @@ export const authOptions: NextAuthOptions = {
             })
           } else {
             user.id = existing.id
-            user.role = existing.role
+            user.role = isAdminUser ? 'ADMIN' : (existing.role || 'USER')
           }
         } catch (error) {
           console.error('[auth] Google user sync error:', error)
+          if (isAdminUser) user.role = 'ADMIN'
         }
       }
       return true
