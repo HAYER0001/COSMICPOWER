@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAdmin, audit } from '@/lib/admin-guard'
 import { OrderStatus } from '@prisma/client'
-import { sendShippingNotification } from '@/lib/email'
+import { sendShippingNotification, sendDeliveryNotification } from '@/lib/email'
 
 /** Manual status transitions the admin is allowed to make by hand. */
 const ALLOWED: Partial<Record<OrderStatus, OrderStatus[]>> = {
@@ -49,6 +49,8 @@ export async function POST(req: NextRequest) {
 
     if (status === OrderStatus.SHIPPED) {
       await sendShippingNotification(updated, trackingNumber)
+    } else if (status === OrderStatus.DELIVERED) {
+      await sendDeliveryNotification(updated)
     }
 
     await audit(

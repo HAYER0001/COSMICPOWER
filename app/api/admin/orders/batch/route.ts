@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAdmin, audit } from '@/lib/admin-guard'
 import { OrderStatus } from '@prisma/client'
+import { sendShippingNotification, sendDeliveryNotification } from '@/lib/email'
 
 export async function POST(req: NextRequest) {
   const guard = await requireAdmin()
@@ -16,7 +17,7 @@ export async function POST(req: NextRequest) {
 
     if (action === 'MARK_SHIPPED') {
       const now = new Date()
-      await prisma.$transaction(
+      const updatedOrders = await prisma.$transaction(
         orderIds.map((id: string, index: number) =>
           prisma.order.update({
             where: { id },
@@ -28,6 +29,14 @@ export async function POST(req: NextRequest) {
           })
         )
       )
+
+      // Send shipping notification to all customers in background
+      Promise.allSettled(
+        updatedOrders.map((order) =>
+          order.awbNumber ? sendShippingNotification(order, order.awbNumber) : Promise.resolve()
+        )
+      ).catch((err) => console.error('[batch/ship email]', err))
+
       await audit(guard.actor, 'BATCH_SHIP', undefined, `Shipped ${orderIds.length} orders`)
       return NextResponse.json({ success: true, count: orderIds.length })
     }
@@ -38,6 +47,23 @@ export async function POST(req: NextRequest) {
         where: { id: { in: orderIds } },
         data: { status: OrderStatus.DELIVERED, deliveredAt: now },
       })
+
+      // Fetch customer details to dispatch delivery emails
+      const deliveredOrders = await prisma.order.findMany({
+        where: { id: { in: orderIds } },
+        select: {
+          id: true,
+          customerName: true,
+          customerEmail: true,
+          shippingCity: true,
+          shippingState: true,
+        },
+      })
+
+      Promise.allSettled(
+        deliveredOrders.map((order) => sendDeliveryNotification(order))
+      ).catch((err) => console.error('[batch/deliver email]', err))
+
       await audit(guard.actor, 'BATCH_DELIVER', undefined, `Marked ${orderIds.length} orders as delivered`)
       return NextResponse.json({ success: true, count: orderIds.length })
     }

@@ -269,43 +269,158 @@ Invoice Value: ₹${order.totalAmount}</pre>
   }
 }
 
+export function getCarrierTrackingInfo(awb: string) {
+  if (awb.startsWith('AMZN')) {
+    return { name: 'Amazon Shipping', url: 'https://track.amazon.in/' }
+  }
+  if (awb.startsWith('SR') || (awb.length >= 12 && /^\d+$/.test(awb))) {
+    return { name: 'Shiprocket', url: `https://shiprocket.co/tracking/${awb}` }
+  }
+  if (awb.startsWith('MOCK-')) {
+    return { name: 'Golden Deer Tracker', url: `${SITE}/track` }
+  }
+  return { name: 'Delhivery', url: `https://www.delhivery.com/track/package/${awb}` }
+}
+
 /** Notify the customer that their parcel is on its way. */
 export async function sendShippingNotification(
-  order: Pick<OrderLike, 'id' | 'customerName' | 'customerEmail'>,
+  order: Pick<OrderLike, 'id' | 'customerName' | 'customerEmail'> & {
+    shippingCity?: string | null
+    shippingState?: string | null
+  },
   awb: string
 ): Promise<void> {
   if (!resend) return
+
+  const carrier = getCarrierTrackingInfo(awb)
+
+  const html = `
+  <div style="font-family:Inter,system-ui,-apple-system,sans-serif;max-width:580px;margin:0 auto;padding:32px;background:#F8F6F0;color:#101410;border-radius:12px;">
+    <!-- Brand Header -->
+    <div style="text-align:center;margin-bottom:24px;">
+      <p style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A24B;margin:0 0 6px;font-weight:700;">Golden Deer Dispatch Notice</p>
+      <h1 style="font-family:Georgia,serif;color:#0F2E1E;font-size:26px;margin:0 0 6px;">It's On The Way! 🚚</h1>
+      <p style="color:#5C635C;margin:0;font-size:14px;">Your Golden Deer package has shipped from our Masaurhi facility.</p>
+    </div>
+
+    <!-- Dispatch Card -->
+    <div style="background:#ffffff;border-radius:12px;padding:24px;margin-bottom:20px;border:1px solid #E5DCC8;">
+      <p style="margin:0 0 12px;font-size:15px;color:#101410;">
+        Hello <strong>${order.customerName}</strong>, order <strong style="color:#0F2E1E;">#${ref(order.id)}</strong> has been handed over to <strong>${carrier.name}</strong>.
+      </p>
+      <div style="background:#F6F3EC;padding:14px 18px;border-radius:8px;border:1px solid #E5DCC8;margin-bottom:16px;">
+        <p style="margin:0 0 4px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5C635C;">Courier Tracking Number (AWB)</p>
+        <p style="margin:0;font-family:ui-monospace,Menlo,monospace;font-size:16px;font-weight:700;color:#0F2E1E;">${awb}</p>
+        <p style="margin:4px 0 0;font-size:12px;color:#777;">Handled by: <strong>${carrier.name}</strong></p>
+      </div>
+      <div style="text-align:center;margin-top:16px;">
+        <a href="${carrier.url}"
+           style="display:inline-block;background:#0F2E1E;color:#E8C97A;text-decoration:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;">
+          Track Live on ${carrier.name} &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- Account Tracking -->
+    <div style="background:#ffffff;border-radius:12px;padding:18px;margin-bottom:24px;border:1px solid #E5DCC8;text-align:center;">
+      <p style="margin:0 0 8px;font-size:13px;color:#333;">
+        You can also track your order timeline anytime in your Golden Deer account:
+      </p>
+      <a href="${SITE}/account"
+         style="display:inline-block;color:#8C6A1D;text-decoration:none;font-size:13px;font-weight:600;">
+        Open Customer Dashboard &rarr;
+      </a>
+    </div>
+
+    <p style="text-align:center;font-size:12px;color:#666;margin:0 0 6px;">
+      Questions or delivery address update? Reply directly to this email.
+    </p>
+    <p style="text-align:center;font-size:11px;color:#999;margin:0;">
+      Golden Deer by Cosmic Power Pvt. Ltd. &bull; Masaurhi, Bihar
+    </p>
+  </div>`
 
   try {
     await resend.emails.send({
       from: FROM,
       to: order.customerEmail,
-      subject: `Your Golden Deer order has shipped — #${ref(order.id)}`,
-      html: `
-        <div style="font-family:Inter,system-ui,sans-serif;max-width:560px;margin:0 auto;padding:32px;background:#F5EFE2;color:#101410;">
-          <h1 style="font-family:Georgia,serif;color:#0F2E1E;font-size:24px;margin:0 0 12px;">It's on the way.</h1>
-          <p style="color:#5C635C;line-height:1.6;margin:0 0 20px;">
-            ${order.customerName}, order <strong style="color:#0F2E1E;">${ref(order.id)}</strong> has been dispatched via our courier partner.
-          </p>
-          <div style="background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;">
-            <p style="margin:0 0 6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5C635C;">Tracking number</p>
-            <p style="margin:0;font-family:monospace;font-size:16px;color:#0F2E1E;">${awb}</p>
-          </div>
-          <p style="text-align:center;margin:0 0 20px;">
-            ${
-              awb.startsWith('AMZN')
-                ? `<a href="https://track.amazon.in/" style="display:inline-block;background:#0F2E1E;color:#E8C97A;text-decoration:none;padding:12px 28px;border-radius:8px;font-size:14px;">Track with Amazon Shipping</a>`
-                : awb.startsWith('MOCK-')
-                ? `<a href="${SITE}/track" style="display:inline-block;background:#0F2E1E;color:#E8C97A;text-decoration:none;padding:12px 28px;border-radius:8px;font-size:14px;">View order status</a>`
-                : `<a href="https://www.delhivery.com/track/package/${awb}" style="display:inline-block;background:#0F2E1E;color:#E8C97A;text-decoration:none;padding:12px 28px;border-radius:8px;font-size:14px;">Track with Courier</a>`
-            }
-          </p>
-          <p style="color:#5C635C;font-size:13px;text-align:center;margin:0;">
-            Or check status any time at <a href="${SITE}/track" style="color:#8C6A1D;">${SITE.replace(/^https?:\/\//, '')}/track</a>
-          </p>
-        </div>`,
+      subject: `Shipped 🚚 Your Golden Deer Order #${ref(order.id)} is on its way!`,
+      html,
     })
+    console.log(`[email] Shipping notification sent to ${order.customerEmail} for order #${ref(order.id)}`)
   } catch (error) {
     console.error('[email] shipping notification failed:', error)
+  }
+}
+
+/**
+ * Notify the customer that their parcel has been delivered.
+ */
+export async function sendDeliveryNotification(
+  order: Pick<OrderLike, 'id' | 'customerName' | 'customerEmail'> & {
+    shippingCity?: string | null
+    shippingState?: string | null
+  }
+): Promise<void> {
+  if (!resend) return
+
+  const whatsappHref = `https://wa.me/${(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+91 97791 55132').replace(/\D/g, '')}?text=${encodeURIComponent(`Hi Golden Deer team, I received order #${ref(order.id)}!`)}`
+
+  const html = `
+  <div style="font-family:Inter,system-ui,-apple-system,sans-serif;max-width:580px;margin:0 auto;padding:32px;background:#F8F6F0;color:#101410;border-radius:12px;">
+    <!-- Brand Header -->
+    <div style="text-align:center;margin-bottom:24px;">
+      <p style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A24B;margin:0 0 6px;font-weight:700;">Golden Deer Delivery Update</p>
+      <h1 style="font-family:Georgia,serif;color:#0F2E1E;font-size:26px;margin:0 0 6px;">Your Order Has Arrived! 🎉</h1>
+      <p style="color:#5C635C;margin:0;font-size:14px;">Order #${ref(order.id)} has been delivered.</p>
+    </div>
+
+    <!-- Delivered Card -->
+    <div style="background:#ffffff;border-radius:12px;padding:24px;margin-bottom:20px;border:1px solid #E5DCC8;text-align:center;">
+      <div style="display:inline-block;background:#EBF3EF;padding:8px 18px;border-radius:50px;margin-bottom:14px;">
+        <span style="color:#0F2E1E;font-weight:600;font-size:13px;">✅ Successfully Delivered</span>
+      </div>
+      <p style="margin:0 0 8px;font-size:15px;color:#101410;">
+        Hello <strong>${order.customerName}</strong>, your slow-roasted Makhana package has been delivered${order.shippingCity ? ` to <strong>${order.shippingCity}</strong>` : ''}.
+      </p>
+      <p style="margin:0;font-size:13px;color:#666;line-height:1.6;">
+        We hope you enjoy the crisp crunch, pure ghee roasting, and authentic spices in every bite!
+      </p>
+    </div>
+
+    <!-- Customer Actions -->
+    <div style="background:#ffffff;border-radius:12px;padding:20px;margin-bottom:24px;border:1px solid #E5DCC8;text-align:center;">
+      <p style="margin:0 0 14px;font-size:13px;font-weight:600;color:#0F2E1E;">How was your unboxing experience?</p>
+      <div>
+        <a href="${whatsappHref}"
+           style="display:inline-block;background:#25D366;color:#ffffff;text-decoration:none;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;margin:4px;">
+          Share Feedback on WhatsApp
+        </a>
+        <a href="${SITE}/products"
+           style="display:inline-block;background:#0F2E1E;color:#E8C97A;text-decoration:none;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;margin:4px;">
+          Order Again (Free Shipping &gt; ₹999)
+        </a>
+      </div>
+    </div>
+
+    <!-- Account & Help -->
+    <p style="text-align:center;font-size:12px;color:#666;margin:0 0 10px;">
+      View all your past orders at <a href="${SITE}/account" style="color:#8C6A1D;font-weight:600;">cosmicpower.ltd/account</a>
+    </p>
+    <p style="text-align:center;font-size:11px;color:#999;margin:0;">
+      Golden Deer by Cosmic Power Pvt. Ltd. &bull; Masaurhi, Bihar
+    </p>
+  </div>`
+
+  try {
+    await resend.emails.send({
+      from: FROM,
+      to: order.customerEmail,
+      subject: `Delivered 🎉 Your Golden Deer Order #${ref(order.id)} Has Arrived!`,
+      html,
+    })
+    console.log(`[email] Delivery notification sent to ${order.customerEmail} for order #${ref(order.id)}`)
+  } catch (error) {
+    console.error('[email] delivery notification failed:', error)
   }
 }
