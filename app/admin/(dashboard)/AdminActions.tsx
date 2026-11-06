@@ -64,7 +64,7 @@ export default function AdminActions({ orderId, status, returnStatus }: Props) {
             </button>
             <button
               onClick={() => {
-                const awb = window.prompt('Enter Amazon Shipping / Carrier Tracking Number (AWB):')
+                const awb = window.prompt('Enter AWB Tracking Number (from Shiprocket, Amazon Shipping, or Courier):')
                 if (!awb) return
                 call('mark_shipped', '/api/orders/status', {
                   orderId,
@@ -78,7 +78,7 @@ export default function AdminActions({ orderId, status, returnStatus }: Props) {
               {busy === 'mark_shipped' ? (
                 <Loader2 className="h-3 w-3 animate-spin" />
               ) : (
-                'Ship (Amazon / Carrier)'
+                'Ship (Shiprocket / Courier)'
               )}
             </button>
             <button

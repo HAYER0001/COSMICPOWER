@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { X, MessageCircle, ExternalLink, Printer, ShieldCheck, ShieldAlert, Save, Loader2, CheckCircle2 } from 'lucide-react'
 import TrackingLink from '@/app/admin/(dashboard)/TrackingLink'
+import CourierDispatchHelper from './CourierDispatchHelper'
 
 export interface OrderDetailType {
   id: string
@@ -184,6 +185,9 @@ export default function OrderSlideOver({
                 </p>
               </div>
             </div>
+
+            {/* Courier Dispatch & Shiprocket Hub */}
+            <CourierDispatchHelper order={order} />
 
             {/* Courier & Tracking */}
             <div className="rounded-lg border border-gray-200 p-4 space-y-2">

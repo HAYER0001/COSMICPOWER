@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import crypto from 'crypto'
 import { prisma } from '@/lib/prisma'
 import { OrderStatus } from '@prisma/client'
-import { sendOrderConfirmation } from '@/lib/email'
+import { sendOrderConfirmation, sendAdminOrderNotification } from '@/lib/email'
 
 /**
  * Razorpay webhook — the authoritative record of payment.
@@ -50,11 +50,15 @@ export async function POST(req: NextRequest) {
       // Idempotent: Razorpay retries, and /verify may have run first.
       // Allow transition from PENDING or FAILED (customer retried after initial failure).
       if (order && (order.status === OrderStatus.PENDING || order.status === OrderStatus.FAILED)) {
-        await prisma.order.update({
+        const updatedOrder = await prisma.order.update({
           where: { id: order.id },
           data: { status: OrderStatus.PAID, razorpayPaymentId: payment.id },
+          include: { items: true },
         })
-        await sendOrderConfirmation(order)
+        await Promise.allSettled([
+          sendOrderConfirmation(updatedOrder),
+          sendAdminOrderNotification(updatedOrder),
+        ])
       }
     }
 

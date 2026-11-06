@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import TrackingLink from './TrackingLink'
 import AdminActions from './AdminActions'
 import OrderSlideOver, { OrderDetailType } from '@/components/admin/OrderSlideOver'
+import CourierDispatchHelper from '@/components/admin/CourierDispatchHelper'
 import { CheckSquare, Square, Truck, CheckCircle, Download, Eye, Printer } from 'lucide-react'
 
 const STATUS_STYLES: Record<string, string> = {
@@ -308,6 +309,7 @@ export default function AdminOrdersTable({
                       onClick={(e) => e.stopPropagation()}
                     >
                       <div className="flex items-center justify-end gap-1.5">
+                        <CourierDispatchHelper order={order} compact />
                         <button
                           onClick={() => setActiveOrder(order)}
                           className="p-1 rounded text-gray-400 hover:text-gray-900 hover:bg-gray-100"

@@ -2,6 +2,7 @@ import { prisma } from '@/lib/prisma'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import AdminActions from '../../AdminActions'
+import CourierDispatchHelper from '@/components/admin/CourierDispatchHelper'
 import { ArrowLeft, Package, CreditCard, MapPin, Truck, RotateCcw, History } from 'lucide-react'
 
 export const dynamic = 'force-dynamic'
@@ -264,6 +265,8 @@ export default async function OrderDetailPage({
               <Row label="Currency" value={order.currency} />
             </dl>
           </Card>
+
+          <CourierDispatchHelper order={order} />
 
           <Card title="Shipping" icon={Truck}>
             <dl>
