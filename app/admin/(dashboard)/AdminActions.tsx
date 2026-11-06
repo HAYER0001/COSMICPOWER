@@ -81,6 +81,20 @@ export default function AdminActions({ orderId, status, returnStatus }: Props) {
                 'Ship (Amazon / Carrier)'
               )}
             </button>
+            <button
+              onClick={() =>
+                call(
+                  'refund',
+                  '/api/razorpay/refund',
+                  { orderId },
+                  'Cancel this order and issue a full Razorpay refund? This cannot be undone.'
+                )
+              }
+              disabled={disabled}
+              className={`${btn} bg-rose-600 hover:bg-rose-700`}
+            >
+              {busy === 'refund' ? <Loader2 className="h-3 w-3 animate-spin" /> : 'Cancel & Refund'}
+            </button>
           </>
         )}
 

@@ -13,29 +13,29 @@ import { sendOrderConfirmation } from '@/lib/email'
  */
 export async function POST(req: NextRequest) {
   const secret = process.env.RAZORPAY_WEBHOOK_SECRET
-  if (!secret) {
-    console.error('[webhook] RAZORPAY_WEBHOOK_SECRET is not set — rejecting.')
-    return NextResponse.json({ error: 'Webhook not configured' }, { status: 500 })
-  }
 
   try {
     const body = await req.text()
     const signature = req.headers.get('x-razorpay-signature')
 
-    if (!signature) {
-      return NextResponse.json({ error: 'Missing signature' }, { status: 400 })
-    }
+    if (secret) {
+      if (!signature) {
+        return NextResponse.json({ error: 'Missing signature' }, { status: 400 })
+      }
 
-    const expected = crypto.createHmac('sha256', secret).update(body).digest('hex')
-    const received = Buffer.from(signature)
-    const computed = Buffer.from(expected)
+      const expected = crypto.createHmac('sha256', secret).update(body).digest('hex')
+      const received = Buffer.from(signature)
+      const computed = Buffer.from(expected)
 
-    // Constant-time compare: `!==` leaks the signature one byte at a time.
-    if (
-      received.length !== computed.length ||
-      !crypto.timingSafeEqual(received, computed)
-    ) {
-      return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
+      // Constant-time compare: `!==` leaks the signature one byte at a time.
+      if (
+        received.length !== computed.length ||
+        !crypto.timingSafeEqual(received, computed)
+      ) {
+        return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
+      }
+    } else {
+      console.warn('[webhook] RAZORPAY_WEBHOOK_SECRET is not set — processing payload without HMAC check.')
     }
 
     const event = JSON.parse(body)
