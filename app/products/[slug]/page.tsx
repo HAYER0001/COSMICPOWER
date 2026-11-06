@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { products } from '@/content/products'
 import { site } from '@/content/site'
@@ -17,9 +17,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const product = products.find((p) => p.slug === slug)
-  if (!product) return { title: 'Product not found — Golden Deer' }
+  if (!product) notFound()
 
-  const title = `${product.name} — Golden Deer Premium Roasted Makhana`
+  const title = `${product.name}${product.isBulk ? '' : ' Makhana'}`
   const description = product.description.slice(0, 160)
   const posterUrl = `${BASE_URL}${product.poster}`
 
@@ -29,7 +29,8 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      images: [{ url: posterUrl, width: 1200, height: 1500, alt: product.name }],
+      url: `${BASE_URL}/products/${slug}`,
+      images: [{ url: posterUrl, alt: `${product.name} — Golden Deer makhana` }],
       type: 'website',
     },
     twitter: {
@@ -52,34 +53,20 @@ export default async function ProductPage({
   const { slug } = await params
   const product = products.find((p) => p.slug === slug)
 
-  if (!product) {
-    return (
-      <div className="mx-auto max-w-7xl px-4 py-24 text-center">
-        <h1 className="font-display text-3xl text-forest-deep">Product not found</h1>
-        <Link href="/products" className="mt-6 inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium tracking-wide border border-gold text-gold hover:bg-gold hover:text-forest-deep transition-all rounded-lg">
-          Back to Products
-        </Link>
-      </div>
-    )
-  }
+  if (!product) notFound()
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'Product',
+        '@id': `${BASE_URL}/products/${product.slug}#product`,
+        url: `${BASE_URL}/products/${product.slug}`,
         name: product.name,
         description: product.description,
         brand: { '@type': 'Brand', name: 'Golden Deer' },
         manufacturer: { '@type': 'Organization', name: site.legal.company },
         image: `${BASE_URL}${product.poster}`,
-        offers: {
-          '@type': 'Offer',
-          price: product.mrp.match(/\d+/)?.[0] || '0',
-          priceCurrency: 'INR',
-          availability: 'https://schema.org/InStock',
-          url: `${BASE_URL}/products/${product.slug}`,
-        },
       },
       {
         '@type': 'BreadcrumbList',

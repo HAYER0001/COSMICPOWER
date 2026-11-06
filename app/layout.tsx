@@ -1,13 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import SmoothScroll from "@/components/shared/SmoothScroll";
-import PageTransition from "@/components/shared/PageTransition";
-import ScrollProgress from "@/components/shared/ScrollProgress";
-import CustomCursor from "@/components/layout/CustomCursor";
-import QuickOrderFab from "@/components/shared/QuickOrderFab";
+import SiteChrome from "@/components/layout/SiteChrome";
 import OrganizationSchema from "@/components/seo/OrganizationSchema";
 import WebSiteSchema from "@/components/seo/WebSiteSchema";
 
@@ -28,35 +22,34 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cosmicpower.ltd
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    template: "%s — Golden Deer by Cosmic Power Pvt. Ltd.",
-    default:
-      "Golden Deer by Cosmic Power Pvt. Ltd. — Premium Hand-Popped Makhana (Fox Nuts)",
+    template: "%s | Golden Deer",
+    default: "Golden Deer | Premium Makhana from Bihar",
   },
   description:
-    "Golden Deer by Cosmic Power Pvt. Ltd. is a premium makhana brand from Bihar, India — hand-popped fox nuts (Euryale ferox / phool makhana), clean-label, high-protein, naturally gluten-free. FSSAI 10426999000286. Shop retail or bulk.",
+    "Discover Golden Deer makhana from Bihar by Cosmic Power Pvt. Ltd. Explore roasted flavours, raw fox nuts, recipes, and retail, wholesale and gifting enquiries.",
   openGraph: {
-    title: "Golden Deer by Cosmic Power Pvt. Ltd. — Premium Hand-Popped Makhana (Fox Nuts)",
+    title: "Golden Deer | Premium Makhana from Bihar",
     description:
-      "Hand-popped jumbo-grade makhana (fox nuts) from Bihar's Gangetic wetlands. Clean-label, no preservatives, nitrogen-flushed. Retail via Blinkit, Zepto, Amazon. Bulk & wholesale inquiries welcome.",
+      "Rooted in Bihar. Made for your everyday crunch. Discover our makhana collection, recipes, and retail, wholesale and gifting enquiries.",
     url: "https://www.cosmicpower.ltd/",
     siteName: "Golden Deer",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "/images/og/og-home.jpg",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Golden Deer — Premium Hand-Popped Makhana (Fox Nuts)",
+        alt: "Golden Deer premium makhana from Bihar by Cosmic Power Pvt. Ltd.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Golden Deer by Cosmic Power Pvt. Ltd. — Premium Hand-Popped Makhana (Fox Nuts)",
+    title: "Golden Deer | Premium Makhana from Bihar",
     description:
-      "Hand-popped jumbo seeds, slow-roasted to perfection. No preservatives. Retail via Blinkit, Zepto, Amazon. Bulk & wholesale inquiries welcome.",
-    images: ["/images/og/og-home.jpg"],
+      "Discover Golden Deer makhana from Bihar. Explore roasted flavours, recipes, and retail, wholesale and gifting enquiries.",
+    images: ["/twitter-image"],
   },
   icons: {
     icon: [
@@ -90,16 +83,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-body bg-cream text-forest-deep">
         <OrganizationSchema />
         <WebSiteSchema />
-        <ScrollProgress />
-        <CustomCursor />
-        <SmoothScroll>
-          <Header />
-          <main className="flex-1 pt-16">
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer />
-        </SmoothScroll>
-        <QuickOrderFab />
+        <SiteChrome>{children}</SiteChrome>
         <Analytics />
       </body>
     </html>

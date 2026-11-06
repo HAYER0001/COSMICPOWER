@@ -156,7 +156,7 @@ export default function BrandPage() {
           {/* Section 5: Where to buy */}
           <Section id="where-to-buy" title="Where to Buy">
             <p className="text-sm font-semibold text-forest-deep mb-2">Retail (D2C):</p>
-            <Fact>Blinkit, Zepto, Amazon — no on-site cart. Golden Deer routes retail buyers to quick-commerce platforms.</Fact>
+            <Fact>Direct online cart with Razorpay secure payments, flat ₹49 delivery (free on ₹999+), plus Amazon, Flipkart, and Blinkit.</Fact>
             <p className="text-sm font-semibold text-forest-deep mt-4 mb-2">Bulk / Wholesale:</p>
             <Fact><Link href="/bulk" className="text-gold underline underline-offset-2">cosmicpower.ltd/bulk</Link> — for distributors, retailers, HoReCa, corporate gifting (min 50 units), and export (FOB/CIF).</Fact>
             <Fact>WhatsApp bulk quote: {site.contact.whatsappNumber}</Fact>

@@ -50,10 +50,20 @@ export default function ShippingPage() {
           orders dispatched directly from our warehouse.
         </p>
 
-        <h2 className="font-display text-xl text-forest-deep pt-4">1. Retail Orders (Quick-Commerce)</h2>
+        <h2 className="font-display text-xl text-forest-deep pt-4">1. Direct Website Orders</h2>
         <p>
-          Golden Deer retail products are available for purchase on the following platforms. We do not process
-          or ship retail orders directly.
+          Orders placed directly on our website (<strong className="text-forest-deep/80">cosmicpower.ltd</strong>) are processed and dispatched from our Masaurhi facility:
+        </p>
+        <ul className="list-disc pl-6 space-y-1">
+          <li><strong>Shipping Fee:</strong> A flat rate of ₹49 applies to all orders below ₹999.</li>
+          <li><strong>Free Shipping:</strong> All orders of ₹999 or more qualify for 100% free delivery across India.</li>
+          <li><strong>Dispatch & Delivery Time:</strong> Orders are dispatched within 24–48 hours. Standard domestic delivery typically takes 3–7 business days depending on destination PIN code.</li>
+          <li><strong>Tracking:</strong> Once dispatched, a live tracking link and AWB number are sent via email and SMS/WhatsApp. You can also track your shipment at any time on our website tracking page.</li>
+        </ul>
+
+        <h2 className="font-display text-xl text-forest-deep pt-4">2. Quick-Commerce & Marketplaces</h2>
+        <p>
+          Golden Deer retail products are also available across our partner platforms:
         </p>
 
         <h3 className="font-display text-lg text-forest-deep pt-2">Blinkit</h3>
@@ -77,8 +87,13 @@ export default function ShippingPage() {
           authorised by us. Shipping charges, if any, are displayed at checkout on Amazon.
         </p>
 
+        <h3 className="font-display text-lg text-forest-deep pt-2">Flipkart</h3>
+        <p>
+          Available for nationwide delivery across India. Shipping timelines, tracking, and customer protection are governed by Flipkart&rsquo;s platform standards.
+        </p>
+
         <h2 className="font-display text-xl text-forest-deep pt-4">
-          2. Bulk &amp; Wholesale Orders
+          3. Bulk &amp; Wholesale Orders
         </h2>
         <p>
           Bulk and wholesale orders placed through our <Link href="/bulk" className="text-gold transition-colors hover:text-gold-light">Bulk Inquiry</Link> page or via WhatsApp are
@@ -96,7 +111,7 @@ export default function ShippingPage() {
           include a detailed packing list and invoice.
         </p>
 
-        <h2 className="font-display text-xl text-forest-deep pt-4">3. Returns &amp; Replacements</h2>
+        <h2 className="font-display text-xl text-forest-deep pt-4">4. Returns &amp; Replacements</h2>
         <p>
           <strong className="text-forest-deep/80">Sealed food products are non-returnable</strong> once delivered, in
           accordance with Indian food safety regulations (FSSAI) and consumer protection norms. This policy applies

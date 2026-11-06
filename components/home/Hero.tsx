@@ -1,206 +1,81 @@
 'use client'
 
-import { useRef, useEffect, useState, useCallback } from 'react'
-import dynamic from 'next/dynamic'
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { ChevronDown } from 'lucide-react'
-import { Button } from '@/components/shared/primitives'
-
-const HeroPearls = dynamic(() => import('@/components/three/HeroPearls'), { ssr: false })
-
-interface NetworkInfo {
-  saveData?: boolean
-}
+import Link from 'next/link'
+import { ArrowDown, ArrowUpRight, Leaf } from 'lucide-react'
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const overlayRef = useRef<HTMLDivElement>(null)
-  const bgRef = useRef<HTMLDivElement>(null)
-  const [videoError, setVideoError] = useState(false)
-  const inited = useRef(false)
 
   useEffect(() => {
-    if (typeof window === 'undefined' || inited.current) return
-    inited.current = true
-
-    const prefersReduced = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches
-    const conn = (navigator as Navigator & { connection?: NetworkInfo }).connection
-    const saveData = conn?.saveData === true
-    const videoDisabled = prefersReduced || saveData
-
-    const el = containerRef.current
-    const vid = videoRef.current
-    if (!el || !vid) return
-
-    if (!videoDisabled) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            vid.play().catch(() => {})
-          } else {
-            vid.pause()
-          }
-        },
-        { threshold: 0.4 }
-      )
-      observer.observe(el)
-      ;(async () => {
-        const gsap = (await import('gsap')).default
-        const { ScrollTrigger } = await import('gsap/ScrollTrigger')
-        gsap.registerPlugin(ScrollTrigger)
-
-        const overlay = overlayRef.current
-        if (!overlay) return
-        const children = overlay.querySelectorAll('[data-animate]')
-        if (!children.length) return
-
-        gsap.set(children, { opacity: 0, y: 32 })
-        gsap.to(children, {
-          opacity: 1,
-          y: 0,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: 'power3.out',
-          delay: 0.5,
-        })
-
-        const bg = bgRef.current
-        if (bg) {
-          gsap.to(bg, {
-            scale: 1.08,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: bg,
-              start: 'top top',
-              end: 'bottom top',
-              scrub: 1.5,
-            },
-          })
-        }
-      })()
-
-      return () => {
-        observer.disconnect()
-      }
+    const video = videoRef.current
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection
+    if (!video || reduced.matches || connection?.saveData) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !document.hidden) void video.play().catch(() => {})
+      else video.pause()
+    }, { threshold: 0.2 })
+    observer.observe(video)
+    const pauseWhenHidden = () => { if (document.hidden) video.pause() }
+    document.addEventListener('visibilitychange', pauseWhenHidden)
+    return () => {
+      observer.disconnect()
+      video.pause()
+      document.removeEventListener('visibilitychange', pauseWhenHidden)
     }
   }, [])
 
-  const handleVideoError = useCallback(() => setVideoError(true), [])
-
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-cream"
-    >
-      <div ref={bgRef} className="absolute inset-0 will-change-transform">
-        <div className="absolute inset-0 scale-[1.3]">
-          <Image
-            src="/videos/hero-poster.jpg"
-            alt=""
-            aria-hidden
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
-
-          {!videoError && (
-            <video
-              ref={videoRef}
-              muted
-              autoPlay
-              loop
-              playsInline
-              preload="metadata"
-              aria-hidden
-              onError={handleVideoError}
-              className="absolute inset-0 w-full h-full object-cover"
-            >
+    <section className="relative overflow-hidden bg-forest-deep text-cream">
+      <div className="pointer-events-none absolute -left-40 top-10 h-[500px] w-[500px] rounded-full border border-gold/10" aria-hidden />
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 pb-10 pt-12 sm:px-8 sm:py-16 lg:min-h-[760px] lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:px-12 lg:py-20">
+        <div className="relative z-10">
+          <p className="mb-7 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-gold-light sm:text-xs">
+            <span className="h-px w-8 bg-gold" /> From the heart of Bihar
+          </p>
+          <h1 className="font-display text-[3.7rem] leading-[0.98] tracking-tight sm:text-7xl lg:text-[6rem]">
+            A little golden.<br /><span className="italic text-gold-light">A lot of good.</span>
+          </h1>
+          <p className="mt-6 text-xs font-medium uppercase tracking-[0.2em] text-gold-light/90">Golden Deer · Premium Makhana</p>
+          <p className="mt-5 max-w-md text-base leading-relaxed text-cream/75 sm:text-lg">
+            Hand-picked fox nuts, slowly roasted for a beautifully light crunch. Discover your everyday favourite, rooted in Bihar.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Link href="/products" className="inline-flex items-center gap-6 rounded-full bg-gold-light px-6 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-cream">
+              Find your flavour <ArrowUpRight className="h-4 w-4" />
+            </Link>
+            <Link href="/bulk" className="inline-flex items-center gap-2 rounded-full border border-cream/25 px-5 py-3.5 text-sm text-cream transition-colors hover:border-gold-light hover:text-gold-light">
+              For your business <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="mt-9 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-cream/15 pt-6 text-xs text-cream/65">
+            <span className="inline-flex items-center gap-2"><Leaf className="h-4 w-4 text-gold-light" /> Slow-roasted</span>
+            <span>No artificial preservatives</span>
+            <span>Made in India</span>
+          </div>
+        </div>
+        <div className="relative mx-auto w-full max-w-lg lg:ml-auto">
+          <div className="relative aspect-[4/4.1] overflow-hidden rounded-t-[45%] rounded-b-2xl border border-gold/25 bg-forest-light sm:aspect-[4/4.6]">
+            <Image src="/videos/hero-poster.jpg" alt="Golden Deer makhana in its signature gold pouch" fill priority sizes="(max-width: 1024px) 90vw, 45vw" className="object-cover" />
+            <video ref={videoRef} muted loop playsInline preload="none" poster="/videos/hero-poster.jpg" aria-hidden className="absolute inset-0 h-full w-full object-cover">
               <source src="/videos/hero.mp4" type="video/mp4" />
             </video>
-          )}
-        </div>
-
-        {videoError && (
-          <div className="absolute inset-0 bg-gradient-to-br from-cream-dark to-cream flex items-center justify-center">
-            {process.env.NODE_ENV === 'development' && (
-              <span className="text-gold text-xs font-mono px-2 py-1 bg-forest/80 rounded">
-                /videos/hero.mp4
-              </span>
-            )}
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest-deep/90 to-transparent px-6 pb-6 pt-20">
+              <p className="text-[10px] uppercase tracking-[0.25em] text-gold-light">Thoughtfully sourced. Simply delicious.</p>
+              <p className="mt-2 font-display text-2xl text-cream">Goodness in every golden puff.</p>
+            </div>
           </div>
-        )}
-
-        <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/20 to-transparent mix-blend-multiply" />
-        <div className="absolute inset-0 bg-grain opacity-50" />
+          <div className="absolute -right-2 top-8 flex h-20 w-20 rotate-12 flex-col items-center justify-center rounded-full border border-gold/50 bg-cream text-center text-forest-deep shadow-lg sm:-right-5 sm:h-24 sm:w-24">
+            <Leaf className="mb-1 h-5 w-5 text-gold-deep" />
+            <span className="text-[9px] font-semibold uppercase leading-tight tracking-widest">Rooted<br />in nature</span>
+          </div>
+        </div>
       </div>
-
-      <HeroPearls />
-
-      <div
-        ref={overlayRef}
-        className="relative z-10 text-center px-4 max-w-4xl mx-auto"
-      >
-        <p
-          data-animate
-          className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-gold/80 mb-4 sm:mb-6"
-        >
-          Cosmic Power Pvt. Ltd. presents
-        </p>
-
-        <h1
-          data-animate
-          className="relative z-10 font-display text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none mb-4 sm:mb-6"
-        >
-          <span className="text-gold-gradient">Golden Deer</span>
-          <span className="mt-3 block text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold text-cream/90 leading-tight">
-            Premium Hand-Popped Makhana (Fox Nuts)
-          </span>
-        </h1>
-
-        <p
-          data-animate
-          className="text-base sm:text-lg lg:text-xl text-cream/90 max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8"
-        >
-          Golden Deer by Cosmic Power Pvt. Ltd. is a clean-label makhana brand
-          from Bihar, India — hand-popped, high-protein, and naturally
-          gluten-free.
-        </p>
-
-        <div
-          data-animate
-          className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 text-xs sm:text-sm text-cream/70 mb-8 sm:mb-10"
-        >
-          <span>100% Natural</span>
-          <span className="text-gold/30">&bull;</span>
-          <span>High Protein</span>
-          <span className="text-gold/30">&bull;</span>
-          <span>Gluten Free</span>
-          <span className="text-gold/30">&bull;</span>
-          <span>Nitrogen-Flushed Freshness</span>
-        </div>
-
-        <div
-          data-animate
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <Button variant="gold-solid" href="/products">
-            Shop the Range
-          </Button>
-          <Button variant="gold-outline" href="/bulk">
-            Bulk &amp; Wholesale
-          </Button>
-        </div>
-
-        <div data-animate className="mt-16 sm:mt-20">
-          <ChevronDown
-            size={20}
-            className="mx-auto text-gold/40 animate-bounce"
-          />
-        </div>
+      <div className="mx-auto hidden max-w-7xl items-center justify-between border-t border-cream/10 px-12 py-5 text-[10px] uppercase tracking-[0.2em] text-cream/50 lg:flex">
+        <span>Golden Deer by Cosmic Power Pvt. Ltd.</span>
+        <Link href="#collection" className="flex items-center gap-3 hover:text-gold-light">Explore the collection <ArrowDown className="h-3 w-3" /></Link>
       </div>
     </section>
   )

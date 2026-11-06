@@ -10,30 +10,7 @@ interface YouTubeEmbedProps {
 export default function YouTubeEmbed({ youtubeId, title }: YouTubeEmbedProps) {
   const [loaded, setLoaded] = useState(false)
 
-  if (youtubeId === 'REPLACE_WITH_REAL_VIDEO_ID') {
-    return (
-      <div className="relative aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-cream-dark to-cream border border-gold/20 flex items-center justify-center">
-        <div className="text-center px-4">
-          <svg
-            className="w-10 h-10 mx-auto mb-2 text-gold/40"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"
-            />
-          </svg>
-          <p className="text-xs text-gold/50 font-medium tracking-wide uppercase">
-            Video coming soon
-          </p>
-        </div>
-      </div>
-    )
-  }
+  if (!/^[A-Za-z0-9_-]{11}$/.test(youtubeId)) return null
 
   return (
     <div className="relative aspect-video rounded-xl overflow-hidden bg-black">

@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/bulk`,
     images: [
       {
-        url: `${BASE_URL}/images/og/og-bulk.jpg`,
+        url: `${BASE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: 'Golden Deer Bulk Makhana — Wholesale Fox Nuts',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     title: 'Bulk Makhana — Wholesale Fox Nuts Supplier | Golden Deer',
     description:
       'Premium bulk makhana supplier in India. Get a custom quote today.',
-    images: [`${BASE_URL}/images/og/og-bulk.jpg`],
+    images: [`${BASE_URL}/opengraph-image`],
   },
   alternates: { canonical: `${BASE_URL}/bulk` },
 }
@@ -312,6 +312,48 @@ export default function BulkPage() {
       )}
 
       <Divider />
+
+      {/* 15 Pcs Bulk Combo Feature */}
+      <section className="py-16 sm:py-20 bg-gold/5 border-y border-gold/20">
+        <Container>
+          <div className="max-w-4xl mx-auto rounded-2xl border border-gold/30 bg-forest-deep p-8 sm:p-12 text-cream shadow-xl">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <div className="space-y-4 max-w-xl">
+                <Tag variant="gold">Wholesale MOQ Tier</Tag>
+                <h2 className="font-display text-2xl sm:text-3xl text-gold">
+                  15-Pack Custom Wholesale Combo
+                </h2>
+                <p className="text-sm sm:text-base text-cream/80 leading-relaxed">
+                  Looking for retail packs in bulk? Order any custom combo of our 5 signature flavours (Classic Plain, Salted Pink Salt &amp; Pepper, Peri Peri, Tangy Tomato, Pudina). <strong>Minimum Order Quantity (MOQ) is 15 packs</strong> with direct wholesale rates and <strong>100% free delivery</strong> across India.
+                </p>
+                <ul className="text-xs sm:text-sm text-cream/70 space-y-1.5 list-disc list-inside">
+                  <li>Mix &amp; match your own breakdown across any flavours</li>
+                  <li>Nitrogen-flushed airtight packaging for 8-month freshness</li>
+                  <li>Free pan-India delivery (all orders ₹999+ qualify automatically)</li>
+                </ul>
+              </div>
+              <div className="flex flex-col gap-3 min-w-[240px]">
+                <Button
+                  variant="gold-solid"
+                  className="w-full justify-center"
+                  href="/products/15-pack-combo"
+                >
+                  <Package className="w-4 h-4" />
+                  Buy 15-Pack Box Online (₹1,999)
+                </Button>
+                <Button
+                  variant="gold-outline"
+                  className="w-full justify-center"
+                  href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent("Hi Golden Deer! I want to order a 15-Pack Custom Combo (MOQ 15 packs). Here is my preferred flavour mix:\n- Classic Plain: \n- Salted: \n- Peri Peri: \n- Tangy Tomato: \n- Pudina: \nPlease confirm wholesale pricing and send payment link.")}`}
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Custom Flavour Mix via WhatsApp
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
 
       {/* WhatsApp CTA */}
       <section className="py-12 sm:py-16">

@@ -2,7 +2,6 @@
 
 import { useState, type ReactNode } from 'react'
 import type { JournalEntry } from '@/content/journal'
-import { site } from '@/content/site'
 import { Divider } from '@/components/shared/primitives'
 import { Link as LinkIcon, MessageCircle } from 'lucide-react'
 import Highlight from '@/components/shared/Highlight'
@@ -136,8 +135,10 @@ const articleBody: Record<
 
 export default function JournalArticleClient({
   entry,
+  children,
 }: {
   entry: JournalEntry
+  children?: ReactNode
 }) {
   const [copied, setCopied] = useState(false)
 
@@ -158,7 +159,7 @@ export default function JournalArticleClient({
   return (
     <article>
       {/* Article Body */}
-      <div className="prose prose-invert prose-gold max-w-none space-y-5">
+      {children || <div className="prose prose-invert prose-gold max-w-none space-y-5">
         {body.map((block, i) => {
           switch (block.type) {
             case 'heading':
@@ -204,7 +205,7 @@ export default function JournalArticleClient({
               )
           }
         })}
-      </div>
+      </div>}
 
       <div className="mt-10 p-5 rounded-xl border border-gold/15 bg-gold/[0.03]">
         <p className="text-sm text-forest-deep/80 leading-relaxed">
@@ -239,7 +240,7 @@ export default function JournalArticleClient({
           {copied ? 'Copied!' : 'Copy Link'}
         </button>
         <a
-          href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(`Check out this article: ${entry.title} — ${typeof window !== 'undefined' ? window.location.href : ''}`)}`}
+          href={`https://wa.me/?text=${encodeURIComponent(`Check out this article: ${entry.title} — https://www.cosmicpower.ltd/journal/${entry.slug}`)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium border border-forest/10 rounded-lg text-forest-deep/70 hover:text-forest-deep hover:border-gold/30 transition-all"

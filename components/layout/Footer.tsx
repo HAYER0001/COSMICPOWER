@@ -94,11 +94,48 @@ export default function Footer() {
 
           <div className="lg:col-span-1 space-y-4">
             <h4 className="text-xs font-semibold tracking-[0.15em] uppercase text-gold">
-              For Business
+              Shop &amp; Wholesale
             </h4>
             <ul className="space-y-3">
-              <li><FooterLink href="/bulk">Bulk &amp; Wholesale</FooterLink></li>
+              <li><FooterLink href="/products">Online Store (Fast Delivery)</FooterLink></li>
+              <li><FooterLink href="/bulk">Bulk &amp; Wholesale (MOQ 15)</FooterLink></li>
               <li><FooterLink href="/bulk">Corporate Gifting</FooterLink></li>
+              {site.commerce.amazon && (
+                <li>
+                  <a
+                    href={site.commerce.amazon}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block py-2 text-sm font-medium text-gold transition-colors hover:text-gold-light"
+                  >
+                    Buy on Amazon &rarr;
+                  </a>
+                </li>
+              )}
+              {site.commerce.flipkart && (
+                <li>
+                  <a
+                    href={site.commerce.flipkart}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block py-2 text-sm font-medium text-gold transition-colors hover:text-gold-light"
+                  >
+                    Buy on Flipkart &rarr;
+                  </a>
+                </li>
+              )}
+              {site.commerce.blinkit && (
+                <li>
+                  <a
+                    href={site.commerce.blinkit}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block py-2 text-sm font-medium text-gold transition-colors hover:text-gold-light"
+                  >
+                    Buy on Blinkit &rarr;
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
 

@@ -4,8 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import type { Recipe } from '@/content/recipes'
 import { recipes } from '@/content/recipes'
-import { site } from '@/content/site'
-import MotionLoop from '@/components/shared/MotionLoop'
+import { getRecipePairing } from '@/content/recipe-pairings'
+import RecipeArtwork from '@/components/recipes/RecipeArtwork'
 import {
   Container,
   Divider,
@@ -66,20 +66,16 @@ export default function RecipeDetailClient({ recipe }: { recipe: Recipe }) {
   }
 
   const related = recipes.filter((r) => r.slug !== recipe.slug).slice(0, 3)
+  const product = getRecipePairing(recipe.slug)
+  const hasVideo = /^[A-Za-z0-9_-]{11}$/.test(recipe.youtubeId)
 
   return (
     <Container className="py-8 sm:py-12 pb-24 sm:pb-16">
       <Breadcrumb recipe={recipe} />
 
-      {/* Cinemagraph Hero */}
+      {/* Recipe artwork uses the actual product pack until recipe photography is available. */}
       <div className="relative rounded-2xl overflow-hidden border border-white/5 mb-8">
-        <MotionLoop
-          src={recipe.loop}
-          poster={recipe.poster}
-          aspect="16/9"
-          alt={`${recipe.title} — Golden Deer recipe`}
-          priority
-        />
+        <RecipeArtwork recipe={recipe} hero />
       </div>
 
       <div className="max-w-3xl mx-auto space-y-8">
@@ -109,10 +105,10 @@ export default function RecipeDetailClient({ recipe }: { recipe: Recipe }) {
 
         <Divider />
 
-        {/* YouTube Video */}
-        <YouTubeEmbed youtubeId={recipe.youtubeId} title={recipe.title} />
-
-        <Divider />
+        {hasVideo && <>
+          <YouTubeEmbed youtubeId={recipe.youtubeId} title={recipe.title} />
+          <Divider />
+        </>}
 
         {/* Ingredients */}
         <div>
@@ -127,13 +123,14 @@ export default function RecipeDetailClient({ recipe }: { recipe: Recipe }) {
                   <button
                     type="button"
                     onClick={() => toggleIngredient(item)}
+                    aria-pressed={isChecked}
                     className="flex items-start gap-3 w-full text-left group"
                   >
                     <span
                       className={`mt-0.5 w-5 h-5 shrink-0 rounded border-2 flex items-center justify-center transition-all ${
                         isChecked
                           ? 'bg-gold border-gold text-forest-deep'
-                          : 'border-cream/30 group-hover:border-gold/50'
+                          : 'border-forest/25 group-hover:border-gold/70'
                       }`}
                     >
                       {isChecked && <Check className="w-3.5 h-3.5" />}
@@ -189,7 +186,7 @@ export default function RecipeDetailClient({ recipe }: { recipe: Recipe }) {
             {copied ? 'Copied!' : 'Copy Link'}
           </button>
           <a
-            href={`https://wa.me/${site.contact.whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(`Check out this recipe: ${recipe.title} — ${typeof window !== 'undefined' ? window.location.href : ''}`)}`}
+            href={`https://wa.me/?text=${encodeURIComponent(`Check out this recipe: ${recipe.title} — https://www.cosmicpower.ltd/recipes/${recipe.slug}`)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium border border-forest/10 rounded-lg text-forest-deep/70 hover:text-forest-deep hover:border-gold/30 transition-all"
@@ -214,12 +211,7 @@ export default function RecipeDetailClient({ recipe }: { recipe: Recipe }) {
                 className="group block"
               >
                 <div className="relative aspect-4/3 rounded-xl overflow-hidden border border-white/5 group-hover:border-gold/30 transition-all">
-                  <MotionLoop
-                    src={r.loop}
-                    poster={r.poster}
-                    aspect="4/3"
-                    alt={r.title}
-                  />
+                  <RecipeArtwork recipe={r} />
                 </div>
                 <div className="mt-2.5">
                   <p className="text-sm font-display text-forest-deep group-hover:text-gold transition-colors leading-tight">
@@ -235,13 +227,13 @@ export default function RecipeDetailClient({ recipe }: { recipe: Recipe }) {
         {/* CTA Band */}
         <div className="bg-gradient-to-r from-gold/10 to-gold/5 border border-gold/20 rounded-2xl p-6 sm:p-8 text-center">
           <p className="font-display text-xl sm:text-2xl text-forest-deep mb-2">
-            Made with Golden Deer Classic Roast
+            Make it with Golden Deer {product.name}
           </p>
           <p className="text-sm text-forest-deep/60 mb-5">
-            Every recipe starts with the cleanest crunch in India.
+            A versatile ingredient for your next kitchen creation.
           </p>
-          <Button variant="gold-solid" href="/products/classic-roast">
-            Shop Classic Roast
+          <Button variant="gold-solid" href={`/products/${product.slug}`}>
+            Explore {product.name}
             <ArrowRight className="w-4 h-4" />
           </Button>
         </div>

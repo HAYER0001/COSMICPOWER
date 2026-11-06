@@ -83,12 +83,7 @@ export default function TermsPage() {
           prior notice.
         </p>
         <p>
-          <strong className="text-forest-deep/80">Important:</strong> The Golden Deer website does not function as an
-          e-commerce storefront for direct purchases. Retail orders are fulfilled exclusively through third-party
-          quick-commerce platforms including Blinkit, Zepto, and Amazon. Listings, pricing, and availability on
-          those platforms are governed by their respective terms. Any product information displayed on this site
-          does not constitute a contractual offer for sale. Bulk and wholesale orders placed through our inquiry
-          form are subject to a separate agreement confirmed via purchase order.
+          <strong className="text-forest-deep/80">Orders &amp; Purchases:</strong> Customers may purchase Golden Deer products directly through our website cart with secure payment via Razorpay, or via authorized marketplace partners including Amazon, Flipkart, and Blinkit. Direct website orders are shipped across India with a flat ₹49 delivery fee (free on orders ₹999+). Bulk and wholesale orders placed through our inquiry form or WhatsApp are subject to confirmed wholesale purchase terms.
         </p>
 
         <h2 className="font-display text-xl text-forest-deep pt-4">4. Limitation of Liability</h2>

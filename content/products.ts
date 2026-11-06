@@ -7,6 +7,8 @@ export interface Product {
   tags: string[]
   mrp: string
   netWeights: string[]
+  /** Canonical per-variant pricing. Server-authoritative — never trust a client-sent price. */
+  variants: { weight: string; price: number }[]
   nutrition: {
     energyKcal: number
     proteinG: number
@@ -22,6 +24,7 @@ export interface Product {
     blinkit: string
     zepto: string
     amazon: string
+    flipkart?: string
     indiamart?: string
     instamart?: string
   }
@@ -49,6 +52,7 @@ export const products: Product[] = [
     tags: ['Classic', 'Lightly Salted', 'Clean Label', 'Everyday Snack'],
     mrp: '₹129 - ₹320',
     netWeights: ['80gm', '200gm'],
+    variants: [{ weight: '80gm', price: 129 }, { weight: '200gm', price: 320 }],
     nutrition: {
       energyKcal: 347,
       proteinG: 9.7,
@@ -71,9 +75,10 @@ export const products: Product[] = [
     loop: '/videos/products/golden-deer-raw-makhana-80g.jpg',
     poster: '/videos/products/golden-deer-raw-makhana-80g.jpg',
     commerce: {
-      blinkit: 'ADD_URL',
+      blinkit: 'https://blinkit.com/prn/golden-deer-handpicked-raw-makhana/prid/1425972',
       zepto: 'ADD_URL',
-      amazon: 'ADD_URL',
+      amazon: 'https://www.amazon.in/dp/B0HL7162ZH',
+      flipkart: 'https://www.flipkart.com/golden-deer-raw-premium-makhana-80g-makhana/p/itmee2d8d5c6429a',
       indiamart: 'ADD_URL',
       instamart: 'ADD_URL',
     },
@@ -90,6 +95,7 @@ export const products: Product[] = [
     tags: ['Savory', 'Pink Salt', 'Black Pepper', 'Gourmet'],
     mrp: '₹159',
     netWeights: ['80gm'],
+    variants: [{ weight: '80gm', price: 159 }],
     nutrition: {
       energyKcal: 350,
       proteinG: 9.5,
@@ -113,9 +119,10 @@ export const products: Product[] = [
     loop: '/videos/products/golden-deer-premium-makhana-black-pepper-pink-salt.jpg',
     poster: '/videos/products/golden-deer-premium-makhana-black-pepper-pink-salt.jpg',
     commerce: {
-      blinkit: 'ADD_URL',
+      blinkit: 'https://blinkit.com/prn/golden-deer-handpicked-raw-makhana/prid/1425972',
       zepto: 'ADD_URL',
-      amazon: 'ADD_URL',
+      amazon: 'https://www.amazon.in/dp/B0HL7162ZH',
+      flipkart: 'https://www.flipkart.com/golden-deer-raw-premium-makhana-80g-makhana/p/itmee2d8d5c6429a',
       indiamart: 'ADD_URL',
       instamart: 'ADD_URL',
     },
@@ -132,6 +139,7 @@ export const products: Product[] = [
     tags: ['Spicy', 'Peri Peri', 'Fiery', 'Bold Flavour'],
     mrp: '₹159',
     netWeights: ['80gm'],
+    variants: [{ weight: '80gm', price: 159 }],
     nutrition: {
       energyKcal: 353,
       proteinG: 9.2,
@@ -156,9 +164,10 @@ export const products: Product[] = [
     loop: '/videos/products/golden-deer-premium-makhana-peri-peri.jpg',
     poster: '/videos/products/golden-deer-premium-makhana-peri-peri.jpg',
     commerce: {
-      blinkit: 'ADD_URL',
+      blinkit: 'https://blinkit.com/prn/golden-deer-handpicked-raw-makhana/prid/1425972',
       zepto: 'ADD_URL',
-      amazon: 'ADD_URL',
+      amazon: 'https://www.amazon.in/dp/B0HL7162ZH',
+      flipkart: 'https://www.flipkart.com/golden-deer-raw-premium-makhana-80g-makhana/p/itmee2d8d5c6429a',
       indiamart: 'ADD_URL',
       instamart: 'ADD_URL',
     },
@@ -175,6 +184,7 @@ export const products: Product[] = [
     tags: ['Tangy', 'Tomato', 'Spiced', 'Bold Flavour'],
     mrp: '₹159',
     netWeights: ['80gm'],
+    variants: [{ weight: '80gm', price: 159 }],
     nutrition: {
       energyKcal: 353,
       proteinG: 9.2,
@@ -199,9 +209,10 @@ export const products: Product[] = [
     loop: '/videos/products/golden-deer-premium-makhana-tangy-tomato.jpg',
     poster: '/videos/products/golden-deer-premium-makhana-tangy-tomato.jpg',
     commerce: {
-      blinkit: 'ADD_URL',
+      blinkit: 'https://blinkit.com/prn/golden-deer-handpicked-raw-makhana/prid/1425972',
       zepto: 'ADD_URL',
-      amazon: 'ADD_URL',
+      amazon: 'https://www.amazon.in/dp/B0HL7162ZH',
+      flipkart: 'https://www.flipkart.com/golden-deer-raw-premium-makhana-80g-makhana/p/itmee2d8d5c6429a',
       indiamart: 'ADD_URL',
       instamart: 'ADD_URL',
     },
@@ -218,6 +229,7 @@ export const products: Product[] = [
     tags: ['Masala', 'Spicy', 'Indian', 'Bold'],
     mrp: '₹159',
     netWeights: ['80gm'],
+    variants: [{ weight: '80gm', price: 159 }],
     nutrition: {
       energyKcal: 355,
       proteinG: 9.3,
@@ -246,9 +258,10 @@ export const products: Product[] = [
     loop: '/videos/products/golden-deer-premium-makhana-pudina.jpg',
     poster: '/videos/products/golden-deer-premium-makhana-pudina.jpg',
     commerce: {
-      blinkit: 'ADD_URL',
+      blinkit: 'https://blinkit.com/prn/golden-deer-handpicked-raw-makhana/prid/1425972',
       zepto: 'ADD_URL',
-      amazon: 'ADD_URL',
+      amazon: 'https://www.amazon.in/dp/B0HL7162ZH',
+      flipkart: 'https://www.flipkart.com/golden-deer-raw-premium-makhana-80g-makhana/p/itmee2d8d5c6429a',
       indiamart: 'ADD_URL',
       instamart: 'ADD_URL',
     },
@@ -265,6 +278,7 @@ export const products: Product[] = [
     tags: ['Raw', 'Bulk', 'Wholesale', 'Jumbo Grade', 'Unroasted'],
     mrp: '₹129 - ₹320',
     netWeights: ['80gm', '200gm'],
+    variants: [{ weight: '80gm', price: 129 }, { weight: '200gm', price: 320 }],
     nutrition: {
       energyKcal: 347,
       proteinG: 9.7,
@@ -283,9 +297,10 @@ export const products: Product[] = [
     loop: '/videos/products/golden-deer-raw-makhana-200g.jpg',
     poster: '/videos/products/golden-deer-raw-makhana-200g.jpg',
     commerce: {
-      blinkit: 'ADD_URL',
+      blinkit: 'https://blinkit.com/prn/golden-deer-handpicked-raw-makhana/prid/1425972',
       zepto: 'ADD_URL',
-      amazon: 'ADD_URL',
+      amazon: 'https://www.amazon.in/dp/B0HL7162ZH',
+      flipkart: 'https://www.flipkart.com/golden-deer-raw-premium-makhana-80g-makhana/p/itmee2d8d5c6429a',
       indiamart: 'ADD_URL',
       instamart: 'ADD_URL',
     },
@@ -313,5 +328,48 @@ export const products: Product[] = [
         'Third-party lab testing available on request',
       ],
     },
+  },
+  {
+    slug: '15-pack-combo',
+    name: '15-Pack Custom Wholesale Combo',
+    tagline: 'Any 15 Flavour Packs of Your Choice — Factory Direct MOQ Box.',
+    description:
+      'Order your custom bulk assortment of 15 packs across all 5 signature roasted flavours (Classic Plain, Salted Pink Salt & Pepper, Peri Peri, Tangy Tomato, Pudina). Wholesale value with free delivery across India.',
+    descriptionFull:
+      'The ultimate value pack for offices, families, and boutique retailers. Mix and match any 15 packs across our 5 slow-roasted clean-label flavours. Every pouch is nitrogen-flushed for lasting 8-month freshness and crisp crunch. Minimum Order Quantity (MOQ) is 15 packs — orders qualify automatically for free expedited shipping anywhere in India.',
+    tags: ['Wholesale Box', 'MOQ 15', 'Custom Combo', 'Free Shipping', 'Best Value'],
+    mrp: '₹1,999',
+    netWeights: ['15 × 80gm (1.2 kg net)'],
+    variants: [{ weight: '15-Pack Custom Combo Box', price: 1999 }],
+    nutrition: {
+      energyKcal: 350,
+      proteinG: 9.5,
+      carbsG: 75.0,
+      fatG: 0.3,
+      disclaimer,
+    },
+    benefits: [
+      'Minimum Order Quantity: 15 packs',
+      'Choose any mix across all 5 signature flavours',
+      '100% free delivery across India (qualified automatically)',
+      'Direct factory-gate wholesale pricing',
+      'Nitrogen-flushed airtight packaging for 8-month shelf life',
+    ],
+    ingredients: [
+      'Premium jumbo makhana (fox nuts)',
+      'Cold-pressed sunflower oil',
+      'Sea salt, pink salt, pepper, and gourmet spices',
+    ],
+    loop: '/videos/products/golden-deer-raw-makhana-200g.jpg',
+    poster: '/videos/products/golden-deer-raw-makhana-200g.jpg',
+    commerce: {
+      blinkit: 'https://blinkit.com/prn/golden-deer-handpicked-raw-makhana/prid/1425972',
+      zepto: 'ADD_URL',
+      amazon: 'https://www.amazon.in/dp/B0HL7162ZH',
+      flipkart: 'https://www.flipkart.com/golden-deer-raw-premium-makhana-80g-makhana/p/itmee2d8d5c6429a',
+      indiamart: 'ADD_URL',
+      instamart: 'ADD_URL',
+    },
+    isBulk: false,
   },
 ]

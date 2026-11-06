@@ -20,7 +20,7 @@ const filters: { key: FilterKey; label: string }[] = [
 ]
 
 function categorize(product: Product): FilterKey {
-  if (product.slug === 'raw-makhana') return 'raw-bulk'
+  if (product.slug === 'raw-makhana' || product.slug === '15-pack-combo') return 'raw-bulk'
   if (product.slug === 'plain') return 'classic'
   return 'flavoured'
 }
@@ -162,6 +162,14 @@ function ProductCard({ product }: { product: Product }) {
             </Link>
           ) : (
             <div className="flex gap-2 flex-wrap">
+              <span className={`flex-1 min-w-[70px] rounded-lg border px-2 py-1.5 text-center text-[10px] font-medium transition-all ${product.commerce.amazon !== 'ADD_URL' ? 'bg-gold/20 border-gold/30 text-forest-deep hover:bg-gold hover:border-gold' : 'bg-transparent border-forest/10 text-forest-deep/40 cursor-not-allowed'}`}>
+                {product.commerce.amazon !== 'ADD_URL' ? <a href={product.commerce.amazon} target="_blank" rel="noreferrer" className="block w-full">Amazon</a> : 'Amazon (Soon)'}
+              </span>
+              {product.commerce.flipkart && product.commerce.flipkart !== 'ADD_URL' && (
+                <span className="flex-1 min-w-[70px] rounded-lg border px-2 py-1.5 text-center text-[10px] font-medium transition-all bg-gold/20 border-gold/30 text-forest-deep hover:bg-gold hover:border-gold">
+                  <a href={product.commerce.flipkart} target="_blank" rel="noreferrer" className="block w-full">Flipkart</a>
+                </span>
+              )}
               <span className={`flex-1 min-w-[70px] rounded-lg border px-2 py-1.5 text-center text-[10px] font-medium transition-all ${product.commerce.blinkit !== 'ADD_URL' ? 'bg-gold/20 border-gold/30 text-forest-deep hover:bg-gold hover:border-gold' : 'bg-transparent border-forest/10 text-forest-deep/40 cursor-not-allowed'}`}>
                 {product.commerce.blinkit !== 'ADD_URL' ? <a href={product.commerce.blinkit} target="_blank" rel="noreferrer" className="block w-full">Blinkit</a> : 'Blinkit (Soon)'}
               </span>
@@ -170,9 +178,6 @@ function ProductCard({ product }: { product: Product }) {
               </span>
               <span className={`flex-1 min-w-[70px] rounded-lg border px-2 py-1.5 text-center text-[10px] font-medium transition-all ${product.commerce.instamart !== 'ADD_URL' ? 'bg-gold/20 border-gold/30 text-forest-deep hover:bg-gold hover:border-gold' : 'bg-transparent border-forest/10 text-forest-deep/40 cursor-not-allowed'}`}>
                 {product.commerce.instamart !== 'ADD_URL' ? <a href={product.commerce.instamart} target="_blank" rel="noreferrer" className="block w-full">Instamart</a> : 'Instamart (Soon)'}
-              </span>
-              <span className={`flex-1 min-w-[70px] rounded-lg border px-2 py-1.5 text-center text-[10px] font-medium transition-all ${product.commerce.amazon !== 'ADD_URL' ? 'bg-gold/20 border-gold/30 text-forest-deep hover:bg-gold hover:border-gold' : 'bg-transparent border-forest/10 text-forest-deep/40 cursor-not-allowed'}`}>
-                {product.commerce.amazon !== 'ADD_URL' ? <a href={product.commerce.amazon} target="_blank" rel="noreferrer" className="block w-full">Amazon</a> : 'Amazon (Soon)'}
               </span>
               <span className={`flex-1 min-w-[70px] rounded-lg border px-2 py-1.5 text-center text-[10px] font-medium transition-all ${product.commerce.indiamart !== 'ADD_URL' ? 'bg-gold/20 border-gold/30 text-forest-deep hover:bg-gold hover:border-gold' : 'bg-transparent border-forest/10 text-forest-deep/40 cursor-not-allowed'}`}>
                 {product.commerce.indiamart !== 'ADD_URL' ? <a href={product.commerce.indiamart} target="_blank" rel="noreferrer" className="block w-full">IndiaMart</a> : 'IndiaMart (Soon)'}

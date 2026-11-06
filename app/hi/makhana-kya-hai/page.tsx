@@ -15,14 +15,14 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         'मखाना (Euryale ferox) के बारे में पूरी जानकारी हिंदी में: यह क्या है, कैसे उगाया जाता है, सूत ग्रेड, पोषण, फ़ायदे, और रोज़ कितना खाएं।',
       url: `${BASE_URL}/hi/makhana-kya-hai`,
-      images: [{ url: `${BASE_URL}/images/og/og-default.jpg`, width: 1200, height: 630, alt: 'मखाना गाइड — गोल्डन डियर' }],
+      images: [{ url: `${BASE_URL}/opengraph-image`, width: 1200, height: 630, alt: 'मखाना गाइड — गोल्डन डियर' }],
     },
     twitter: {
       card: 'summary_large_image',
       title: 'मखाना क्या है? — फ़ायदे, सूत ग्रेड, सही मखाना कैसे चुनें',
       description:
         'मखाना (Euryale ferox) के बारे में पूरी जानकारी हिंदी में: यह क्या है, कैसे उगाया जाता है, सूत ग्रेड, पोषण, फ़ायदे, और रोज़ कितना खाएं।',
-      images: [`${BASE_URL}/images/og/og-default.jpg`],
+      images: [`${BASE_URL}/opengraph-image`],
     },
     alternates: { canonical: `${BASE_URL}/hi/makhana-kya-hai` },
     keywords: ['मखाना क्या है', 'fox nuts in hindi', 'phool makhana', 'makhana ke fayde', 'makhana kya hota hai', 'मखाना के फायदे', 'suta grade makhana', 'makhana nutrition hindi', 'मखाना कैसे खाएं'],
@@ -67,7 +67,7 @@ export default function MakhanaKyaHai() {
         dateModified: '2026-07-16',
         author: { '@type': 'Organization', name: 'Golden Deer | गोल्डन डियर', url: BASE_URL },
         publisher: { '@type': 'Organization', name: 'Golden Deer | गोल्डन डियर', url: BASE_URL },
-        image: `${BASE_URL}/images/og/og-default.jpg`,
+        image: `${BASE_URL}/opengraph-image`,
         mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/hi/makhana-kya-hai`, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.speakable-summary'] } },
         inLanguage: 'hi',
         hasPart: [

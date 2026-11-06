@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/journal`,
     images: [
       {
-        url: `${BASE_URL}/images/og/og-journal.jpg`,
+        url: `${BASE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: 'Golden Deer Journal',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Journal — Golden Deer',
     description: 'Stories, insights, and deep dives into makhana.',
-    images: [`${BASE_URL}/images/og/og-journal.jpg`],
+    images: [`${BASE_URL}/opengraph-image`],
   },
   alternates: { canonical: `${BASE_URL}/journal` },
 }
@@ -73,22 +73,22 @@ export default function JournalPage() {
             href={`/journal/${entry.slug}`}
             className="group block"
           >
-            <div className="relative aspect-4/3 rounded-xl overflow-hidden border border-white/5 group-hover:border-gold/30 transition-all">
+            <div className="relative aspect-4/3 rounded-xl overflow-hidden border border-gold/15 bg-cream-dark/50 group-hover:border-gold/30 transition-all">
               <Image
                 src={entry.cover}
                 alt=""
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="object-contain p-6 group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
             <div className="mt-3 space-y-2">
               <Tag variant="forest">
-                {categories[entry.slug] || 'Journal'}
+                {categories[entry.slug] || 'Practical Guides'}
               </Tag>
-              <h3 className="font-display text-lg text-forest-deep group-hover:text-gold transition-colors leading-tight">
+              <h2 className="font-display text-lg text-forest-deep group-hover:text-gold transition-colors leading-tight">
                 {entry.title}
-              </h3>
+              </h2>
               <p className="text-sm text-forest-deep/60 leading-relaxed line-clamp-2">
                 {entry.excerpt}
               </p>

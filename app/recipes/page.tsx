@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { recipes } from '@/content/recipes'
 import { Container } from '@/components/shared/primitives'
-import MotionLoop from '@/components/shared/MotionLoop'
+import RecipeArtwork from '@/components/recipes/RecipeArtwork'
 import { ChevronRight } from 'lucide-react'
 
 const BASE_URL = 'https://www.cosmicpower.ltd'
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/recipes`,
     images: [
       {
-        url: `${BASE_URL}/images/og/og-recipes.jpg`,
+        url: `${BASE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: 'Golden Deer Recipes',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Recipes — Golden Deer',
     description: 'Delicious and healthy makhana recipes from Golden Deer.',
-    images: [`${BASE_URL}/images/og/og-recipes.jpg`],
+    images: [`${BASE_URL}/opengraph-image`],
   },
   alternates: { canonical: `${BASE_URL}/recipes` },
 }
@@ -65,12 +65,7 @@ export default function RecipesPage() {
             className="group block"
           >
             <div className="relative rounded-xl overflow-hidden border border-white/5 group-hover:border-gold/30 transition-all">
-              <MotionLoop
-                src={recipe.loop}
-                poster={recipe.poster}
-                aspect="4/3"
-                alt={`${recipe.title} — Golden Deer`}
-              />
+              <RecipeArtwork recipe={recipe} />
             </div>
             <div className="mt-3 space-y-1.5">
               <h3 className="font-display text-lg text-forest-deep group-hover:text-gold transition-colors leading-tight">

@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'Everything you need to know about makhana (Euryale ferox): definition, cultivation, suta grades, nutrition per 100g, health benefits, at-home roasting, storage, buying checklist, and cultural significance.',
       url: `${BASE_URL}/makhana`,
       images: [
-        { url: `${BASE_URL}/images/og/og-default.jpg`, width: 1200, height: 630, alt: 'Makhana Guide — Golden Deer' },
+        { url: `${BASE_URL}/opengraph-image`, width: 1200, height: 630, alt: 'Makhana Guide — Golden Deer' },
       ],
     },
     twitter: {
@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'Makhana: The Complete Guide — Fox Nuts, Grades, Nutrition & How to Use',
       description:
         'Everything you need to know about makhana (Euryale ferox): definition, cultivation, suta grades, nutrition per 100g, health benefits, at-home roasting, storage, buying checklist, and cultural significance.',
-      images: [`${BASE_URL}/images/og/og-default.jpg`],
+      images: [`${BASE_URL}/opengraph-image`],
     },
     alternates: { canonical: `${BASE_URL}/makhana` },
     keywords: ['makhana', 'fox nuts', 'phool makhana', 'what is makhana', 'makhana benefits', 'makhana nutrition', 'makhana grades', 'suta makhana', 'Euryale ferox', 'makhana guide', 'how to roast makhana', 'makhana storage', 'makhana cultivation', 'Mithila Makhana GI', 'Bihar makhana'],
@@ -87,7 +87,7 @@ export default function MakhanaGuide() {
         dateModified: '2026-07-16',
         author: { '@type': 'Organization', name: 'Golden Deer', url: BASE_URL },
         publisher: { '@type': 'Organization', name: 'Golden Deer', url: BASE_URL },
-        image: `${BASE_URL}/images/og/og-default.jpg`,
+        image: `${BASE_URL}/opengraph-image`,
         mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/makhana` },
         hasPart: [
           { '@type': 'WebPageElement', name: 'Quick Answer — what is makhana' },

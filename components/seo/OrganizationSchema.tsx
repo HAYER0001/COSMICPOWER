@@ -9,6 +9,7 @@ export default function OrganizationSchema() {
     site.socials.youtube,
     site.socials.linkedin,
     site.commerce.amazon,
+    site.commerce.flipkart,
     site.commerce.blinkit,
     site.commerce.zepto,
     site.googleBusinessProfile,

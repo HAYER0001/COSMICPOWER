@@ -26,17 +26,20 @@ const BOTS = [
   'omgili',
 ]
 
+const PRIVATE_PATHS = ['/cart', '/checkout', '/account', '/admin', '/search', '/track', '/api/']
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/cart/', '/checkout/', '/account/', '/admin/', '/search/'],
+        disallow: PRIVATE_PATHS,
       },
       {
         userAgent: BOTS,
         allow: '/',
+        disallow: PRIVATE_PATHS,
       },
     ],
     sitemap: 'https://www.cosmicpower.ltd/sitemap.xml',

@@ -7,7 +7,7 @@ export interface JournalEntry {
   readTime: string
 }
 
-export const journal: JournalEntry[] = [
+const brandStories: JournalEntry[] = [
   {
     slug: 'golden-grain-ancient-superfood',
     title: 'The Golden Grain: Why Makhana is India\'s Ancient Superfood',
@@ -72,3 +72,10 @@ export const journal: JournalEntry[] = [
     readTime: '5 min',
   },
 ]
+import { JOURNAL_COVER, journalFromMarkdown } from './journal-source'
+
+
+export const journal: JournalEntry[] = [
+  ...journalFromMarkdown,
+  ...brandStories.map((entry) => ({ ...entry, cover: JOURNAL_COVER })),
+].sort((a, b) => b.date.localeCompare(a.date))

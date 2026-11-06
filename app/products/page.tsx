@@ -7,13 +7,21 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.cosmicpower.lt
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Premium Roasted Makhana Collection — Flavours & Raw Jumbo Grade',
+    title: 'Makhana Collection — Roasted Flavours & Raw Jumbo Grade',
     description:
-      'Explore Golden Deer\'s premium roasted makhana collection — Classic Roast, Himalayan Pink Salt & Pepper, Tangy Tomato, Creamy Cheese, Spicy Masala, and Jumbo Grade Raw Makhana for bulk buyers.',
+      'Explore Golden Deer makhana — Classic Plain, Salted, Peri Peri, Tangy Tomato, Pudina and Premium Raw Makhana. Find your flavour or enquire about bulk supply.',
     openGraph: {
-      title: 'Premium Roasted Makhana Collection — Flavours & Raw Jumbo Grade',
+      title: 'The Golden Deer Makhana Collection',
       description:
-        'Hand-picked jumbo seeds, slow-roasted to perfection. 5 clean-label flavours plus bulk raw makhana. Read the complete makhana guide at /makhana.',
+        'Five roasted flavours and Premium Raw Makhana from Bihar. Explore the collection and enquire about retail or wholesale supply.',
+      url: `${BASE_URL}/products`,
+      images: [{ url: `${BASE_URL}/opengraph-image`, width: 1200, height: 630, alt: 'Golden Deer makhana collection' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'The Golden Deer Makhana Collection',
+      description: 'Five roasted flavours and Premium Raw Makhana from Bihar. Discover your next favourite crunch.',
+      images: [`${BASE_URL}/twitter-image`],
     },
     alternates: {
       canonical: `${BASE_URL}/products`,
@@ -29,16 +37,11 @@ const jsonLd = {
     position: i + 1,
     item: {
       '@type': 'Product',
+      url: `${BASE_URL}/products/${p.slug}`,
       name: p.name,
       description: p.description.slice(0, 160),
       image: `${BASE_URL}${p.poster}`,
       brand: { '@type': 'Brand', name: 'Golden Deer' },
-      offers: {
-        '@type': 'Offer',
-        price: p.mrp.match(/\d+/)?.[0] || '0',
-        priceCurrency: 'INR',
-        availability: 'https://schema.org/InStock',
-      },
     },
   })),
 }

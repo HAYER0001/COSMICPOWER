@@ -38,13 +38,13 @@ const buyerTypes = [
 ]
 
 const quantities = [
-  'Less than 10 kg',
-  '10–50 kg',
+  '15–50 packs (Wholesale Box / Custom Combo — MOQ 15)',
+  '50–200 packs (Retail Display / Assorted Flavours)',
+  '200–500 packs',
+  '10–50 kg (Raw Makhana Bulk Bags)',
   '50–200 kg',
-  '200–500 kg',
   '500 kg – 1 tonne',
-  '1–5 tonnes',
-  '5+ tonnes (container load)',
+  '1–5 tonnes (Export / Container Load)',
 ]
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
@@ -353,7 +353,7 @@ export default function InquiryForm() {
             onBlur={() => handleBlur('message')}
             required
             className="w-full px-4 py-2.5 bg-cream border border-forest/10 rounded-lg text-sm text-forest-deep placeholder-forest/30 focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/30 transition-colors resize-y"
-            placeholder="Tell us about your requirement — grade, quantity, packaging, destination..."
+            placeholder="Tell us about your requirement — e.g. 15-pack combo mix (Plain, Salted, Peri Peri, Tomato, Pudina), destination PIN code, or raw makhana grade..."
           />
         </FieldWrapper>
 

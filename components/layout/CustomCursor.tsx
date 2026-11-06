@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 export default function CustomCursor() {
-  const [isVisible] = useState(() => {
-    if (typeof window === 'undefined') return false
-    return window.matchMedia('(pointer: fine)').matches
-  })
+  // MUST start false on both server and client. Reading window.matchMedia in a
+  // useState initialiser makes the server render null and the client render a
+  // div, which is a hydration mismatch. Enable only after mount, in an effect.
+  const [isVisible, setIsVisible] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
 
   const cursorX = useMotionValue(-100)
@@ -17,23 +17,36 @@ export default function CustomCursor() {
   const cursorXSpring = useSpring(cursorX, springConfig)
   const cursorYSpring = useSpring(cursorY, springConfig)
 
+  // Show only for fine pointers, and keep up if the user plugs in a mouse.
+  // prefers-reduced-motion opts out entirely, per the site's motion rules.
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    const pointer = window.matchMedia('(pointer: fine)')
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    const sync = () => setIsVisible(pointer.matches && !reduced.matches)
+    sync()
+
+    pointer.addEventListener('change', sync)
+    reduced.addEventListener('change', sync)
+    return () => {
+      pointer.removeEventListener('change', sync)
+      reduced.removeEventListener('change', sync)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isVisible) return
 
     const moveCursor = (e: MouseEvent) => {
       // Offset by half width/height so it's centered
-      const size = isHovering ? 48 : 24
+      const size = isHovering ? 40 : 20
       cursorX.set(e.clientX - size / 2)
       cursorY.set(e.clientY - size / 2)
     }
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement
-      if (target.closest('a') || target.closest('button')) {
-        setIsHovering(true)
-      } else {
-        setIsHovering(false)
-      }
+      setIsHovering(Boolean(target.closest('a') || target.closest('button')))
     }
 
     window.addEventListener('mousemove', moveCursor)
@@ -43,7 +56,7 @@ export default function CustomCursor() {
       window.removeEventListener('mousemove', moveCursor)
       window.removeEventListener('mouseover', handleMouseOver)
     }
-  }, [cursorX, cursorY, isHovering])
+  }, [cursorX, cursorY, isHovering, isVisible])
 
   if (!isVisible) return null
 

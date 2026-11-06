@@ -24,8 +24,14 @@ export default function QuickOrderFab() {
   const close = useCallback(() => setIsOpen(false), [])
 
   const actions: Action[] = [
+    ...(site.commerce.amazon && site.commerce.amazon !== 'ADD_URL'
+      ? [{ label: 'Amazon', url: site.commerce.amazon, icon: ShoppingBag, color: 'bg-amber-600' }]
+      : []),
+    ...(site.commerce.flipkart && site.commerce.flipkart !== 'ADD_URL'
+      ? [{ label: 'Flipkart', url: site.commerce.flipkart, icon: ShoppingBag, color: 'bg-blue-600' }]
+      : []),
     ...(site.commerce.blinkit !== 'ADD_URL'
-      ? [{ label: 'Blinkit', url: site.commerce.blinkit, icon: Zap, color: 'bg-amber-600' }]
+      ? [{ label: 'Blinkit', url: site.commerce.blinkit, icon: Zap, color: 'bg-yellow-600' }]
       : []),
     ...(site.commerce.zepto !== 'ADD_URL'
       ? [{ label: 'Zepto', url: site.commerce.zepto, icon: ShoppingBag, color: 'bg-purple-600' }]

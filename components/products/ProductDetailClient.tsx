@@ -18,6 +18,7 @@ import {
   MessageCircle,
   Rotate3D,
 } from 'lucide-react'
+import { ProductOptions } from '@/components/products/ProductOptions'
 
 const ProductInspect = dynamic(
   () => import('@/components/three/ProductInspect'),
@@ -141,6 +142,7 @@ function CtaButtons({ product }: { product: Product }) {
   const isBlinkit = product.commerce.blinkit !== 'ADD_URL'
   const isZepto = product.commerce.zepto !== 'ADD_URL'
   const isAmazon = product.commerce.amazon !== 'ADD_URL'
+  const isFlipkart = Boolean(product.commerce.flipkart && product.commerce.flipkart !== 'ADD_URL')
   const isIndiaMart = product.commerce.indiamart && product.commerce.indiamart !== 'ADD_URL'
   const isInstamart = product.commerce.instamart && product.commerce.instamart !== 'ADD_URL'
 
@@ -159,14 +161,42 @@ function CtaButtons({ product }: { product: Product }) {
           className="w-full"
         >
           <MessageCircle className="w-4 h-4" />
-          WhatsApp Inquiry
+          WhatsApp Wholesale Inquiry
         </Button>
+        {isAmazon && (
+          <Button variant="gold-outline" href={product.commerce.amazon} className="w-full">
+            <ShoppingBag className="w-4 h-4" />
+            Buy Retail Pack on Amazon
+          </Button>
+        )}
+        {isFlipkart && (
+          <Button variant="gold-outline" href={product.commerce.flipkart} className="w-full">
+            <ShoppingBag className="w-4 h-4" />
+            Buy Retail Pack on Flipkart
+          </Button>
+        )}
+        {isBlinkit && (
+          <Button variant="gold-outline" href={product.commerce.blinkit} className="w-full">
+            <ShoppingBag className="w-4 h-4" />
+            Buy Retail Pack on Blinkit
+          </Button>
+        )}
       </div>
     )
   }
 
   return (
     <div className="flex flex-col gap-2.5">
+      <Button variant={isAmazon ? "gold-solid" : "gold-outline"} href={product.commerce.amazon} className="w-full" disabled={!isAmazon}>
+        <ShoppingBag className="w-4 h-4" />
+        {isAmazon ? 'Buy on Amazon' : 'Amazon (Coming Soon)'}
+      </Button>
+      {isFlipkart && (
+        <Button variant="gold-outline" href={product.commerce.flipkart} className="w-full">
+          <ShoppingBag className="w-4 h-4" />
+          Buy on Flipkart
+        </Button>
+      )}
       <Button variant={isBlinkit ? "gold-solid" : "gold-outline"} href={product.commerce.blinkit} className="w-full" disabled={!isBlinkit}>
         <ShoppingBag className="w-4 h-4" />
         {isBlinkit ? 'Buy on Blinkit' : 'Blinkit (Coming Soon)'}
@@ -178,10 +208,6 @@ function CtaButtons({ product }: { product: Product }) {
       <Button variant={isInstamart ? "gold-solid" : "gold-outline"} href={product.commerce.instamart || '#'} className="w-full" disabled={!isInstamart}>
         <ShoppingBag className="w-4 h-4" />
         {isInstamart ? 'Buy on Instamart' : 'Instamart (Coming Soon)'}
-      </Button>
-      <Button variant="gold-outline" href={product.commerce.amazon} className="w-full" disabled={!isAmazon}>
-        <ShoppingBag className="w-4 h-4" />
-        {isAmazon ? 'Buy on Amazon' : 'Amazon (Coming Soon)'}
       </Button>
       <Button variant="gold-outline" href={product.commerce.indiamart || '#'} className="w-full" disabled={!isIndiaMart}>
         <ShoppingBag className="w-4 h-4" />
@@ -345,7 +371,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
     },
     {
       title: 'Shipping & Delivery',
-      content: 'Free shipping on orders above ₹249. Standard delivery: 3–7 business days across India. Express shipping available for metro cities (1–2 business days). Bulk orders shipped via trusted logistics partners with real-time tracking. International shipping available for export orders — contact us for a custom quote.',
+      content: 'Free shipping on orders above ₹999 (₹49 flat delivery fee below ₹999). Standard delivery: 3–7 business days across India. Bulk orders shipped via trusted logistics partners with real-time tracking. International shipping available for export orders — contact us for a custom quote.',
     },
     {
       title: 'Why Clean Label',
@@ -402,6 +428,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               </ul>
             </div>
             <Divider />
+            <ProductOptions product={product} />
             <CtaButtons product={product} />
             <Divider />
             <QuickAnswer product={product} />

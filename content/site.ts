@@ -30,8 +30,9 @@ export const site = {
     linkedin: 'ADD_URL',
   },
   commerce: {
-    blinkit: 'ADD_URL',
+    blinkit: 'https://blinkit.com/prn/golden-deer-handpicked-raw-makhana/prid/1425972',
     zepto: 'ADD_URL',
-    amazon: 'ADD_URL',
-  },
+    amazon: 'https://www.amazon.in/dp/B0HL7162ZH',
+    flipkart: 'https://www.flipkart.com/golden-deer-raw-premium-makhana-80g-makhana/p/itmee2d8d5c6429a',
+  } as Record<string, string>,
 } as const

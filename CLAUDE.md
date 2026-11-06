@@ -13,15 +13,16 @@ Make Golden Deer a household name in healthy snacking.
 Sustainably sourced, ethically processed superfood snacks that empower farming partner communities.
 
 ## PRODUCT RANGE (6 SKUs)
-1. Classic Roast — slug: `classic-roast`
-2. Himalayan Pink Salt & Pepper — slug: `pink-salt-pepper`
-3. Tangy Tomato — slug: `tangy-tomato`
-4. Creamy Cheese — slug: `creamy-cheese`
-5. Spicy Masala — slug: `spicy-masala`
-6. Premium Raw Makhana — slug: `raw-makhana`
+Canonical source: `content/products.ts`. Prices live in each SKU's `variants[]`.
+1. Classic Plain — slug: `plain` — ₹129 (80gm) / ₹320 (200gm)
+2. Salted — slug: `salted` — ₹159 (80gm)
+3. Peri Peri — slug: `peri-peri` — ₹159 (80gm)
+4. Tangy Tomato — slug: `tangy-tomato` — ₹159 (80gm)
+5. Pudina — slug: `pudina` — ₹159 (80gm)
+6. Premium Raw Makhana — slug: `raw-makhana` — ₹129 (80gm) / ₹320 (200gm), bulk-only
 
 ## TWO-FUNNEL PRINCIPLE
-- **Funnel A — D2C retail:** Premium-snack buyers buy via quick-commerce. Primary CTAs: "Buy on Blinkit" / "Buy on Zepto" (Amazon secondary). No on-site cart.
+- **Funnel A — D2C retail:** On-site cart and checkout (Razorpay), with quick-commerce links as a secondary path where listings exist. Quick-commerce URLs in `content/site.ts` render as "Coming Soon" while set to `ADD_URL`.
 - **Funnel B — Bulk & wholesale:** Distributors, retailers, HoReCa, corporate gifting, export. Converts through `/bulk` page, segmented inquiry form, and wa.me prefilled bulk-quote link.
 
 ## QUALITY & TRUST PROPS
@@ -40,13 +41,23 @@ Logo: user-supplied at `/images/logo.png` (transparent PNG) — never generate o
 ## HARD RULES
 1. Every component using hooks/window/document/GSAP/media APIs: `'use client'` + guard browser access.
 2. Mobile-first, test at 375px.
-3. Free services only — Vercel, Resend free tier, GA4, local content, wa.me, youtube-nocookie facades.
+3. Free tiers wherever possible — Vercel, Resend, Neon/Supabase Postgres, GA4, wa.me, youtube-nocookie facades. Razorpay and Delhivery are per-transaction, not subscriptions.
 4. All videos: muted autoPlay loop playsInline with poster. Hero: `preload="metadata"`. Others: `preload="none"`, pause offscreen.
 5. Respect `prefers-reduced-motion` and `Save-Data`: posters only.
 6. Real HTML text always above media.
 7. Video budget: hero ≤4MB, loops ≤2.5MB, posters ≤200KB.
 8. `npm run build` after EVERY task, zero errors.
 9. Missing loop/poster never breaks layout — fallback: loop→poster→branded gradient with dev-only path label.
+
+## COMMERCE RULES (non-negotiable)
+1. **Never trust a client-sent price.** The cart is localStorage and is attacker-controlled. Every amount charged is re-derived server-side in `lib/pricing.ts` from `content/products.ts` by (slug, variant). Server actions accept only slug / variant / quantity.
+2. **`getServerSession` must always be passed `authOptions`** (from `lib/auth.ts`). Without it the `role` callback never runs and every role check silently fails open to `undefined`.
+3. **Admin API routes go through `requireAdmin()`** in `lib/admin-guard.ts`, and money-moving actions call `audit()`.
+4. **No secrets in source.** Admin credentials are `ADMIN_EMAIL` + bcrypt `ADMIN_PASSWORD_HASH`. Auth fails closed when unset — never add a fallback password.
+5. **Postgres only.** Vercel's filesystem is ephemeral; SQLite silently loses orders.
+6. **The webhook is the source of truth** for payment, and every handler must be idempotent — Razorpay retries, and `/api/razorpay/verify` may land first.
+7. **Middleware must not guard `/admin/login`** or the sign-in redirect loops forever.
+8. **Never construct a paid-service SDK at module scope** — `next build` runs without secrets. Initialise lazily (see `lib/razorpay.ts`).
 
 ## FIXED STACK
 - Next.js (App Router only)
@@ -55,6 +66,10 @@ Logo: user-supplied at `/images/logo.png` (transparent PNG) — never generate o
 - Framer Motion + GSAP/ScrollTrigger
 - Lenis (single scroll source)
 - Resend (free tier)
+- Prisma + PostgreSQL (Neon / Supabase / Vercel Postgres)
+- NextAuth (credentials, JWT) for `/admin`
+- Razorpay (payments) + Delhivery (shipping, mock-capable)
+- Zustand (cart, persisted to localStorage)
 
 ## 3D LAYER RULES (additive — never replaces motion-first)
 1. **ADDITIVE ONLY** — every 3D feature mounts as an overlay or optional toggle. Never remove, replace, or restructure any existing MotionLoop, video, poster, section, or page. Existing elements remain the default and fallback.

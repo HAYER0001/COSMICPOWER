@@ -114,7 +114,7 @@ export default function PrivacyPage() {
 
         <h2 className="font-display text-xl text-forest-deep pt-4">6. Third-Party Links</h2>
         <p>
-          Our website contains links to third-party platforms including Blinkit, Zepto, Amazon, WhatsApp, and
+          Our website contains links to third-party platforms including Amazon, Flipkart, Blinkit, Zepto, WhatsApp, and
           social media channels. This Privacy Policy does not apply to those platforms. We encourage you to review
           their respective privacy policies before providing them with your data.
         </p>

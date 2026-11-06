@@ -1,6 +1,7 @@
-import Link from 'next/link'
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { recipes } from '@/content/recipes'
+import { getRecipePairing } from '@/content/recipe-pairings'
 import RecipeDetailClient from '@/components/recipes/RecipeDetailClient'
 
 const BASE_URL = 'https://www.cosmicpower.ltd'
@@ -16,11 +17,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const recipe = recipes.find((r) => r.slug === slug)
-  if (!recipe) return { title: 'Recipe not found — Golden Deer' }
+  if (!recipe) notFound()
 
   const title = `${recipe.title} — Golden Deer`
   const description = recipe.intro.slice(0, 160)
-  const posterUrl = `${BASE_URL}${recipe.poster}`
+  const posterUrl = `${BASE_URL}${getRecipePairing(recipe.slug).poster}`
 
   return {
     title,
@@ -53,19 +54,7 @@ export default async function RecipePage({
   const { slug } = await params
   const recipe = recipes.find((r) => r.slug === slug)
 
-  if (!recipe) {
-    return (
-      <div className="mx-auto max-w-7xl px-4 py-24 text-center">
-        <h1 className="font-display text-3xl text-forest-deep">Recipe not found</h1>
-        <Link
-          href="/recipes"
-          className="mt-6 inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium tracking-wide border border-gold text-gold hover:bg-gold hover:text-forest-deep transition-all rounded-lg"
-        >
-          Back to Recipes
-        </Link>
-      </div>
-    )
-  }
+  if (!recipe) notFound()
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -85,7 +74,7 @@ export default async function RecipePage({
           position: i + 1,
           text: s,
         })),
-        image: `${BASE_URL}${recipe.poster}`,
+        image: `${BASE_URL}${getRecipePairing(recipe.slug).poster}`,
         publisher: {
           '@type': 'Organization',
           name: 'Golden Deer',

@@ -1,10 +1,13 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 import { journal } from '@/content/journal'
+import { getJournalMarkdown } from '@/content/journal-source'
 
 import { Container } from '@/components/shared/primitives'
 import JournalArticleClient from '@/components/journal/JournalArticleClient'
+import JournalMarkdown from '@/components/journal/JournalMarkdown'
 import { ChevronRight } from 'lucide-react'
 
 const BASE_URL = 'https://www.cosmicpower.ltd'
@@ -20,7 +23,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const entry = journal.find((e) => e.slug === slug)
-  if (!entry) return { title: 'Article not found — Golden Deer' }
+  if (!entry) notFound()
 
   const title = `${entry.title} — Golden Deer Journal`
   const description = entry.excerpt.slice(0, 160)
@@ -58,19 +61,9 @@ export default async function JournalArticlePage({
   const { slug } = await params
   const entry = journal.find((e) => e.slug === slug)
 
-  if (!entry) {
-    return (
-      <div className="mx-auto max-w-7xl px-4 py-24 text-center">
-        <h1 className="font-display text-3xl text-forest-deep">Article not found</h1>
-        <Link
-          href="/journal"
-          className="mt-6 inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium tracking-wide border border-gold text-gold hover:bg-gold hover:text-forest-deep transition-all rounded-lg"
-        >
-          Back to Journal
-        </Link>
-      </div>
-    )
-  }
+  if (!entry) notFound()
+
+  const markdown = getJournalMarkdown(slug)
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -144,12 +137,12 @@ export default async function JournalArticlePage({
 
         <div data-article-progress>
           {/* Cover Image */}
-          <div className="relative aspect-16/9 rounded-2xl overflow-hidden border border-white/5 mb-8">
+          <div className="relative aspect-16/9 rounded-2xl overflow-hidden border border-gold/15 bg-cream-dark/50 mb-8">
             <Image
               src={entry.cover}
               alt=""
               fill
-              className="object-cover"
+              className="object-contain p-4 sm:p-8"
               sizes="(max-width: 1024px) 100vw, 80rem"
               priority
             />
@@ -174,7 +167,9 @@ export default async function JournalArticlePage({
               </div>
             </header>
 
-            <JournalArticleClient entry={entry} />
+            <JournalArticleClient entry={entry}>
+              {markdown ? <JournalMarkdown source={markdown} /> : null}
+            </JournalArticleClient>
           </div>
         </div>
       </Container>

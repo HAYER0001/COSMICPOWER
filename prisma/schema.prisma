@@ -1,0 +1,139 @@
+// Golden Deer — commerce schema
+//
+// Provider is PostgreSQL: Vercel's serverless filesystem is ephemeral and
+// read-only at runtime, so SQLite cannot be used in production. Point
+// DATABASE_URL at a hosted Postgres (Neon / Supabase / Vercel Postgres).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  SHIPPED
+  DELIVERED
+  RETURNED
+  CANCELLED
+  FAILED
+}
+
+enum ReturnStatus {
+  REQUESTED
+  APPROVED
+  PICKED_UP
+  REFUNDED
+  REJECTED
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String // bcrypt hash
+  name      String?
+  role      String   @default("USER") // ADMIN or USER
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orders    Order[]
+}
+
+model Order {
+  id                String      @id @default(cuid())
+  razorpayOrderId   String?     @unique
+  razorpayPaymentId String?     @unique
+  status            OrderStatus @default(PENDING)
+
+  /// Sum of line totals, before shipping.
+  subtotal       Float @default(0)
+  /// Shipping charged on this order.
+  shippingCharge Float @default(0)
+  /// subtotal + shippingCharge — the amount actually charged (GST-inclusive).
+  totalAmount    Float
+  currency       String @default("INR")
+
+  /// Taxable value of totalAmount, excluding GST. For filing, not for display.
+  taxableValue Float @default(0)
+  /// GST already contained within totalAmount — never added on top.
+  gstAmount    Float @default(0)
+  /// Rate applied, so a historic order survives a future rate change.
+  gstRate      Float @default(5)
+
+  customerName    String
+  customerEmail   String
+  customerPhone   String
+  shippingAddress String
+  shippingCity    String
+  shippingState   String
+  shippingPinCode String
+
+  /// Delhivery forward tracking number.
+  awbNumber  String?
+  /// Set once a shipment has actually been manifested with the courier.
+  shippedAt  DateTime?
+  deliveredAt DateTime?
+
+  /// Free-form note the admin can leave against an order.
+  adminNote String?
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+
+  items        OrderItem[]
+  returnTicket ReturnTicket?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([customerEmail])
+}
+
+model OrderItem {
+  id      String @id @default(cuid())
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  productSlug String
+  name        String
+  variant     String
+  /// Unit price resolved server-side at order time.
+  price       Float
+  quantity    Int
+
+  @@index([orderId])
+}
+
+model ReturnTicket {
+  id      String @id @default(cuid())
+  orderId String @unique
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  reason String
+  status ReturnStatus @default(REQUESTED)
+
+  /// Delhivery reverse-pickup tracking number.
+  returnAwb String?
+  /// Razorpay refund id, once issued.
+  refundId  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/// Append-only audit trail for admin actions — who refunded what, and when.
+model AdminAuditLog {
+  id        String   @id @default(cuid())
+  actor     String
+  action    String
+  orderId   String?
+  detail    String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
