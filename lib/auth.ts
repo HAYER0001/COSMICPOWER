@@ -10,6 +10,13 @@ const ADMIN_PASSWORD_HASH =
   process.env.ADMIN_PASSWORD_HASH ||
   '$2b$12$AiWiqGdTsOT2zyOKtB3Iue.4RfpgS6as8moSt/WZyhZjiwJ1zD/9G'
 
+if (
+  process.env.NODE_ENV === 'production' &&
+  (!process.env.NEXTAUTH_URL || process.env.NEXTAUTH_URL.includes('localhost'))
+) {
+  process.env.NEXTAUTH_URL = 'https://www.cosmicpower.ltd'
+}
+
 const providers: NextAuthOptions['providers'] = [
   CredentialsProvider({
     name: 'Credentials',
