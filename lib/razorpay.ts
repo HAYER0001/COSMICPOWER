@@ -17,8 +17,13 @@ export const isRazorpayConfigured = Boolean(
 function getClient(): Razorpay {
   if (client) return client
 
-  const key_id = process.env.RAZORPAY_KEY_ID
-  const key_secret = process.env.RAZORPAY_KEY_SECRET
+  const key_id =
+    process.env.RAZORPAY_KEY_ID ||
+    process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ||
+    'rzp_live_TwrQf8oGtmfc8o'
+  const key_secret =
+    process.env.RAZORPAY_KEY_SECRET ||
+    '8nM12sQ0gFxwNix7S77HCDyK'
 
   if (!key_id || !key_secret) {
     throw new Error(

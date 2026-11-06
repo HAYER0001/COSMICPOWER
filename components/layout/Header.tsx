@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ShoppingBag } from 'lucide-react'
+import { Menu, X, ShoppingBag, User } from 'lucide-react'
 import { Button } from '@/components/shared/primitives'
 import { useCartStore } from '@/lib/store/useCartStore'
 
@@ -15,6 +15,7 @@ const navLinks = [
   { label: 'Bulk & Wholesale', href: '/bulk' },
   { label: 'Our Story', href: '/our-story' },
   { label: 'Journal', href: '/journal' },
+  { label: 'Track & Account', href: '/account' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -56,22 +57,38 @@ export default function Header() {
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
+            <Link
+              href="/account"
+              className="p-2 text-gold hover:text-gold-light transition-colors"
+              title="My Account & Tracking"
+              aria-label="My Account"
+            >
+              <User className="w-5 h-5" />
+            </Link>
+            <CartButton />
             <Button variant="gold-solid" href="/products">
               Order Now
             </Button>
-            <CartButton />
           </div>
 
-          <div className="flex lg:hidden items-center gap-2">
+          <div className="flex lg:hidden items-center gap-1.5">
+            <Link
+              href="/account"
+              className="p-1.5 text-gold hover:text-gold-light transition-colors"
+              title="My Account"
+              aria-label="My Account"
+            >
+              <User className="w-5 h-5" />
+            </Link>
             <CartButton />
             <button
-              className="relative z-10 p-3 text-gold"
-            onClick={() => setOpen(!open)}
-            aria-label={open ? 'Close menu' : 'Open menu'}
-          >
-            {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
+              className="relative z-10 p-2 text-gold"
+              onClick={() => setOpen(!open)}
+              aria-label={open ? 'Close menu' : 'Open menu'}
+            >
+              {open ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </nav>

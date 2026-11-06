@@ -117,6 +117,12 @@ export default function CheckoutClient() {
         shippingPinCode: formData.pincode,
       })
 
+      if (!orderData.ok) {
+        setError(orderData.error)
+        setIsLoading(false)
+        return
+      }
+
       let Razorpay = (window as unknown as { Razorpay?: new (o: unknown) => { open: () => void; on: (e: string, cb: (r: unknown) => void) => void } }).Razorpay
       if (!Razorpay) {
         const loaded = await new Promise<boolean>((resolve) => {

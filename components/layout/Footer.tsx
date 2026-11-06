@@ -77,6 +77,8 @@ export default function Footer() {
               Explore
             </h4>
             <ul className="space-y-3">
+              <li><FooterLink href="/account">Customer Account &amp; Orders</FooterLink></li>
+              <li><FooterLink href="/track">Track Any Order</FooterLink></li>
               <li><FooterLink href="/products">All Products</FooterLink></li>
               <li><FooterLink href="/recipes">Recipes</FooterLink></li>
               <li><FooterLink href="/our-story">Our Story</FooterLink></li>
