@@ -139,7 +139,7 @@ export default function BrandPage() {
             <Fact><ProductLink slug="peri-peri">Peri Peri</ProductLink> — real tomato powder and spice dusting. MRP ₹159 (80gm).</Fact>
             <Fact><ProductLink slug="creamy-cheese">Creamy Cheese</ProductLink> — real aged cheddar and cultured buttermilk. MRP ₹159 (80gm).</Fact>
             <Fact><ProductLink slug="pudina">Pudina</ProductLink> — cumin, coriander, Kashmiri red chilli, amchur, ginger. MRP ₹159 (80gm).</Fact>
-            <Fact><ProductLink slug="raw-makhana">Premium Raw Makhana</ProductLink> — hand-sorted jumbo grade (5–6 suta, 18–24 mm), unroasted. MRP ₹129 (80gm) / ₹320 (200gm).</Fact>
+            <Fact><ProductLink slug="raw-makhana">Premium Raw Makhana</ProductLink> — hand-sorted jumbo grade (5–6 suta, 18–24 mm), unroasted. MRP ₹129 (80gm) / ₹299 (200gm, 25% OFF with free transportation).</Fact>
           </Section>
 
           {/* Section 4: What makes it different */}

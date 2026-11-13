@@ -142,9 +142,21 @@ function ProductCard({ product }: { product: Product }) {
         </p>
 
         <div className="mt-auto flex items-center justify-between">
-          <span className="text-lg font-semibold text-gold">
-            {product.mrp}
-          </span>
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <span className="text-lg font-semibold text-gold">
+              {product.mrp}
+            </span>
+            {product.originalMrp && (
+              <span className="text-xs text-forest-deep/40 line-through">
+                {product.originalMrp}
+              </span>
+            )}
+            {product.discountBadge && (
+              <span className="px-1.5 py-0.5 text-[10px] font-bold rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
+                {product.discountBadge}
+              </span>
+            )}
+          </div>
           <span
             className="text-sm font-medium text-gold hover:text-gold-light transition-colors"
           >

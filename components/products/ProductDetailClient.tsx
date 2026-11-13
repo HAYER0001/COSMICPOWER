@@ -409,9 +409,26 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight text-forest-deep">{product.name}</h1>
               <p className="mt-2 text-base sm:text-lg text-gold/80 font-medium">{product.tagline}</p>
             </div>
-            <div className="flex items-baseline gap-4">
-              <span className="font-display text-2xl sm:text-3xl text-forest-deep">{product.mrp}</span>
-              <span className="text-sm text-forest-deep/50">/ {product.netWeights.join(' · ')}</span>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-baseline gap-3 flex-wrap">
+                <span className="font-display text-2xl sm:text-3xl text-forest-deep">{product.mrp}</span>
+                {product.originalMrp && (
+                  <span className="text-base text-forest-deep/40 line-through">{product.originalMrp}</span>
+                )}
+                {product.discountBadge && (
+                  <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
+                    {product.discountBadge}
+                  </span>
+                )}
+                <span className="text-sm text-forest-deep/50">/ {product.netWeights.join(' · ')}</span>
+              </div>
+              {product.slug === 'raw-makhana' && (
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                    🚚 Free Transportation on 200g
+                  </span>
+                </div>
+              )}
             </div>
             <Divider />
             <p className="text-sm sm:text-base text-forest-deep/70 leading-relaxed">{product.description}</p>

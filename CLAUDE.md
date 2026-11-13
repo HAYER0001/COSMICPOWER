@@ -19,7 +19,7 @@ Canonical source: `content/products.ts`. Prices live in each SKU's `variants[]`.
 3. Peri Peri — slug: `peri-peri` — ₹159 (80gm)
 4. Tangy Tomato — slug: `tangy-tomato` — ₹159 (80gm)
 5. Pudina — slug: `pudina` — ₹159 (80gm)
-6. Premium Raw Makhana — slug: `raw-makhana` — ₹129 (80gm) / ₹320 (200gm), bulk-only
+6. Premium Raw Makhana — slug: `raw-makhana` — ₹129 (80gm) / ₹299 (200gm, 25% OFF with free transportation)
 
 ## TWO-FUNNEL PRINCIPLE
 - **Funnel A — D2C retail:** On-site cart and checkout (Razorpay), with quick-commerce links as a secondary path where listings exist. Quick-commerce URLs in `content/site.ts` render as "Coming Soon" while set to `ADD_URL`.

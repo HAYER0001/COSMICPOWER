@@ -6,9 +6,11 @@ export interface Product {
   descriptionFull: string
   tags: string[]
   mrp: string
+  originalMrp?: string
+  discountBadge?: string
   netWeights: string[]
   /** Canonical per-variant pricing. Server-authoritative — never trust a client-sent price. */
-  variants: { weight: string; price: number }[]
+  variants: { weight: string; price: number; originalPrice?: number }[]
   nutrition: {
     energyKcal: number
     proteinG: number
@@ -275,10 +277,15 @@ export const products: Product[] = [
       'The raw ingredient that makes Golden Deer special. These are not ordinary fox nuts — each seed is hand-sorted, graded by size, and selected for its pristine white colour and uniform shape. Sourced directly from farming partner cooperatives in Bihar\'s makhana belt, our raw makhana represents the highest standard of purity available to wholesalers, retailers, and food businesses.',
     descriptionFull:
       'Behind every perfect puff of Golden Deer lies an uncompromising raw material. Our Premium Raw Makhana is the largest, brightest jumbo grade — what the trade calls 5–6 suta — sourced from the Gangetic wetlands of Bihar where makhana has been cultivated for centuries. Each lot is hand-sorted by experienced graders who remove discoloured seeds, broken pieces, and any grain below our size threshold. The result is a consistently superior raw product that roasts evenly, puffs fully, and delivers the signature ethereal crunch that defines Golden Deer. For retail brands seeking white-label supply, HoReCa kitchens creating innovative makhana-based dishes, and export buyers who demand the highest grade, this is the gold standard in raw fox nuts.',
-    tags: ['Raw', 'Bulk', 'Wholesale', 'Jumbo Grade', 'Unroasted'],
-    mrp: '₹129 - ₹320',
+    tags: ['Raw', '25% OFF', 'Free Shipping', 'Jumbo Grade', 'Unroasted'],
+    mrp: '₹129 - ₹299',
+    originalMrp: '₹399',
+    discountBadge: '25% OFF',
     netWeights: ['80gm', '200gm'],
-    variants: [{ weight: '80gm', price: 129 }, { weight: '200gm', price: 320 }],
+    variants: [
+      { weight: '80gm', price: 129 },
+      { weight: '200gm', price: 299, originalPrice: 399 },
+    ],
     nutrition: {
       energyKcal: 347,
       proteinG: 9.7,
@@ -288,6 +295,7 @@ export const products: Product[] = [
     },
     benefits: [
       'Hand-sorted jumbo grade — 5–6 suta',
+      '200g pack: ₹299 (25% OFF with free transportation)',
       'Uniform size for even roasting',
       'Minimal broken pieces (< 2%)',
       'Direct farm sourcing — traceable lots',

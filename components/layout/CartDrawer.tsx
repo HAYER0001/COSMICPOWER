@@ -109,13 +109,19 @@ export default function CartDrawer() {
               )}
             </div>
 
-            {items.length > 0 && (
+            {items.length > 0 && (() => {
+              const hasFreeShippingItem = items.some(
+                (item) => item.productSlug === '15-pack-combo' || (item.productSlug === 'raw-makhana' && item.variant === '200gm')
+              )
+              const isFreeShipping = getTotal() >= 999 || hasFreeShippingItem
+
+              return (
               <div className="border-t border-forest/10 bg-cream p-6">
                 {/* Free Shipping Progress */}
                 <div className="mb-4 rounded-lg bg-gold/10 p-3 text-xs border border-gold/20">
-                  {getTotal() >= 999 ? (
+                  {isFreeShipping ? (
                     <p className="font-semibold text-emerald-800 flex items-center gap-1.5">
-                      <span>🎉</span> You unlocked <strong>FREE Shipping</strong>!
+                      <span>🎉</span> You unlocked <strong>FREE Shipping</strong>! {hasFreeShippingItem && <span className="text-[11px] font-normal text-emerald-700">(Transportation included)</span>}
                     </p>
                   ) : (
                     <div>
@@ -138,7 +144,7 @@ export default function CartDrawer() {
                 </div>
                 <div className="flex justify-between text-sm text-forest-deep/70 mb-4">
                   <p>Estimated Shipping</p>
-                  <p>{getTotal() >= 999 ? <span className="text-emerald-700 font-semibold">FREE</span> : '₹49'}</p>
+                  <p>{isFreeShipping ? <span className="text-emerald-700 font-semibold">FREE</span> : '₹49'}</p>
                 </div>
                 <p className="text-xs text-forest-deep/60 mb-4">
                   All prices include GST. Dispatched within 24–48 hours across India.
@@ -147,7 +153,8 @@ export default function CartDrawer() {
                   Proceed to Checkout
                 </Button>
               </div>
-            )}
+              )
+            })()}
           </motion.div>
         </>
       )}

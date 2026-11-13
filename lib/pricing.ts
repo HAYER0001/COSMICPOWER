@@ -128,7 +128,11 @@ export function priceCart(lines: CartLineInput[]): PricedCart {
   })
 
   const subtotal = priced.reduce((sum, l) => sum + l.lineTotal, 0)
-  const shipping = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FLAT_RATE
+  // Free shipping at or above ₹999 OR if the cart contains a promotional item with inclusive transportation (e.g. 15-pack combo or Raw 200g)
+  const hasFreeShippingItem = priced.some(
+    (l) => l.productSlug === '15-pack-combo' || (l.productSlug === 'raw-makhana' && l.variant === '200gm')
+  )
+  const shipping = subtotal >= FREE_SHIPPING_THRESHOLD || hasFreeShippingItem ? 0 : SHIPPING_FLAT_RATE
   const total = subtotal + shipping
 
   // GST is inside `total`, never added to it.
